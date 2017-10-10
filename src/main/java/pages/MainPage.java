@@ -10,63 +10,39 @@ public class MainPage extends PageObject{
     }
 
     @FindBy(xpath = "//h1")
-    private WebElement h1Title;
+    public WebElement h1Title;
+
+    @FindBy(xpath = "//input[@id=\"routeSelection_DepartureStation-input\"]")
+    public WebElement fromField;
 
     @FindBy(xpath = "")
-    private WebElement fromField;
+    public WebElement toField;
 
     @FindBy(xpath = "")
-    private WebElement toField;
+    public WebElement departOnFiled;
 
     @FindBy(xpath = "")
-    private WebElement departOnFiled;
+    public WebElement departOnCalendar;
 
     @FindBy(xpath = "")
-    private WebElement departOnCalendar;
+    public WebElement returnOnFiled;
 
     @FindBy(xpath = "")
-    private WebElement returnOnFiled;
+    public WebElement returnOnCalendar;
 
     @FindBy(xpath = "")
-    private WebElement returnOnCalendar;
+    public WebElement whoWillBeTravellingField;
 
     @FindBy(xpath = "")
-    private WebElement whoWillBeTravellingField;
+    public WebElement showPricesInFlyingBlueMilesCheckbox;
 
     @FindBy(xpath = "")
-    private WebElement showPricesInFlyingBlueMilesCheckbox;
+    public WebElement passagerIcon;
 
     @FindBy(xpath = "")
-    private WebElement passagerIcon;
+    public WebElement saveButtonForPassagerForm;
 
     @FindBy(xpath = "")
-    private WebElement saveButtonForPassagerForm;
-
-    @FindBy(xpath = "")
-    private WebElement searchButton;
-
-    public String checkTitle(){
-        return "";
-    }
-
-    public String getSelectedPlaceFromTheFromField(){
-        return "";
-    }
-
-    public String getSelectedPlaceFromTheToField(){
-        return "";
-    }
-
-    public String getDateFromTheDepartOnField(){
-        return "";
-    }
-
-    public void uncheckShowPricesInFlyingBlueMilesCheckbox(){
-
-    }
-    public String getTextFormReturnOnField (){
-        return "";
-    }
-
+    public WebElement searchButton;
 
 }
