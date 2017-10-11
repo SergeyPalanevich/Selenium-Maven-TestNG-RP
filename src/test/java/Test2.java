@@ -72,9 +72,7 @@ public class Test2 {
         mainPage.searchButton.click();
         waitSripts(driver);
         assertEquals(driver.findElement(By.xpath("//h1")).getText(), "Book a flight");
-
     }
-
 
     @Test(priority = 5)
     public void selectOutboundFligh() {
