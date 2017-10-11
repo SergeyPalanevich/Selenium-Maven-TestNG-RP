@@ -80,7 +80,6 @@ public class Test1 {
 
     @AfterClass
     public void cleanUp(){
-        driver.manage().deleteAllCookies();
         driver.close();
     }
 }

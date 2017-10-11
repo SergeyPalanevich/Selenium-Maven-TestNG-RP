@@ -54,14 +54,4 @@ public class MainPage extends PageObject{
     public List<WebElement> priceOutboundDaysWithAvailability;
 
 
-
-
-
-
-
-
-
-
-
-
 }

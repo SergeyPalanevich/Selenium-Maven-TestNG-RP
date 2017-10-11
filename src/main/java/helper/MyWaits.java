@@ -9,25 +9,19 @@ import java.util.concurrent.TimeUnit;
 
 public class MyWaits {
     public static void waitSripts(WebDriver driver){
-        driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().setScriptTimeout(20, TimeUnit.SECONDS);
     }
-    public static void waitLoadPage(WebDriver driver){
-        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
-    }
-    public static void waitUntilToBeClickable(WebDriver driver, String selector){
-        (new WebDriverWait(driver, 10))
-            .until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath(selector))));
-    }
+
 
 
     public static void waitUntilToBePresence(WebDriver driver, String selector){
-        (new WebDriverWait(driver, 10))
+        (new WebDriverWait(driver, 20))
             .until(ExpectedConditions.presenceOfElementLocated(By.xpath(selector)));
     }
 
-    public static void waitUntilToBeVisOfElement(WebDriver driver, String selector){
-        (new WebDriverWait(driver, 10))
-            .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(selector)));
+    public static void waitUntilToBeVisOf(WebDriver driver, String selector){
+        (new WebDriverWait(driver, 20))
+            .until(ExpectedConditions.visibilityOfElementLocated((By.xpath(selector))));
     }
 
 
