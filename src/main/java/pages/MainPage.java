@@ -4,45 +4,64 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 public class MainPage extends PageObject{
     public MainPage(WebDriver driver){
         super(driver);
     }
 
     @FindBy(xpath = "//h1")
-    public WebElement h1Title;
+    public WebElement titleH1;
 
-    @FindBy(xpath = "//input[@id=\"routeSelection_DepartureStation-input\"]")
-    public WebElement fromField;
+    @FindBy(id = "routeSelection_DepartureStation-input")
+    public WebElement fieldFrom;
 
-    @FindBy(xpath = "")
-    public WebElement toField;
+    @FindBy(id = "routeSelection_ArrivalStation-input")
+    public WebElement fieldTo;
 
-    @FindBy(xpath = "")
-    public WebElement departOnFiled;
+    @FindBy(xpath = "//div[@data-date-picker='outbound']/div/span[@class='datepicker-trigger icon-font icon-calendar']")
+    public WebElement datepickerDepart;
 
-    @FindBy(xpath = "")
-    public WebElement departOnCalendar;
+    @FindBy(id = "dateSelection_OutboundDate-datepicker")
+    public WebElement fieldOtboundDate;
 
-    @FindBy(xpath = "")
-    public WebElement returnOnFiled;
+    @FindBy(xpath = "//label[@for='dateSelection_IsReturnFlight']")
+    public WebElement labelReturnOn;
 
-    @FindBy(xpath = "")
-    public WebElement returnOnCalendar;
+    @FindBy(id ="booking-passengers-input")
+    public WebElement fieldBookingPassengers;
 
-    @FindBy(xpath = "")
-    public WebElement whoWillBeTravellingField;
+    @FindBy(id = "dateSelection_IsReturnFlight-datepicker")
+    public WebElement fieldIsReturnDate;
 
-    @FindBy(xpath = "")
-    public WebElement showPricesInFlyingBlueMilesCheckbox;
+    @FindBy(xpath = "//button[@class='button button-secondary close']")
+    public WebElement buttonSavePassengers;
 
-    @FindBy(xpath = "")
-    public WebElement passagerIcon;
-
-    @FindBy(xpath = "")
-    public WebElement saveButtonForPassagerForm;
-
-    @FindBy(xpath = "")
+    @FindBy(xpath = "//*[@id='desktop']/section/div[3]/div/button")
     public WebElement searchButton;
+
+    @FindBy(xpath = "//*[@id='desktop']/section/div[2]/div[3]/div/div[2]/div[2]/div[1]/div[1]/div/div/div[2]/div/div/button[2]")
+    public WebElement buttonPlusAdults;
+
+    @FindBy(xpath = "//*[@id='desktop']/section/div[2]/div[3]/div/div[2]/div[2]/div[1]/div[2]/div/div/div[2]/div/div/button[2]")
+    public WebElement buttonPlusChildren;
+
+    @FindBy(xpath = "//section[@class=\"flight outbound\"]//div[@class='day day-with-availability']")
+    public List<WebElement> flightOutboundDaysWithAvailability;
+
+    @FindBy(xpath = "//section[@class=\"flight outbound\"]//button[@class=\"flight-result-button\"]")
+    public List<WebElement> priceOutboundDaysWithAvailability;
+
+
+
+
+
+
+
+
+
+
+
 
 }
