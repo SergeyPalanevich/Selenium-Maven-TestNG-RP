@@ -1,8 +1,11 @@
 import static helper.GetPriceFromRegex.getPrice;
 import static org.testng.Assert.assertEquals;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.internal.Locatable;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
@@ -19,15 +22,15 @@ public class Test2 {
     private MainPage mainPage;
     private BookFlightPage bookPage;
     private int priceOutboundAfterRegex;
-//  private int priceInboundAfterRegex;
+    private int priceInboundAfterRegex;
 
     @BeforeClass
     public void prepare() {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
-        driver.manage().timeouts().setScriptTimeout(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+        driver.manage().timeouts().setScriptTimeout(30, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }
 
@@ -85,7 +88,7 @@ public class Test2 {
             e.printStackTrace();
         } // need refactoring
 
-        if (bookPage.priceOutboundDaysWithAvailability.get(0).isDisplayed()) {
+        if (bookPage.priceOutboundDaysWithAvailability.get(0).isEnabled()) {
             bookPage.priceOutboundDaysWithAvailability.get(0).click(); //click on first price
         } else {
             bookPage.flightOutboundDaysWithAvailability.get(0).click(); // select first Out flight
@@ -95,21 +98,35 @@ public class Test2 {
         priceOutboundAfterRegex = getPrice(bookPage.priceOutboundDaysWithAvailability.get(0).getText());
     }
 
-//    @Test(priority = 6)
-//    public void selectInboundFlight() {
-//
-//        if (bookPage.priceInboundDaysWithAvailability.get(0).isDisplayed()) {
-//            bookPage.priceInboundDaysWithAvailability.get(0).click();
-//        } else {
-//            bookPage.flightInboundDaysWithAvailability.get(0).click();
-//            bookPage.priceInboundDaysWithAvailability.get(0).click();
-//        }
-//        priceInboundAfterRegex = getPrice(bookPage.priceInboundDaysWithAvailability.get(0).getText());
-//    }
+    @Test(priority = 6)
+    public void selectInboundFlight() {
+
+        if (bookPage.priceInboundDaysWithAvailability.get(0).isEnabled()) {
+            new Actions(driver).moveToElement(bookPage.inboundSection).perform();
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } // need refactoring
+            bookPage.priceInboundDaysWithAvailability.get(0).click(); //click on first price
+        } else {
+            new Actions(driver).moveToElement(bookPage.inboundSection).perform();
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } // need refactoring
+            new Actions(driver).moveToElement(bookPage.flightOutboundDaysWithAvailability.get(0)).perform();
+            bookPage.flightOutboundDaysWithAvailability.get(0).click(); // select first Out flight
+            new Actions(driver).moveToElement(bookPage.flightOutboundDaysWithAvailability.get(0)).perform();
+            bookPage.priceOutboundDaysWithAvailability.get(0).click(); //click on first price
+        }
+        priceInboundAfterRegex = getPrice(bookPage.priceInboundDaysWithAvailability.get(0).getText());
+    }
 
     @AfterClass
     public void cleanUp() {
-        driver.close();
+        //   driver.close();
         // move to BaseTest
     }
 }

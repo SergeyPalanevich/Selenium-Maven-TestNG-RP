@@ -29,4 +29,7 @@ public class BookFlightPage extends PageObject {
 
     @FindBy(xpath = "//section[@class=\"flight inbound\"]//button[@class=\"flight-result-button\"]")
     public List<WebElement> priceInboundDaysWithAvailability;
+
+    @FindBy(xpath = "//section[@class=\"flight inbound\"]//div[@class='tripadvisor-logo']")
+    public WebElement inboundSection;
 }
