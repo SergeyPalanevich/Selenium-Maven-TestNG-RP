@@ -1,11 +1,12 @@
 import static helper.GetPriceFromRegex.getPrice;
+import static helper.MySleep.mySleep;
+import static helper.TotalPrice.calcTotalPrice;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.internal.Locatable;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
@@ -13,6 +14,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.BookFlightPage;
 import pages.MainPage;
+import pages.ProductPage;
 
 import java.util.concurrent.TimeUnit;
 
@@ -21,8 +23,10 @@ public class Test2 {
     private WebDriver driver;
     private MainPage mainPage;
     private BookFlightPage bookPage;
-    private int priceOutboundAfterRegex;
-    private int priceInboundAfterRegex;
+    private ProductPage productPage;
+    int priceOutboundAfterRegex;
+    int priceInboundAfterRegex;
+    int totalPrice;
 
     @BeforeClass
     public void prepare() {
@@ -55,11 +59,7 @@ public class Test2 {
         String criteria = "Paris";
         mainPage.fieldTo.sendKeys(criteria);
         mainPage.firstValueFromListTo.click();
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }// need refactoring
+        mySleep(2000); // need refactoring
     }
 
     @Test(priority = 4)
@@ -82,11 +82,7 @@ public class Test2 {
 
     @Test(priority = 5)
     public void selectOutboundFligh() {
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } // need refactoring
+        mySleep(2000); // need refactoring
 
         if (bookPage.priceOutboundDaysWithAvailability.get(0).isEnabled()) {
             bookPage.priceOutboundDaysWithAvailability.get(0).click(); //click on first price
@@ -103,19 +99,11 @@ public class Test2 {
 
         if (bookPage.priceInboundDaysWithAvailability.get(0).isEnabled()) {
             new Actions(driver).moveToElement(bookPage.inboundSection).perform();
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } // need refactoring
+            mySleep(3000); // need refactoring
             bookPage.priceInboundDaysWithAvailability.get(0).click(); //click on first price
         } else {
             new Actions(driver).moveToElement(bookPage.inboundSection).perform();
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } // need refactoring
+            mySleep(3000); // need refactoring
             new Actions(driver).moveToElement(bookPage.flightOutboundDaysWithAvailability.get(0)).perform();
             bookPage.flightOutboundDaysWithAvailability.get(0).click(); // select first Out flight
             new Actions(driver).moveToElement(bookPage.flightOutboundDaysWithAvailability.get(0)).perform();
@@ -123,23 +111,27 @@ public class Test2 {
         }
         priceInboundAfterRegex = getPrice(bookPage.priceInboundDaysWithAvailability.get(0).getText());
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } // need refactoring
+        mySleep(3000); // need refactoring
         bookPage.nextButton.click();
     }
 
     @Test(priority = 7)
     public void selectPlusPackage() {
+        productPage = new ProductPage(driver);
+        productPage.product.click();
+        mySleep(3000); // need refactoring
+        totalPrice = getPrice(productPage.totalPrice.getText());
 
     }
 
+    @Test(priority = 8)
+    public void checkTotalAmount() {
+        assertEquals(calcTotalPrice(priceOutboundAfterRegex, priceInboundAfterRegex), totalPrice);
+    }
 
     @AfterClass
     public void cleanUp() {
-        //   driver.close();
+        driver.close();
         // move to BaseTest
     }
 }

@@ -8,6 +8,7 @@ public class GetPriceFromRegex {
 
         String testStr = str;
         String first = "";
+        float myFloat;
         int value;
 
         Pattern p1 = Pattern.compile("€.\\d*");
@@ -30,7 +31,9 @@ public class GetPriceFromRegex {
             price1 = s;
         }
 
-        value = Integer.valueOf(price1);
+        myFloat = Float.valueOf(price1);
+        value = (int) myFloat;
+        System.out.println(value);
         return value;
     }
 }
