@@ -1,91 +1,116 @@
-import static helper.MyWaits.waitSripts;
-import static helper.MyWaits.waitUntilToBePresence;
-import static helper.MyWaits.waitUntilToBeVisOf;
+import static helper.GetPriceFromRegex.getPrice;
 import static org.testng.Assert.assertEquals;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import pages.BookFlightPage;
 import pages.MainPage;
+
 import java.util.concurrent.TimeUnit;
 
 public class Test2 {
+
     private WebDriver driver;
     private MainPage mainPage;
-    private String priceOutbound;
+    private BookFlightPage bookPage;
+    private int priceOutboundAfterRegex;
+    private int priceInboundAfterRegex;
 
     @BeforeClass
     public void prepare() {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().setScriptTimeout(20, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
-
     @Test(priority = 1)
-    public void checkTitleOnMainPage(){
+    public void checkTitleOnMainPage() {
         String url = "https://www.transavia.com/en-EU/home/";
+        String title = "Where do you want to go?";
         driver.get(url);
         mainPage = new MainPage(driver);
-        assertEquals(mainPage.titleH1.getText(), "Where do you want to go?"); //check title
+        assertEquals(mainPage.titleH1.getText(), title);
     }
 
     @Test(priority = 2)
     public void fillFromField() {
         String criteria = "Madrid";
         mainPage.fieldFrom.sendKeys(criteria);
-        driver.findElement(By.xpath("//ol/li[1]")).click(); //select first element from drop-down
+        mainPage.firstValueFromListFrom.click();
     }
 
     @Test(priority = 3)
     public void fillToField() {
         String criteria = "Paris";
         mainPage.fieldTo.sendKeys(criteria);
-        waitUntilToBePresence(driver, "//ol/li/ol/li[1]");
-        driver.findElement(By.xpath("//ol/li/ol/li[1]")).click(); //select first element from drop-down
-        waitSripts(driver);
+        mainPage.firstValueFromListTo.click();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }// need refactoring
     }
 
     @Test(priority = 4)
-    public void setWhoWillBeTravelling() {
-        mainPage.fieldBookingPassengers.click();
-        waitSripts(driver);
-        waitUntilToBePresence(driver, "//*[@id='desktop']/section/div[2]/div[3]/div/div[2]/div[2]/div[1]/div[1]/div/div/div[2]/div/div/button[2]");
+    public void setWhoWillBeTravelling() throws InterruptedException {
+        String title = "Book a flight";
+        mainPage.fieldPassenger.click();
+        (new WebDriverWait(driver, 20))
+            .until(ExpectedConditions.visibilityOf(mainPage.buttonPlusAdults));
+        // move to Waits
         mainPage.buttonPlusAdults.click();
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        waitUntilToBePresence(driver, "//*[@id='desktop']/section/div[2]/div[3]/div/div[2]/div[2]/div[1]/div[2]/div/div/div[2]/div/div/button[2]");
+        (new WebDriverWait(driver, 20))
+            .until(ExpectedConditions.visibilityOf(mainPage.buttonPlusChildren));
+        // move to Waits
         mainPage.buttonPlusChildren.click();
-        waitSripts(driver);
-        waitUntilToBePresence(driver, "//button[@class='button button-secondary close']");
         mainPage.buttonSavePassengers.click();
-        waitSripts(driver);
-        waitUntilToBePresence(driver, "//*[@id='desktop']/section/div[3]/div/button");
         mainPage.searchButton.click();
-        waitSripts(driver);
-        assertEquals(driver.findElement(By.xpath("//h1")).getText(), "Book a flight");
+        bookPage = new BookFlightPage(driver);
+        assertEquals(bookPage.titleH1.getText(), title);
     }
 
     @Test(priority = 5)
     public void selectOutboundFligh() {
-        mainPage.flightOutboundDaysWithAvailability.get(0).click(); //click on first available flight
-        waitSripts(driver);
-        priceOutbound = mainPage.priceOutboundDaysWithAvailability.get(0).getText();
-        mainPage.priceOutboundDaysWithAvailability.get(0).click(); //click on first price
-        System.out.println(priceOutbound);
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } // need refactoring
+
+        if (bookPage.priceOutboundDaysWithAvailability.get(0).isDisplayed()) {
+            bookPage.priceOutboundDaysWithAvailability.get(0).click(); //click on first price
+        } else {
+            bookPage.flightOutboundDaysWithAvailability.get(0).click(); // select first Out flight
+            bookPage.priceOutboundDaysWithAvailability.get(0).click(); //click on first price
+        }
+
+        priceOutboundAfterRegex = getPrice(bookPage.priceOutboundDaysWithAvailability.get(0).getText());
     }
+
+//    @Test(priority = 6)
+//    public void selectInboundFlight() {
+//
+//        if (bookPage.priceInboundDaysWithAvailability.get(0).isDisplayed()) {
+//            bookPage.priceInboundDaysWithAvailability.get(0).click();
+//        } else {
+//            bookPage.flightInboundDaysWithAvailability.get(0).click();
+//            bookPage.priceInboundDaysWithAvailability.get(0).click();
+//        }
+//        priceInboundAfterRegex = getPrice(bookPage.priceInboundDaysWithAvailability.get(0).getText());
+//    }
 
     @AfterClass
     public void cleanUp() {
         driver.close();
+        // move to BaseTest
     }
 }
 

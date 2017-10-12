@@ -7,7 +7,9 @@ import org.joda.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class MyDateFormat {
-    public static String currentDatePlusDays (int coutnOfDays) {
+
+    public static String currentDatePlusDays(int coutnOfDays) {
+
         DateTime dateTime = new DateTime(new Date());
         dateTime = dateTime.plusDays(coutnOfDays);
         DateTimeFormatter fmt = DateTimeFormat.forPattern("dd-MMM-yyyy");
