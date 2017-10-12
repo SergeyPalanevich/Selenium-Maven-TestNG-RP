@@ -19,7 +19,7 @@ public class Test2 {
     private MainPage mainPage;
     private BookFlightPage bookPage;
     private int priceOutboundAfterRegex;
-    private int priceInboundAfterRegex;
+//  private int priceInboundAfterRegex;
 
     @BeforeClass
     public void prepare() {
