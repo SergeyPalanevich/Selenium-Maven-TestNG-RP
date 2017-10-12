@@ -122,7 +122,20 @@ public class Test2 {
             bookPage.priceOutboundDaysWithAvailability.get(0).click(); //click on first price
         }
         priceInboundAfterRegex = getPrice(bookPage.priceInboundDaysWithAvailability.get(0).getText());
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } // need refactoring
+        bookPage.nextButton.click();
     }
+
+    @Test(priority = 7)
+    public void selectPlusPackage() {
+
+    }
+
 
     @AfterClass
     public void cleanUp() {
