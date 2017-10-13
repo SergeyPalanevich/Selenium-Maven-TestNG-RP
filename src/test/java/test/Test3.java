@@ -40,6 +40,9 @@ public class Test3 {
         String lastname = "kukharau";
         String flightDate = "9 June 2016";
         String arrivalTime = "2016-06-09 23:35";
+        String depatureAirport = "Pisa";
+        String arrivalAirport = "Amsterdam (Schiphol)";
+
 
         driver.get(url);
         mySleep(5000); /* //div[@class='cookie-consent'] - Reloads the page */
@@ -48,6 +51,8 @@ public class Test3 {
         loginPage.setCredentials(flightNumber, lastname, flightDate);
         BookingPage booking = loginPage.viewBooking();
         assertEquals(booking.getTimeArrival(), arrivalTime);
-    }
+        assertEquals(booking.getDepatureAirport(), depatureAirport);
+        assertEquals(booking.getArrivalAirport(), arrivalAirport);
 
+    }
 }
