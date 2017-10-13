@@ -2,8 +2,6 @@ import static helper.GetPriceFromRegex.getPrice;
 import static helper.MySleep.mySleep;
 import static helper.TotalPrice.calcTotalPrice;
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
