@@ -104,9 +104,7 @@ public class Test2 {
         } else {
             new Actions(driver).moveToElement(bookPage.inboundSection).perform();
             mySleep(3000); // need refactoring
-            new Actions(driver).moveToElement(bookPage.flightOutboundDaysWithAvailability.get(0)).perform();
             bookPage.flightOutboundDaysWithAvailability.get(0).click(); // select first Out flight
-            new Actions(driver).moveToElement(bookPage.flightOutboundDaysWithAvailability.get(0)).perform();
             bookPage.priceOutboundDaysWithAvailability.get(0).click(); //click on first price
         }
         priceInboundAfterRegex = getPrice(bookPage.priceInboundDaysWithAvailability.get(0).getText());
