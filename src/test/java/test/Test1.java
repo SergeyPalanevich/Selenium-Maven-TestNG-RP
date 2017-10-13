@@ -1,3 +1,5 @@
+package test;
+
 import static helper.MyDateFormat.currentDatePlusDays;
 import static org.testng.Assert.assertEquals;
 

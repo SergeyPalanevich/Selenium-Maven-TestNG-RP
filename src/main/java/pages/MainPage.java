@@ -1,8 +1,12 @@
 package pages;
 
+import static helper.MySleep.mySleep;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+
 
 public class MainPage extends PageObject {
 
@@ -72,4 +76,18 @@ public class MainPage extends PageObject {
 
     @FindBy(xpath = "//div[@class='c-passengers-form-component']")
     public WebElement fieldPassenger;
+
+    @FindBy(xpath = "//a[@href='/en-EU/my-transavia/booking/booking-overview/']")
+    public WebElement manageYourBookinglink;
+
+    @FindBy(xpath = "//*[@id='horizontal-sub-navigation-manageyourbooking']/div/div[2]/div/div[1]/div/ul/li[2]/a/div/span[2]")
+    public WebElement viewYourBookinglink;
+
+    public LoginPage goToLoginPage() {
+        new Actions(driver).moveToElement(manageYourBookinglink).perform();
+        manageYourBookinglink.click();
+        new Actions(driver).moveToElement(viewYourBookinglink).perform();
+        viewYourBookinglink.click();
+        return new LoginPage(driver);
+    }
 }

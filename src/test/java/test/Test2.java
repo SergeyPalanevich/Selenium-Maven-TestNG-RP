@@ -1,3 +1,5 @@
+package test;
+
 import static helper.GetPriceFromRegex.getPrice;
 import static helper.MySleep.mySleep;
 import static helper.TotalPrice.calcTotalPrice;
@@ -116,7 +118,7 @@ public class Test2 {
         productPage = new ProductPage(driver);
         productPage.product.click();
         mySleep(3000); // need refactoring
-        totalPrice = getPrice(productPage.totalPrice.getText());
+        totalPrice = getPrice(productPage.totalPrice.getText()); // new page
 
     }
 
@@ -131,4 +133,3 @@ public class Test2 {
         // move to BaseTest
     }
 }
-
