@@ -1,8 +1,10 @@
 package pages;
 
+import static helper.Move.moveToMyElement;
+import static helper.Waits.elementIsClickable;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 
@@ -17,12 +19,6 @@ public class MainPage extends PageObject {
 
     @FindBy(xpath = "//ol[@class='results']")
     public WebElement result;
-
-    @FindBy(xpath = "//ol/li[1]")
-    public WebElement firstValueOFListFrom;
-
-    @FindBy(xpath = "//ol/li/ol/li[1]")
-    public WebElement firstValueOFListTo;
 
     @FindBy(id = "ui-datepicker-div")
     public WebElement datepicker;
@@ -82,10 +78,30 @@ public class MainPage extends PageObject {
     public WebElement viewYourBookinglink;
 
     public LoginPage goToLoginPage() {
-        new Actions(driver).moveToElement(manageYourBookinglink).perform();
+        moveToMyElement(driver, manageYourBookinglink);
         manageYourBookinglink.click();
-        new Actions(driver).moveToElement(viewYourBookinglink).perform();
+        moveToMyElement(driver, viewYourBookinglink);
         viewYourBookinglink.click();
         return new LoginPage(driver);
+    }
+
+    public void fillFromField(String from) {
+        elementIsClickable(driver, fieldFrom, 20);
+        fieldFrom.sendKeys(from);
+        elementIsClickable(driver, firstValueFromListFrom, 20);
+        firstValueFromListFrom.click();
+    }
+
+    public void fillToField(String to) {
+        elementIsClickable(driver, fieldTo, 20);
+        fieldTo.sendKeys(to);
+        elementIsClickable(driver, firstValueFromListTo, 20);
+        firstValueFromListTo.click();
+    }
+
+    public WebDriver runSearch() {
+        elementIsClickable(driver, searchButton, 20);
+        searchButton.click();
+        return driver;
     }
 }

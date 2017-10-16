@@ -41,7 +41,7 @@ public class Test1 {
         String criteria = "Palma de Mallorca, Spain";
         mainPage.fieldFrom.sendKeys(criteria);
         assertEquals(mainPage.result.isDisplayed(), true);
-        mainPage.firstValueOFListFrom.click();
+        mainPage.firstValueFromListFrom.click();
         assertEquals(
             driver.findElement(By.xpath("//div[@class='container']/span[text() = '" + criteria + "']")).isEnabled(),
             true);
@@ -52,7 +52,7 @@ public class Test1 {
         String criteria = "Munich, Germany";
         mainPage.fieldTo.sendKeys(criteria);
         assertEquals(mainPage.result.isDisplayed(), true);
-        mainPage.firstValueOFListTo.click();
+        mainPage.firstValueFromListTo.click();
         assertEquals(
             driver.findElement(By.xpath("//div[@class='container']/span[text() = '" + criteria + "']")).isEnabled(),
             true);

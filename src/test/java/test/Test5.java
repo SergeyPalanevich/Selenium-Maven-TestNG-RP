@@ -1,7 +1,5 @@
 package test;
 
-import static helper.GetPriceFromRegex.getPrice;
-import static helper.MySleep.mySleep;
 import static org.testng.Assert.assertEquals;
 
 import org.openqa.selenium.WebDriver;
@@ -9,14 +7,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pages.BookingPage;
-import pages.DetailsPage;
-import pages.LoginPage;
+import pages.ErrorPage;
 import pages.MainPage;
 
 import java.util.concurrent.TimeUnit;
 
-public class Test4 {
+public class Test5 {
 
     private WebDriver driver;
 
@@ -36,24 +32,19 @@ public class Test4 {
     }
 
     @Test
-    public void comparePriceQquality() {
+    public void checkErrorMessage() {
         String url = "https://www.transavia.com/en-EU/home/";
-        String flightNumber = "MF8C9R";
-        String lastname = "kukharau";
-        String flightDate = "9 June 2016";
-        String h1 = "Booking details";
+        String from = "Dubai";
+        String to = "Agadir, Morocco";
+        String error = "Unfortunately we do not fly from Dubai, United Arab Emirates to Agadir, Morocco."
+                       + " However, we do fly from Dubai, United Arab Emirates to other destinations. Please change your destination and try again.";
 
         driver.get(url);
-        mySleep(5000); /* //div[@class='cookie-consent'] - Reloads the page */
         MainPage main = new MainPage(driver);
-        LoginPage loginPage = main.goToLoginPage();
-        loginPage.setCredentials(flightNumber, lastname, flightDate);
-        BookingPage booking = loginPage.viewBooking();
-        DetailsPage details = booking.goToBookingDetails();
-        assertEquals(details.h1.getText(), h1);
-        int totalSum = getPrice(details.getTotalSum());
-        int paymentAmount = getPrice(details.getPaymentAmount());
-        assertEquals(totalSum, paymentAmount);
+        main.fillFromField(from);
+        main.fillToField(to);
+        ErrorPage errorPage = new ErrorPage(main.runSearch());
+        assertEquals(errorPage.getError(), error);
     }
 
 }
