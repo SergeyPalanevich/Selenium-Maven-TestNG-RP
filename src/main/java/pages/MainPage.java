@@ -78,9 +78,14 @@ public class MainPage extends PageObject {
     public WebElement viewYourBookinglink;
 
     public LoginPage goToLoginPage() {
-        moveToMyElement(driver, manageYourBookinglink);
+
+       // moveToMyElement(driver, manageYourBookinglink);
+        elementIsClickable(driver, manageYourBookinglink, 20);
         manageYourBookinglink.click();
-        moveToMyElement(driver, viewYourBookinglink);
+
+
+       // moveToMyElement(driver, viewYourBookinglink);
+        elementIsClickable(driver, viewYourBookinglink, 20);
         viewYourBookinglink.click();
         return new LoginPage(driver);
     }

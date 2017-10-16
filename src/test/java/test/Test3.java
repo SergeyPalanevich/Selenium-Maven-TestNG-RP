@@ -44,7 +44,7 @@ public class Test3 {
         String arrivalAirport = "Amsterdam (Schiphol)";
 
         driver.get(url);
-        mySleep(5000); /* //div[@class='cookie-consent'] - Reloads the page */
+        mySleep(2000); /* //div[@class='cookie-consent'] - Reloads the page */
         MainPage main = new MainPage(driver);
         LoginPage loginPage = main.goToLoginPage();
         loginPage.setCredentials(flightNumber, lastname, flightDate);
