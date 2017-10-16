@@ -1,7 +1,7 @@
 package pages;
 
 import static helper.Helpers.getPriceFromString;
-import static helper.Helpers.waitDocumentIsReady;
+import static helper.Waiters.waitDocumentIsReady;
 import static helper.Waiters.waitElementToBeClickable;
 
 import org.openqa.selenium.WebDriver;

@@ -1,7 +1,7 @@
 package test;
 
-import static helper.Helpers.doSleep;
 import static helper.Helpers.getPriceFromString;
+import static helper.Waiters.doSleep;
 import static org.testng.Assert.assertEquals;
 
 import org.testng.annotations.Test;
@@ -10,7 +10,7 @@ import pages.DetailsPage;
 import pages.LoginPage;
 import pages.MainPage;
 
-public class TestCase4 extends BaseTest{
+public class TestCase4 extends BaseTest {
 
     @Test
     public void comparePriceQquality() {

@@ -1,8 +1,8 @@
 package test;
 
 import static helper.Helpers.calcTotalPrice;
-import static helper.Helpers.doSleep;
 import static helper.Helpers.getPriceFromString;
+import static helper.Waiters.doSleep;
 import static org.testng.Assert.assertEquals;
 
 import org.openqa.selenium.interactions.Actions;

@@ -1,6 +1,6 @@
 package test;
 
-import static helper.Helpers.doSleep;
+import static helper.Waiters.doSleep;
 import static org.testng.Assert.assertEquals;
 
 import org.testng.annotations.Test;
@@ -8,7 +8,7 @@ import pages.BookingPage;
 import pages.LoginPage;
 import pages.MainPage;
 
-public class TestCase3 extends BaseTest{
+public class TestCase3 extends BaseTest {
 
     @Test
     public void LoginToAccAndCheckTimeArrive() {

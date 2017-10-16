@@ -3,7 +3,6 @@ package helper;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -25,32 +24,6 @@ public class Helpers {
         String strDate = dateTime.toString(fmt);
         strDate = strDate.replace('-', ' ');
         return strDate;
-    }
-
-    public static void doSleep(int sec) {
-        try {
-            Thread.sleep(sec);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void waitDocumentIsReady(WebDriver driver) {
-
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-
-        //You can replace your value with 25 If you wants to Increase or decrease wait time.
-        for (int i = 0; i < 25; i++) {
-            if (js.executeScript("return document.readyState").toString().equals("complete") && js
-                .executeScript("return jQuery.active").toString().equals("0")) {
-                break;
-            } else {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                }
-            }
-        }
     }
 
     public static int getPriceFromString(String str) {

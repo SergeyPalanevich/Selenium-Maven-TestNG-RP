@@ -1,13 +1,13 @@
 package test;
 
-import static helper.Helpers.doSleep;
+import static helper.Waiters.doSleep;
 import static org.testng.Assert.assertEquals;
 
 import org.testng.annotations.Test;
 import pages.ErrorPage;
 import pages.MainPage;
 
-public class TestCase8 extends BaseTest{
+public class TestCase8 extends BaseTest {
 
     @Test
     public void checkErrorMessage() {
