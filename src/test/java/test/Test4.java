@@ -1,7 +1,8 @@
 package test;
 
+import static helper.GetPriceFromRegex.getPrice;
 import static helper.MySleep.mySleep;
-import static org.testng.Assert.assertEquals;
+import static org.testng.AssertJUnit.assertEquals;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -9,12 +10,13 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.BookingPage;
+import pages.DetailsPage;
 import pages.LoginPage;
 import pages.MainPage;
 
 import java.util.concurrent.TimeUnit;
 
-public class Test3 {
+public class Test4 {
 
     private WebDriver driver;
 
@@ -34,14 +36,12 @@ public class Test3 {
     }
 
     @Test
-    public void LoginToAccAndCheckTimeArrive() {
+    public void comparePriceQquality() {
         String url = "https://www.transavia.com/en-EU/home/";
         String flightNumber = "MF8C9R";
         String lastname = "kukharau";
         String flightDate = "9 June 2016";
-        String arrivalTime = "2016-06-09 23:35";
-        String depatureAirport = "Pisa";
-        String arrivalAirport = "Amsterdam (Schiphol)";
+        String h1 = "Booking details";
 
         driver.get(url);
         mySleep(5000); /* //div[@class='cookie-consent'] - Reloads the page */
@@ -49,8 +49,11 @@ public class Test3 {
         LoginPage loginPage = main.goToLoginPage();
         loginPage.setCredentials(flightNumber, lastname, flightDate);
         BookingPage booking = loginPage.viewBooking();
-        assertEquals(booking.getTimeArrival(), arrivalTime);
-        assertEquals(booking.getDepatureAirport(), depatureAirport);
-        assertEquals(booking.getArrivalAirport(), arrivalAirport);
+        DetailsPage details = booking.goToBookingDetails();
+        assertEquals(details.h1.getText(), h1);
+        int totalSum = getPrice(details.getTotalSum());
+        int paymentAmount = getPrice(details.getPaymentAmount());
+        assertEquals(totalSum, paymentAmount);
     }
+
 }

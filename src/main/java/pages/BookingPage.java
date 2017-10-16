@@ -1,5 +1,6 @@
 package pages;
 
+import static helper.Waits.elementIsClickable;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,6 +20,8 @@ public class BookingPage extends PageObject {
     @FindBy(xpath = "(//span[@class='nowrap'])[2]")
     public WebElement arrivalAirport;
 
+    @FindBy(xpath = "//a[@href=\"/en-EU/my-transavia/booking/booking-details/\"]")
+    public WebElement detailsLink;
 
     public String getTimeArrival() {
         return arrival.getAttribute("datetime");
@@ -30,5 +33,11 @@ public class BookingPage extends PageObject {
 
     public String getArrivalAirport() {
         return arrivalAirport.getText();
+    }
+
+    public DetailsPage goToBookingDetails() {
+        elementIsClickable(driver, detailsLink, 20);
+        detailsLink.click();
+        return new DetailsPage(driver);
     }
 }
