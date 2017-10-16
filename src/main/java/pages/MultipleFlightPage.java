@@ -1,6 +1,5 @@
 package pages;
 
-import static helper.Helpers.doSleep;
 import static helper.Helpers.getPriceFromString;
 import static helper.Helpers.waitDocumentIsReady;
 import static helper.Waiters.waitElementToBeClickable;
@@ -17,7 +16,6 @@ public class MultipleFlightPage extends PageObject {
     public MultipleFlightPage(WebDriver driver) {
         super(driver);
     }
-
 
     @FindBy(xpath = "//section[@class=\"flight outbound\"]//div[@class='day day-with-availability']")
     public List<WebElement> flightOutboundDaysWithAvailability;
@@ -40,11 +38,10 @@ public class MultipleFlightPage extends PageObject {
             priceOutboundDaysWithAvailability.get(0).click(); //click on first price
         } else {
             flightOutboundDaysWithAvailability.get(0).click(); // select first Out flight
-            waitElementToBeClickable(driver,  priceOutboundDaysWithAvailability.get(0), 20);
+            waitElementToBeClickable(driver, priceOutboundDaysWithAvailability.get(0), 20);
             priceOutboundDaysWithAvailability.get(0).click(); //click on first price
         }
     }
-
 
     public void selectInboundFlight() {
         if (priceInboundDaysWithAvailability.get(0).isEnabled()) {

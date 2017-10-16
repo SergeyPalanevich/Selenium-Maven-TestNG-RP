@@ -15,9 +15,6 @@ public class BookFlightPage extends PageObject {
     @FindBy(xpath = "//h1")
     public WebElement titleH1;
 
-    @FindBy(xpath = "//section[@class=\"flight outbound\"]//span[@class=\"message\" and text()='No flights available']")
-    public WebElement messageNoFlightsAvailable;
-
     @FindBy(xpath = "//section[@class=\"flight outbound\"]//div[@class='day day-with-availability']")
     public List<WebElement> flightOutboundDaysWithAvailability;
 

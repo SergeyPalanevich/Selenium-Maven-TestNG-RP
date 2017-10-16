@@ -1,13 +1,12 @@
 package pages;
 
-import static helper.Helpers.doSleep;
 import static helper.Waiters.waitElementToBeClickable;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class MultipleFormPage extends PageObject{
+public class MultipleFormPage extends PageObject {
 
     protected MultipleFormPage(WebDriver driver) {
         super(driver);
@@ -18,34 +17,36 @@ public class MultipleFormPage extends PageObject{
 
     @FindBy(id = "openJawRouteSelection_DepartureStationOutbound-input")
     public WebElement fieldFromOutboundFlight;
+
     @FindBy(xpath = "//ol/li[1]")
     public WebElement firstValueFromOutboundFlight;
+
     @FindBy(id = "openJawRouteSelection_ArrivalStationOutbound-input")
     public WebElement fieldToOutboundFlight;
+
     @FindBy(xpath = "//ol/li/ol/li[1]")
     public WebElement firstValueToOutboundFlight;
+
     @FindBy(id = "dateSelection_OutboundDate-datepicker")
     public WebElement fieldDateOutboundFlight;
 
     @FindBy(id = "openJawRouteSelection_DepartureStationInbound-input")
     public WebElement fieldFromInboundFlight;
+
     @FindBy(xpath = "//ol/li[1]")
     public WebElement firstValueFromInboundFlight;
+
     @FindBy(id = "openJawRouteSelection_ArrivalStationInbound-input")
     public WebElement fieldToInboundFlight;
+
     @FindBy(xpath = "//ol/li/ol/li[1]")
     public WebElement firstValueToInboundFlight;
+
     @FindBy(id = "dateSelection_InboundDate-datepicker")
     public WebElement fieldDateInboundFlight;
 
-//    @FindBy(xpath = "//div[@class='panel_section panel_section--button-search']//button[@class='button button-primary' and @type='submit']")
-//    public WebElement buttonSearch;
-        @FindBy(xpath = "//*[@id=\"flights\"]/div/section/div[3]/div/button[2]")
-        public WebElement buttonSearch;
-
-
-
-
+    @FindBy(xpath = "//*[@id=\"flights\"]/div/section/div[3]/div/button[2]")
+    public WebElement buttonSearch;
 
     public void setOutboundFlight(String fromOutboundFlight, String toOutboundFlight, String dateOutboundFlight) {
         waitElementToBeClickable(driver, fieldFromOutboundFlight, 20);
@@ -73,5 +74,4 @@ public class MultipleFormPage extends PageObject{
         buttonSearch.click();
         return driver;
     }
-
 }

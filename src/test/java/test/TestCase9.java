@@ -34,5 +34,4 @@ public class TestCase9 extends BaseTest{
         int amount = multipleFlight.getTotalAmount();
         assertTrue(amount != 0);
     }
-
 }

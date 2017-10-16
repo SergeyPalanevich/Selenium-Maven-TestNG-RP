@@ -1,7 +1,6 @@
 package test;
 
 import static helper.Helpers.doSleep;
-import static helper.Waiters.ignoreCookieDiv;
 import static org.testng.Assert.assertEquals;
 
 import org.testng.annotations.Test;
