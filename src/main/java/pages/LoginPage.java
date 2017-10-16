@@ -1,7 +1,7 @@
 package pages;
 
-import static helper.ReadyState.checkPageIsReady;
-import static helper.Waits.elementIsClickable;
+import static helper.Helpers.waitDocumentIsReady;
+import static helper.Waiters.waitElementToBeClickable;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -24,15 +24,15 @@ public class LoginPage extends PageObject {
     public WebElement flightDateField;
 
     public void setCredentials(String flightNumber, String lastName, String flightDate) {
-        checkPageIsReady(driver);
-        elementIsClickable(driver, flightNumberField, 20);
+        waitDocumentIsReady(driver);
+        waitElementToBeClickable(driver, flightNumberField, 20);
         flightNumberField.sendKeys(flightNumber);
         lastNameField.sendKeys(lastName);
         flightDateField.sendKeys(flightDate);
     }
 
     public BookingPage viewBooking() {
-        checkPageIsReady(driver);
+        waitDocumentIsReady(driver);
         flightDateField.sendKeys(Keys.ENTER);
         return new BookingPage(driver);
     }

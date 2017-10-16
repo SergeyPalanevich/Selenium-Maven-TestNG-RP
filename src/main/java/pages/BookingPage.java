@@ -1,6 +1,6 @@
 package pages;
 
-import static helper.Waits.elementIsClickable;
+import static helper.Waiters.waitElementToBeClickable;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -36,7 +36,7 @@ public class BookingPage extends PageObject {
     }
 
     public DetailsPage goToBookingDetails() {
-        elementIsClickable(driver, detailsLink, 20);
+        waitElementToBeClickable(driver, detailsLink, 20);
         detailsLink.click();
         return new DetailsPage(driver);
     }

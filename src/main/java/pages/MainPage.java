@@ -1,7 +1,6 @@
 package pages;
 
-import static helper.Move.moveToMyElement;
-import static helper.Waits.elementIsClickable;
+import static helper.Waiters.waitElementToBeClickable;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -77,36 +76,41 @@ public class MainPage extends PageObject {
     @FindBy(xpath = "//*[@id='horizontal-sub-navigation-manageyourbooking']/div/div[2]/div/div[1]/div/ul/li[2]/a/div/span[2]")
     public WebElement viewYourBookinglink;
 
+
+    @FindBy(xpath = "//a[@href='/en-EU/book-a-flight/flights/Deeplink/?m=combi&s=false&v=false']")
+    public WebElement linkAddMultipleDestinations;
+
     public LoginPage goToLoginPage() {
-
-       // moveToMyElement(driver, manageYourBookinglink);
-        elementIsClickable(driver, manageYourBookinglink, 20);
+        waitElementToBeClickable(driver, manageYourBookinglink, 20);
         manageYourBookinglink.click();
-
-
-       // moveToMyElement(driver, viewYourBookinglink);
-        elementIsClickable(driver, viewYourBookinglink, 20);
+        waitElementToBeClickable(driver, viewYourBookinglink, 20);
         viewYourBookinglink.click();
         return new LoginPage(driver);
     }
 
     public void fillFromField(String from) {
-        elementIsClickable(driver, fieldFrom, 20);
+        waitElementToBeClickable(driver, fieldFrom, 20);
         fieldFrom.sendKeys(from);
-        elementIsClickable(driver, firstValueFromListFrom, 20);
+        waitElementToBeClickable(driver, firstValueFromListFrom, 20);
         firstValueFromListFrom.click();
     }
 
     public void fillToField(String to) {
-        elementIsClickable(driver, fieldTo, 20);
+        waitElementToBeClickable(driver, fieldTo, 20);
         fieldTo.sendKeys(to);
-        elementIsClickable(driver, firstValueFromListTo, 20);
+        waitElementToBeClickable(driver, firstValueFromListTo, 20);
         firstValueFromListTo.click();
     }
 
     public WebDriver runSearch() {
-        elementIsClickable(driver, searchButton, 20);
+        waitElementToBeClickable(driver, searchButton, 20);
         searchButton.click();
         return driver;
+    }
+
+    public MultipleFormPage addMultipleDestinations() {
+        waitElementToBeClickable(driver, linkAddMultipleDestinations, 20);
+        linkAddMultipleDestinations.click();
+        return new MultipleFormPage(driver);
     }
 }

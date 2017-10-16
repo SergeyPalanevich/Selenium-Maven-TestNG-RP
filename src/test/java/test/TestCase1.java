@@ -1,32 +1,16 @@
 package test;
 
-import static helper.MyDateFormat.currentDatePlusDays;
+import static helper.Helpers.getCurrentDayPlusSomeDaysWithDateTimeFormat;
 import static org.testng.Assert.assertEquals;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.MainPage;
 
-import java.util.concurrent.TimeUnit;
+public class TestCase1 extends BaseTest{
 
-public class Test1 {
-
-    private WebDriver driver;
     private MainPage mainPage;
 
-    @BeforeClass
-    public void prepare() {
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
-        driver.manage().timeouts().setScriptTimeout(20, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
-    }
 
     @Test(priority = 1)
     public void checkTitleOnMainPage() {
@@ -63,7 +47,7 @@ public class Test1 {
         mainPage.datepickerDepart.click();
         assertEquals(mainPage.datepicker.isEnabled(), true);
         mainPage.fieldOtboundDate.clear();
-        mainPage.fieldOtboundDate.sendKeys(currentDatePlusDays(2));
+        mainPage.fieldOtboundDate.sendKeys(getCurrentDayPlusSomeDaysWithDateTimeFormat(2));
     }
 
     @Test(priority = 5)
@@ -90,8 +74,4 @@ public class Test1 {
         assertEquals(mainPage.priceClass.isEnabled(), true);
     }
 
-    @AfterClass
-    public void cleanUp() {
-        driver.close();
-    }
 }
