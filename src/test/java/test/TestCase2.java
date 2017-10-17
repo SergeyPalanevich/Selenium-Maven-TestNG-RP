@@ -15,7 +15,6 @@ import pages.ProductPage;
 
 public class TestCase2 extends BaseTest{
 
-
     private MainPage mainPage;
     private BookFlightPage bookPage;
     private ProductPage productPage;
@@ -70,7 +69,7 @@ public class TestCase2 extends BaseTest{
     public void selectOutboundFligh() {
         doSleep(2000); // need refactoring
 
-        if (bookPage.priceOutboundDaysWithAvailability.get(0).isEnabled()) {
+        if (bookPage.priceOutboundDaysWithAvailability.size() > 0) {
             bookPage.priceOutboundDaysWithAvailability.get(0).click(); //click on first price
         } else {
             bookPage.flightOutboundDaysWithAvailability.get(0).click(); // select first Out flight
@@ -83,15 +82,15 @@ public class TestCase2 extends BaseTest{
     @Test(priority = 6)
     public void selectInboundFlight() {
 
-        if (bookPage.priceInboundDaysWithAvailability.get(0).isEnabled()) {
+        if (bookPage.priceInboundDaysWithAvailability.size() > 0) {
             new Actions(driver).moveToElement(bookPage.inboundSection).perform();
             doSleep(3000); // need refactoring
             bookPage.priceInboundDaysWithAvailability.get(0).click(); //click on first price
         } else {
             new Actions(driver).moveToElement(bookPage.inboundSection).perform();
             doSleep(3000); // need refactoring
-            bookPage.flightOutboundDaysWithAvailability.get(0).click(); // select first Out flight
-            bookPage.priceOutboundDaysWithAvailability.get(0).click(); //click on first price
+            bookPage.flightInboundDaysWithAvailability.get(0).click(); // select first Out flight
+            bookPage.priceInboundDaysWithAvailability.get(0).click(); //click on first price
         }
         priceInboundAfterRegex = getPriceFromString(bookPage.priceInboundDaysWithAvailability.get(0).getText());
 

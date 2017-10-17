@@ -17,9 +17,9 @@ public class Helpers {
         new Actions(driver).moveToElement(element).perform();
     }
 
-    public static String getCurrentDayPlusSomeDaysWithDateTimeFormat(int coutnOfDays) {
+    public static String getCurrentDayPlusSomeDaysWithDateTimeFormat(int countOfDays) {
         DateTime dateTime = new DateTime(new Date());
-        dateTime = dateTime.plusDays(coutnOfDays);
+        dateTime = dateTime.plusDays(countOfDays);
         DateTimeFormatter fmt = DateTimeFormat.forPattern("dd-MMM-yyyy");
         String strDate = dateTime.toString(fmt);
         strDate = strDate.replace('-', ' ');

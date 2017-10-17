@@ -17,13 +17,16 @@ public class MultipleFlightPage extends PageObject {
         super(driver);
     }
 
-    @FindBy(xpath = "//section[@class=\"flight outbound\"]//div[@class='day day-with-availability']")
+    @FindBy(xpath = "//section[@class='flight outbound']//div[@class='day day-with-availability']")
     public List<WebElement> flightOutboundDaysWithAvailability;
 
-    @FindBy(xpath = "//section[@class=\"flight outbound\"]//button[@class=\"flight-result-button\"]")
+    @FindBy(xpath = "//section[@class='flight inbound']//div[@class='day day-with-availability']")
+    public List<WebElement> flightInboundDaysWithAvailability;
+
+    @FindBy(xpath = "//section[@class='flight outbound']//button[@class='flight-result-button']")
     public List<WebElement> priceOutboundDaysWithAvailability;
 
-    @FindBy(xpath = "//section[@class=\"flight inbound\"]//button[@class=\"flight-result-button\"]")
+    @FindBy(xpath = "//section[@class='flight inbound']//button[@class='flight-result-button']")
     public List<WebElement> priceInboundDaysWithAvailability;
 
     @FindBy(xpath = "//div[@class='HV-gs-type-c--bp0']")
@@ -33,26 +36,28 @@ public class MultipleFlightPage extends PageObject {
     public WebElement totalPrice;
 
     public void selectOutboundFligh() {
-        waitElementToBeClickable(driver, flightOutboundDaysWithAvailability.get(0), 20);
-        if (priceOutboundDaysWithAvailability.get(0).isEnabled()) {
+        if (priceOutboundDaysWithAvailability.size() > 0) {
+            waitElementToBeClickable(driver, priceOutboundDaysWithAvailability.get(0), 10);
             priceOutboundDaysWithAvailability.get(0).click(); //click on first price
         } else {
             flightOutboundDaysWithAvailability.get(0).click(); // select first Out flight
-            waitElementToBeClickable(driver, priceOutboundDaysWithAvailability.get(0), 20);
+            waitDocumentIsReady(driver);
+            waitElementToBeClickable(driver, priceOutboundDaysWithAvailability.get(0), 10);
             priceOutboundDaysWithAvailability.get(0).click(); //click on first price
         }
     }
 
     public void selectInboundFlight() {
-        if (priceInboundDaysWithAvailability.get(0).isEnabled()) {
+        if (priceInboundDaysWithAvailability.size() > 0) {
             new Actions(driver).moveToElement(inboundSection).perform();
-            waitElementToBeClickable(driver, priceInboundDaysWithAvailability.get(0), 20);
+            waitElementToBeClickable(driver, priceInboundDaysWithAvailability.get(0), 10);
             priceInboundDaysWithAvailability.get(0).click(); //click on first price
         } else {
             new Actions(driver).moveToElement(inboundSection).perform();
-            flightOutboundDaysWithAvailability.get(0).click(); // select first Out flight
-            waitElementToBeClickable(driver, priceOutboundDaysWithAvailability.get(0), 20);
-            priceOutboundDaysWithAvailability.get(0).click(); //click on first price
+            flightInboundDaysWithAvailability.get(0).click(); // select first Out flight
+            waitDocumentIsReady(driver);
+            waitElementToBeClickable(driver, priceInboundDaysWithAvailability.get(0), 10);
+            priceInboundDaysWithAvailability.get(0).click(); //click on first price
         }
     }
 

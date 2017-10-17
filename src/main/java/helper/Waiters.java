@@ -8,7 +8,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Waiters {
-    public static void waitElementToBeClickable(WebDriver driver, WebElement element, int time){
+
+    public static void waitElementToBeClickable(WebDriver driver, WebElement element, int time) {
         (new WebDriverWait(driver, time))
             .until(ExpectedConditions.elementToBeClickable(element));
     }
@@ -18,7 +19,6 @@ public class Waiters {
             waitElementToBeClickable(driver, driver.findElement(
                 By.xpath("//a[@href='/en-EU/the-small-print/cookie-policy/']")), time);
         } catch (Exception e) {
-
         }
     }
 

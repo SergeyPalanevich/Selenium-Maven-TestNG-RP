@@ -49,7 +49,7 @@ public class MultipleFormPage extends PageObject {
     public WebElement buttonSearch;
 
     public void setOutboundFlight(String fromOutboundFlight, String toOutboundFlight, String dateOutboundFlight) {
-        waitElementToBeClickable(driver, fieldFromOutboundFlight, 20);
+        waitElementToBeClickable(driver, fieldFromOutboundFlight, 10);
         fieldFromOutboundFlight.sendKeys(fromOutboundFlight);
         firstValueFromOutboundFlight.click();
         fieldToOutboundFlight.sendKeys(toOutboundFlight);
@@ -59,7 +59,7 @@ public class MultipleFormPage extends PageObject {
     }
 
     public void setInboundFlight(String fromInboundFlight, String toInboundFlight, String dateInboundFlight) {
-        waitElementToBeClickable(driver, fieldFromInboundFlight, 20);
+        waitElementToBeClickable(driver, fieldFromInboundFlight, 10);
         fieldFromInboundFlight.sendKeys(fromInboundFlight);
         firstValueFromInboundFlight.click();
         fieldToInboundFlight.sendKeys(toInboundFlight);
@@ -69,9 +69,9 @@ public class MultipleFormPage extends PageObject {
         h1.click(); //quit from datapicker field
     }
 
-    public WebDriver runSearch() {
+    public MultipleFlightPage runSearch() {
         waitElementToBeClickable(driver, buttonSearch, 20);
         buttonSearch.click();
-        return driver;
+        return new MultipleFlightPage(driver);
     }
 }
