@@ -8,6 +8,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class MainPage extends PageObject {
@@ -168,6 +170,25 @@ public class MainPage extends PageObject {
 
     public boolean isTitleCorrect(String title) {
         return titleH1.getText().equals(title);
+
+    }
+
+    public BookFlightPage setWhoWillBeTravelling() {
+        fieldPassenger.click();
+        waitElementToBeClickable(driver, buttonPlusAdults, 20);
+//        (new WebDriverWait(driver, 20))
+//            .until(ExpectedConditions.visibilityOf(buttonPlusAdults));
+//        // move to Waiters
+        buttonPlusAdults.click();
+//        (new WebDriverWait(driver, 20))
+//            .until(ExpectedConditions.visibilityOf(buttonPlusChildren));
+//        // move to Waiters
+        waitElementToBeClickable(driver, buttonPlusChildren, 20);
+        buttonPlusChildren.click();
+        buttonSavePassengers.click();
+        searchButton.click();
+
+        return new BookFlightPage(driver);
 
     }
 }

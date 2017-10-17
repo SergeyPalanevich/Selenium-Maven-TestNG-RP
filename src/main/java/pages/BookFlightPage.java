@@ -1,7 +1,11 @@
 package pages;
 
+import static helper.Helpers.getPriceFromString;
+import static helper.Waiters.doSleep;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
@@ -33,4 +37,45 @@ public class BookFlightPage extends PageObject {
     @FindBy(xpath = "//button[@name='next_button']")
     public WebElement nextButton;
 
+    public boolean isTitleCorrect(String titleBook) {
+        return titleH1.getText().equals(titleBook);
+    }
+
+    public int getPriceOutFlight() {
+        return getPriceFromString(priceOutboundDaysWithAvailability.get(0).getText());
+    }
+
+    public int getPriceInFlight() {
+        return getPriceFromString(priceInboundDaysWithAvailability.get(0).getText());
+    }
+
+    public void selectOutboundFligh() {
+        doSleep(2000); // need refactoring
+        if (priceOutboundDaysWithAvailability.size() > 0) {
+            priceOutboundDaysWithAvailability.get(0).click(); //click on first price
+        } else {
+
+            flightOutboundDaysWithAvailability.get(0).click(); // select first Out flight
+            priceOutboundDaysWithAvailability.get(0).click(); //click on first price
+        }
+    }
+
+    public void selectInboundFlight() {
+        if (priceInboundDaysWithAvailability.size() > 0) {
+            new Actions(driver).moveToElement(inboundSection).perform();
+            doSleep(3000); // need refactoring //waitElementToBeClickable
+            priceInboundDaysWithAvailability.get(0).click(); //click on first price
+        } else {
+            new Actions(driver).moveToElement(inboundSection).perform();
+            doSleep(3000); // need refactoring
+            flightInboundDaysWithAvailability.get(0).click(); // select first Out flight
+            priceInboundDaysWithAvailability.get(0).click(); //click on first price
+        }
+    }
+
+    public ProductPage goToNext() {
+        doSleep(3000); // need refactoring
+        nextButton.click();
+        return new ProductPage(driver);
+    }
 }

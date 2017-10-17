@@ -10,6 +10,10 @@ import pages.MultipleFlightPage;
 import pages.MultipleFormPage;
 
 public class TestCase9 extends BaseTest {
+
+    private MainPage main;
+    private MultipleFlightPage multipleFlight;
+    private MultipleFormPage multipleForm;
     
     @Test
     public void checkMultipleDestinations() {
@@ -22,10 +26,6 @@ public class TestCase9 extends BaseTest {
         String arrivalAirportSecond = "Casablanca, Morocco";
         String dateFlightSecond = getCurrentDayPlusSomeDaysWithDateTimeFormat(9);
 
-        MainPage main;
-        MultipleFlightPage multipleFlight;
-        MultipleFormPage multipleForm;
-
         driver.get(url);
         doSleep(3000);
         main = new MainPage(driver);
@@ -36,7 +36,6 @@ public class TestCase9 extends BaseTest {
         multipleFlight = multipleForm.runSearch();
         multipleFlight.selectOutboundFlight();
         multipleFlight.selectInboundFlight();
-        int amount = multipleFlight.getTotalAmount();
-        assertTrue(amount != 0);
+        assertTrue(multipleFlight.getTotalAmount() != 0);
     }
 }
