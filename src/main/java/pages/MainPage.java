@@ -177,13 +177,7 @@ public class MainPage extends PageObject {
     public BookFlightPage setWhoWillBeTravelling() {
         fieldPassenger.click();
         waitElementToBeClickable(driver, buttonPlusAdults, 20);
-//        (new WebDriverWait(driver, 20))
-//            .until(ExpectedConditions.visibilityOf(buttonPlusAdults));
-//        // move to Waiters
         buttonPlusAdults.click();
-//        (new WebDriverWait(driver, 20))
-//            .until(ExpectedConditions.visibilityOf(buttonPlusChildren));
-//        // move to Waiters
         waitElementToBeClickable(driver, buttonPlusChildren, 20);
         buttonPlusChildren.click();
         buttonSavePassengers.click();

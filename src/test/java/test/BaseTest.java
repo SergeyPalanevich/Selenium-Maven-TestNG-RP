@@ -26,5 +26,4 @@ public class BaseTest {
     public void terrDown() {
         driver.close();
     }
-
 }
