@@ -22,7 +22,7 @@ public class BaseTest {
 
     @AfterTest
     public void terrDown() {
-   //     driver.close();
+        driver.close();
     }
 
 }
