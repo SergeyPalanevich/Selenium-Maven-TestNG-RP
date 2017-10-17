@@ -10,6 +10,10 @@ import pages.MainPage;
 
 public class TestCase3 extends BaseTest {
 
+    private MainPage main;
+    private LoginPage loginPage;
+    private BookingPage booking;
+
     @Test
     public void LoginToAccAndCheckTimeArrive() {
         String url = "https://www.transavia.com/en-EU/home/";
@@ -22,10 +26,10 @@ public class TestCase3 extends BaseTest {
 
         driver.get(url);
         doSleep(2000); /* //div[@class='cookie-consent'] - Reloads the page */
-        MainPage main = new MainPage(driver);
-        LoginPage loginPage = main.goToLoginPage();
+        main = new MainPage(driver);
+        loginPage = main.goToLoginPage();
         loginPage.setCredentials(flightNumber, lastname, flightDate);
-        BookingPage booking = loginPage.viewBooking();
+        booking = loginPage.viewBooking();
         assertEquals(booking.getTimeArrival(), arrivalTime);
         assertEquals(booking.getDepatureAirport(), depatureAirport);
         assertEquals(booking.getArrivalAirport(), arrivalAirport);

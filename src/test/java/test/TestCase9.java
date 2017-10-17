@@ -14,7 +14,7 @@ public class TestCase9 extends BaseTest {
     private MainPage main;
     private MultipleFlightPage multipleFlight;
     private MultipleFormPage multipleForm;
-    
+
     @Test
     public void checkMultipleDestinations() {
         String url = "https://www.transavia.com/en-EU/home/";

@@ -11,6 +11,12 @@ import pages.LoginPage;
 import pages.MainPage;
 
 public class TestCase4 extends BaseTest {
+    private MainPage main;
+    private LoginPage loginPage;
+    private BookingPage booking;
+    private DetailsPage details;
+    private int totalSum;
+    private int paymentAmount;
 
     @Test
     public void comparePriceQquality() {
@@ -22,14 +28,14 @@ public class TestCase4 extends BaseTest {
 
         driver.get(url);
         doSleep(2000); /* After document complete - page reloads for this reason need waits */
-        MainPage main = new MainPage(driver);
-        LoginPage loginPage = main.goToLoginPage();
+        main = new MainPage(driver);
+        loginPage = main.goToLoginPage();
         loginPage.setCredentials(flightNumber, lastName, flightDate);
-        BookingPage booking = loginPage.viewBooking();
-        DetailsPage details = booking.goToBookingDetails();
+        booking = loginPage.viewBooking();
+        details = booking.goToBookingDetails();
         assertEquals(details.h1.getText(), h1Text);
-        int totalSum = getPriceFromString(details.getTotalSum());
-        int paymentAmount = getPriceFromString(details.getPaymentAmount());
+        totalSum = getPriceFromString(details.getTotalSum());
+        paymentAmount = getPriceFromString(details.getPaymentAmount());
         assertEquals(totalSum, paymentAmount);
     }
 
