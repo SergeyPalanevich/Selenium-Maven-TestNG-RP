@@ -165,6 +165,7 @@ public class MainPage extends PageObject {
     }
 
     public boolean isPriceEnabled() {
+        waitElementToBeClickable(driver, priceClass, 20);
         return priceClass.isEnabled();
     }
 
