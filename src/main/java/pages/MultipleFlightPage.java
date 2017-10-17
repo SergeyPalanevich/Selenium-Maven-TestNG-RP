@@ -41,7 +41,6 @@ public class MultipleFlightPage extends PageObject {
             priceOutboundDaysWithAvailability.get(0).click(); //click on first price
         } else {
             flightOutboundDaysWithAvailability.get(0).click(); // select first Out flight
-            waitDocumentIsReady(driver);
             waitElementToBeClickable(driver, priceOutboundDaysWithAvailability.get(0), 10);
             priceOutboundDaysWithAvailability.get(0).click(); //click on first price
         }
@@ -50,12 +49,11 @@ public class MultipleFlightPage extends PageObject {
     public void selectInboundFlight() {
         if (priceInboundDaysWithAvailability.size() > 0) {
             new Actions(driver).moveToElement(inboundSection).perform();
-            waitElementToBeClickable(driver, priceInboundDaysWithAvailability.get(0), 10);
+           // waitElementToBeClickable(driver, priceInboundDaysWithAvailability.get(0), 10);
             priceInboundDaysWithAvailability.get(0).click(); //click on first price
         } else {
             new Actions(driver).moveToElement(inboundSection).perform();
             flightInboundDaysWithAvailability.get(0).click(); // select first Out flight
-            waitDocumentIsReady(driver);
             waitElementToBeClickable(driver, priceInboundDaysWithAvailability.get(0), 10);
             priceInboundDaysWithAvailability.get(0).click(); //click on first price
         }
