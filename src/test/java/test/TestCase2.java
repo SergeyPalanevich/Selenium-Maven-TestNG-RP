@@ -30,7 +30,6 @@ public class TestCase2 extends BaseTest {
         assertTrue(main.isTitleCorrect(titleMain));
         main.setAirportFrom(airportNameFrom);
         main.setAirportTo(airportNameTo);
-        doSleep(2000);
         book = main.setWhoWillBeTravelling();
         assertTrue(book.isTitleCorrect(titleBook));
         book.selectOutboundFligh();

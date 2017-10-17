@@ -20,7 +20,6 @@ public class TestCase1 extends BaseTest {
 
         driver.get(url);
         main = new MainPage(driver);
-
         assertTrue(main.isTitleCorrect(title));
         main.setAirportFrom(airportNameFrom);
         assertTrue(main.isAirportDisplayedInFromField(airportNameFrom));

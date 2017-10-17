@@ -1,5 +1,6 @@
 package pages;
 
+import static helper.Waiters.doSleep;
 import static helper.Waiters.waitElementToBeClickable;
 
 import org.openqa.selenium.WebDriver;
@@ -49,6 +50,7 @@ public class MultipleFormPage extends PageObject {
     public WebElement buttonSearch;
 
     public void setOutboundFlight(String fromOutboundFlight, String toOutboundFlight, String dateOutboundFlight) {
+        doSleep(5000); /* After document complete - page reloads for this reason need waits */
         waitElementToBeClickable(driver, fieldFromOutboundFlight, 10);
         fieldFromOutboundFlight.sendKeys(fromOutboundFlight);
         firstValueFromOutboundFlight.click();

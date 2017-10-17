@@ -1,15 +1,12 @@
 package pages;
 
-import static helper.Helpers.getCurrentDayPlusSomeDaysWithDateTimeFormat;
+import static helper.Waiters.doSleep;
 import static helper.Waiters.waitElementToBeClickable;
-import static org.testng.Assert.assertEquals;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class MainPage extends PageObject {
@@ -86,6 +83,7 @@ public class MainPage extends PageObject {
     public WebElement linkAddMultipleDestinations;
 
     public LoginPage goToLoginPage() {
+        doSleep(2000); /* After document complete - page reloads for this reason need waits */
         waitElementToBeClickable(driver, manageYourBookinglink, 20);
         manageYourBookinglink.click();
         waitElementToBeClickable(driver, viewYourBookinglink, 20);
@@ -94,6 +92,7 @@ public class MainPage extends PageObject {
     }
 
     public void fillFromField(String from) {
+        doSleep(2000); /* After document complete - page reloads for this reason need waits */
         waitElementToBeClickable(driver, fieldFrom, 20);
         fieldFrom.sendKeys(from);
         waitElementToBeClickable(driver, firstValueFromListFrom, 20);
@@ -114,13 +113,15 @@ public class MainPage extends PageObject {
     }
 
     public MultipleFormPage addMultipleDestinations() {
+        doSleep(3000); /* After document complete - page reloads for this reason need waits */
         waitElementToBeClickable(driver, linkAddMultipleDestinations, 20);
         linkAddMultipleDestinations.click();
         return new MultipleFormPage(driver);
     }
 
     public boolean isAirportDisplayedInFromField(String airportName) {
-        return driver.findElement(By.xpath("//div[@class='container']/span[text() = '" + airportName + "']")).isEnabled();
+        return driver.findElement(By.xpath("//div[@class='container']/span[text() = '" + airportName + "']"))
+            .isEnabled();
     }
 
     public void setAirportFrom(String airportName) {
@@ -134,7 +135,8 @@ public class MainPage extends PageObject {
     }
 
     public boolean isAirportDisplayedInToField(String airportName) {
-        return driver.findElement(By.xpath("//div[@class='container']/span[text() = '" + airportName + "']")).isEnabled();
+        return driver.findElement(By.xpath("//div[@class='container']/span[text() = '" + airportName + "']"))
+            .isEnabled();
     }
 
     public void selectDatepickerDepart() {
@@ -160,7 +162,7 @@ public class MainPage extends PageObject {
     }
 
     public boolean isCountOfPassengersDisplayed(String countPassengers) {
-       return driver.findElement(
+        return driver.findElement(
             By.xpath("//div[@class='passengers-input-container']/div[text()='" + countPassengers + "']")).isEnabled();
     }
 
@@ -175,6 +177,7 @@ public class MainPage extends PageObject {
     }
 
     public BookFlightPage setWhoWillBeTravelling() {
+        doSleep(2000);
         fieldPassenger.click();
         waitElementToBeClickable(driver, buttonPlusAdults, 20);
         buttonPlusAdults.click();
@@ -182,8 +185,6 @@ public class MainPage extends PageObject {
         buttonPlusChildren.click();
         buttonSavePassengers.click();
         searchButton.click();
-
         return new BookFlightPage(driver);
-
     }
 }

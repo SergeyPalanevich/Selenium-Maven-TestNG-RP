@@ -1,6 +1,5 @@
 package test;
 
-import static helper.Waiters.doSleep;
 import static org.testng.Assert.assertEquals;
 
 import org.testng.annotations.Test;
@@ -21,7 +20,6 @@ public class TestCase8 extends BaseTest {
                        + " Please change your destination and try again.";
 
         driver.get(url);
-        doSleep(2000); /* After document complete - page reloads for this reason need waits */
         main = new MainPage(driver);
         main.fillFromField(from);
         main.fillToField(to);

@@ -1,7 +1,6 @@
 package test;
 
 import static helper.Helpers.getCurrentDayPlusSomeDaysWithDateTimeFormat;
-import static helper.Waiters.doSleep;
 import static org.testng.Assert.assertTrue;
 
 import org.testng.annotations.Test;
@@ -27,10 +26,8 @@ public class TestCase9 extends BaseTest {
         String dateFlightSecond = getCurrentDayPlusSomeDaysWithDateTimeFormat(9);
 
         driver.get(url);
-        doSleep(3000); /* After document complete - page reloads for this reason need waits */
         main = new MainPage(driver);
         multipleForm = main.addMultipleDestinations();
-        doSleep(5000); /* After document complete - page reloads for this reason need waits */
         multipleForm.setOutboundFlight(depatureAirportFirst, arrivalAirportFirst, dateFlightFirst);
         multipleForm.setInboundFlight(depatureAirportSecond, arrivalAirportSecond, dateFlightSecond);
         multipleFlight = multipleForm.runSearch();

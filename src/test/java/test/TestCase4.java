@@ -1,7 +1,6 @@
 package test;
 
 import static helper.Helpers.getPriceFromString;
-import static helper.Waiters.doSleep;
 import static org.testng.Assert.assertEquals;
 
 import org.testng.annotations.Test;
@@ -27,7 +26,6 @@ public class TestCase4 extends BaseTest {
         String h1Text = "Booking details";
 
         driver.get(url);
-        doSleep(2000); /* After document complete - page reloads for this reason need waits */
         main = new MainPage(driver);
         loginPage = main.goToLoginPage();
         loginPage.setCredentials(flightNumber, lastName, flightDate);
