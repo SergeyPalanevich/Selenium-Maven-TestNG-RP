@@ -1,7 +1,10 @@
 package pages;
 
+import static helper.Helpers.getCurrentDayPlusSomeDaysWithDateTimeFormat;
 import static helper.Waiters.waitElementToBeClickable;
+import static org.testng.Assert.assertEquals;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -112,5 +115,59 @@ public class MainPage extends PageObject {
         waitElementToBeClickable(driver, linkAddMultipleDestinations, 20);
         linkAddMultipleDestinations.click();
         return new MultipleFormPage(driver);
+    }
+
+    public boolean isAirportDisplayedInFromField(String airportName) {
+        return driver.findElement(By.xpath("//div[@class='container']/span[text() = '" + airportName + "']")).isEnabled();
+    }
+
+    public void setAirportFrom(String airportName) {
+        fieldFrom.sendKeys(airportName);
+        firstValueFromListFrom.click();
+    }
+
+    public void setAirportTo(String airportName) {
+        fieldTo.sendKeys(airportName);
+        firstValueFromListTo.click();
+    }
+
+    public boolean isAirportDisplayedInToField(String airportName) {
+        return driver.findElement(By.xpath("//div[@class='container']/span[text() = '" + airportName + "']")).isEnabled();
+    }
+
+    public void selectDatepickerDepart() {
+        datepickerDepart.click();
+    }
+
+    public boolean isDatepickerDisplayed() {
+        return datepicker.isEnabled();
+    }
+
+    public void setOutboundDate(String currentDayPlusSomeDaysWithDateTimeFormat) {
+        fieldOtboundDate.clear();
+        fieldOtboundDate.sendKeys(currentDayPlusSomeDaysWithDateTimeFormat);
+    }
+
+    public void uncheckReturnOnCheckBox() {
+        labelReturnOn.click();
+    }
+
+    public void setCountOfPassengers() {
+        fieldBookingPassengers.click();
+        buttonSavePassengers.click();
+    }
+
+    public boolean isCountOfPassengersDisplayed(String countPassengers) {
+       return driver.findElement(
+            By.xpath("//div[@class='passengers-input-container']/div[text()='" + countPassengers + "']")).isEnabled();
+    }
+
+    public boolean isPriceEnabled() {
+        return priceClass.isEnabled();
+    }
+
+    public boolean isTitleCorrect(String title) {
+        return titleH1.getText().equals(title);
+
     }
 }
