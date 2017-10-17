@@ -25,7 +25,7 @@ public class TestCase3 extends BaseTest {
         String arrivalAirport = "Amsterdam (Schiphol)";
 
         driver.get(url);
-        doSleep(2000); /* //div[@class='cookie-consent'] - Reloads the page */
+        doSleep(2000); /* After document complete - page reloads for this reason need waits */
         main = new MainPage(driver);
         loginPage = main.goToLoginPage();
         loginPage.setCredentials(flightNumber, lastname, flightDate);
