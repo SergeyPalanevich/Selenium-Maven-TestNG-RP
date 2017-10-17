@@ -35,7 +35,7 @@ public class MultipleFlightPage extends PageObject {
     @FindBy(xpath = "//div[@class='grand-total__price-container']//div[@class='back']")
     public WebElement totalPrice;
 
-    public void selectOutboundFligh() {
+    public void selectOutboundFlight() {
         if (priceOutboundDaysWithAvailability.size() > 0) {
             waitElementToBeClickable(driver, priceOutboundDaysWithAvailability.get(0), 10);
             priceOutboundDaysWithAvailability.get(0).click(); //click on first price
