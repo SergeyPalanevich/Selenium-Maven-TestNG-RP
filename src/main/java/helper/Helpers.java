@@ -17,45 +17,45 @@ public class Helpers {
         new Actions(driver).moveToElement(element).perform();
     }
 
+    // format "dd MMM yyyy"
     public static String getCurrentDayPlusSomeDaysWithDateTimeFormat(int countOfDays) {
         DateTime dateTime = new DateTime(new Date());
         dateTime = dateTime.plusDays(countOfDays);
         DateTimeFormatter fmt = DateTimeFormat.forPattern("dd-MMM-yyyy");
-        String strDate = dateTime.toString(fmt);
-        strDate = strDate.replace('-', ' ');
-        return strDate;
+        String dateFormat = dateTime.toString(fmt);
+        dateFormat = dateFormat.replace('-', ' ');
+        return dateFormat;
     }
 
-    public static int getPriceFromString(String str) {
+    public static int getPriceFromString(String argStr) {
 
-        String testStr = str;
-        String first = "";
+        String subString = "";
         float myFloat;
-        int value;
+        int price;
 
         Pattern p1 = Pattern.compile("€.\\d*");
-        Matcher m = p1.matcher(testStr);
+        Matcher m = p1.matcher(argStr);
         while (m.find()) {
-            first = testStr.substring(m.start() + 1);
+            subString = argStr.substring(m.start() + 1);
         }
 
-        String[] result;
-        String price = "";
-        result = first.split("^€\\s|.[a-zA-Z]+");
-        for (String s : result) {
-            price = s;
+        String[] resultAfterFirstRegex;
+        String afterFirstRegex = "";
+        resultAfterFirstRegex = subString.split("^€\\s|.[a-zA-Z]+");
+        for (String s : resultAfterFirstRegex) {
+            afterFirstRegex = s;
         }
 
-        String[] result1;
-        String price1 = "";
-        result1 = price.split("\\s");
-        for (String s : result1) {
-            price1 = s;
+        String[] resultAfterSecondRegex;
+        String afterSecondRegex = "";
+        resultAfterSecondRegex = afterFirstRegex.split("\\s");
+        for (String s : resultAfterSecondRegex) {
+            afterSecondRegex = s;
         }
 
-        myFloat = Float.valueOf(price1);
-        value = (int) myFloat;
-        System.out.println(value);
-        return value;
+        myFloat = Float.valueOf(afterSecondRegex);
+        price = (int) myFloat;
+
+        return price;
     }
 }

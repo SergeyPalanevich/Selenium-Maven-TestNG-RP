@@ -54,7 +54,7 @@ public class BookFlightPage extends PageObject {
         if (priceOutboundDaysWithAvailability.size() > 0) {
             priceOutboundDaysWithAvailability.get(0).click(); //click on first price
         } else {
-
+            doSleep(2000); // need refactoring
             flightOutboundDaysWithAvailability.get(0).click(); // select first Out flight
             priceOutboundDaysWithAvailability.get(0).click(); //click on first price
         }

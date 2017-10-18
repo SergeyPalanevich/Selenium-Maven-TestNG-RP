@@ -1,6 +1,5 @@
 package test;
 
-import static helper.Waiters.doSleep;
 import static org.testng.Assert.assertTrue;
 
 import org.testng.annotations.Test;
