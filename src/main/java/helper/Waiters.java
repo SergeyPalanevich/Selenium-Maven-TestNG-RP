@@ -10,7 +10,7 @@ public class Waiters {
 
     public static void waitElementToBeClickable(WebDriver driver, WebElement element, int time) {
         (new WebDriverWait(driver, time))
-            .until(ExpectedConditions.elementToBeClickable(element));
+                .until(ExpectedConditions.elementToBeClickable(element));
     }
 
     public static void doSleep(int sec) {
@@ -28,7 +28,7 @@ public class Waiters {
         //You can replace your value with 25 If you wants to Increase or decrease wait time.
         for (int i = 0; i < 25; i++) {
             if (js.executeScript("return document.readyState").toString().equals("complete") && js
-                .executeScript("return jQuery.active").toString().equals("0")) {
+                    .executeScript("return jQuery.active").toString().equals("0")) {
                 break;
             } else {
                 try {

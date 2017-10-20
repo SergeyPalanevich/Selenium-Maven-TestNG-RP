@@ -121,7 +121,7 @@ public class MainPage extends PageObject {
 
     public boolean isAirportDisplayedInFromField(String airportName) {
         return driver.findElement(By.xpath("//div[@class='container']/span[text() = '" + airportName + "']"))
-            .isEnabled();
+                .isEnabled();
     }
 
     public void setAirportFrom(String airportName) {
@@ -136,7 +136,7 @@ public class MainPage extends PageObject {
 
     public boolean isAirportDisplayedInToField(String airportName) {
         return driver.findElement(By.xpath("//div[@class='container']/span[text() = '" + airportName + "']"))
-            .isEnabled();
+                .isEnabled();
     }
 
     public void selectDatepickerDepart() {
@@ -163,7 +163,7 @@ public class MainPage extends PageObject {
 
     public boolean isCountOfPassengersDisplayed(String countPassengers) {
         return driver.findElement(
-            By.xpath("//div[@class='passengers-input-container']/div[text()='" + countPassengers + "']")).isEnabled();
+                By.xpath("//div[@class='passengers-input-container']/div[text()='" + countPassengers + "']")).isEnabled();
     }
 
     public boolean isPriceEnabled() {

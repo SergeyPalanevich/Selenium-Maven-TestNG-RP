@@ -2,6 +2,8 @@ package test;
 
 import static org.testng.Assert.assertTrue;
 
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 import pages.BookFlightPage;
 import pages.MainPage;
@@ -15,6 +17,7 @@ public class TestCase2 extends BaseTest {
     private MainPage main;
     private BookFlightPage book;
     private ProductPage product;
+    private WebDriver driver;
 
     @Test
     public void chechTotalPriceSelectedFlights() {
@@ -23,7 +26,7 @@ public class TestCase2 extends BaseTest {
         String titleBook = "Book a flight";
         String airportNameFrom = "Madrid";
         String airportNameTo = "Paris";
-
+        driver = getChromeDriver();
         driver.get(url);
         main = new MainPage(driver);
         assertTrue(main.isTitleCorrect(titleMain));
@@ -39,5 +42,11 @@ public class TestCase2 extends BaseTest {
         product.selectPlusPackage();
         totalPrice = product.getPriceWithPlusPackage();
         assertTrue(product.isTotalPriceCorrect(priceOutboundAfterRegex, priceInboundAfterRegex, totalPrice));
+    }
+
+
+    @AfterTest
+    public void terrDown() {
+        driver.close();
     }
 }

@@ -3,6 +3,8 @@ package test;
 import static helper.Helpers.getPriceFromString;
 import static org.testng.Assert.assertEquals;
 
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 import pages.BookingPage;
 import pages.DetailsPage;
@@ -16,6 +18,7 @@ public class TestCase4 extends BaseTest {
     private DetailsPage details;
     private int totalSum;
     private int paymentAmount;
+    private WebDriver driver;
 
     @Test
     public void comparePriceQquality() {
@@ -24,7 +27,7 @@ public class TestCase4 extends BaseTest {
         String lastName = "kukharau";
         String flightDate = "9 June 2016";
         String h1Text = "Booking details";
-
+        driver = getChromeDriver();
         driver.get(url);
         main = new MainPage(driver);
         loginPage = main.goToLoginPage();
@@ -37,4 +40,8 @@ public class TestCase4 extends BaseTest {
         assertEquals(totalSum, paymentAmount);
     }
 
+    @AfterTest
+    public void terrDown() {
+        driver.close();
+    }
 }

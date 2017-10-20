@@ -3,12 +3,15 @@ package test;
 import static helper.Helpers.getCurrentDayPlusSomeDaysWithDateTimeFormat;
 import static org.testng.Assert.assertTrue;
 
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 import pages.MainPage;
 
 public class TestCase1 extends BaseTest {
 
     private MainPage main;
+    private WebDriver driver;
 
     @Test
     public void checkSingleFlight() {
@@ -18,6 +21,7 @@ public class TestCase1 extends BaseTest {
         String countPassengers = "1 Adult";
         String title = "Where do you want to go?";
 
+        driver = getChromeDriver();
         driver.get(url);
         main = new MainPage(driver);
         assertTrue(main.isTitleCorrect(title));
@@ -33,5 +37,10 @@ public class TestCase1 extends BaseTest {
         assertTrue(main.isCountOfPassengersDisplayed(countPassengers));
         main.runSearch();
         assertTrue(main.isPriceEnabled());
+    }
+
+    @AfterTest
+    public void terrDown() {
+        driver.close();
     }
 }

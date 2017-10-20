@@ -3,6 +3,8 @@ package test;
 import static helper.Helpers.getCurrentDayPlusSomeDaysWithDateTimeFormat;
 import static org.testng.Assert.assertTrue;
 
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 import pages.MainPage;
 import pages.MultipleFlightPage;
@@ -13,9 +15,10 @@ public class TestCase9 extends BaseTest {
     private MainPage main;
     private MultipleFlightPage multipleFlight;
     private MultipleFormPage multipleForm;
+    private WebDriver driver;
 
     @Test
-    public void checkMultipleDestinations() {
+    public void checkMulItipleDestinations() {
         String url = "https://www.transavia.com/en-EU/home/";
         String depatureAirportFirst = "Bologna, Italy";
         String arrivalAirportFirst = "Eindhoven, Netherlands";
@@ -24,7 +27,7 @@ public class TestCase9 extends BaseTest {
         String depatureAirportSecond = "Amsterdam (Schiphol), Netherlands";
         String arrivalAirportSecond = "Casablanca, Morocco";
         String dateFlightSecond = getCurrentDayPlusSomeDaysWithDateTimeFormat(9);
-
+        driver = getChromeDriver();
         driver.get(url);
         main = new MainPage(driver);
         multipleForm = main.addMultipleDestinations();
@@ -34,5 +37,10 @@ public class TestCase9 extends BaseTest {
         multipleFlight.selectOutboundFlight();
         multipleFlight.selectInboundFlight();
         assertTrue(multipleFlight.getTotalAmount() != 0);
+    }
+
+    @AfterTest
+    public void terrDown() {
+        driver.close();
     }
 }

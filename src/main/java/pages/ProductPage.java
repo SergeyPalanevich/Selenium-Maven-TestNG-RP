@@ -8,9 +8,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 
-public class ProductPage extends PageObject{
+public class ProductPage extends PageObject {
 
-    public ProductPage(WebDriver driver){
+    public ProductPage(WebDriver driver) {
         super(driver);
     }
 

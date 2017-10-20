@@ -2,6 +2,8 @@ package test;
 
 import static org.testng.Assert.assertEquals;
 
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 import pages.BookingPage;
 import pages.LoginPage;
@@ -12,6 +14,7 @@ public class TestCase3 extends BaseTest {
     private MainPage main;
     private LoginPage loginPage;
     private BookingPage booking;
+    private WebDriver driver;
 
     @Test
     public void LoginToAccAndCheckTimeArrive() {
@@ -22,7 +25,7 @@ public class TestCase3 extends BaseTest {
         String arrivalTime = "2016-06-09 23:35";
         String depatureAirport = "Pisa";
         String arrivalAirport = "Amsterdam (Schiphol)";
-
+        driver = getChromeDriver();
         driver.get(url);
         main = new MainPage(driver);
         loginPage = main.goToLoginPage();
@@ -31,5 +34,11 @@ public class TestCase3 extends BaseTest {
         assertEquals(booking.getTimeArrival(), arrivalTime);
         assertEquals(booking.getDepatureAirport(), depatureAirport);
         assertEquals(booking.getArrivalAirport(), arrivalAirport);
+    }
+
+
+    @AfterTest
+    public void terrDown() {
+        driver.close();
     }
 }

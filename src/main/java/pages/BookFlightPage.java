@@ -12,7 +12,7 @@ import java.util.List;
 
 public class BookFlightPage extends PageObject {
 
-    public BookFlightPage(WebDriver driver){
+    public BookFlightPage(WebDriver driver) {
         super(driver);
     }
 
