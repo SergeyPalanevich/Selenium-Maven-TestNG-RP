@@ -3,6 +3,7 @@ package test;
 import static org.testng.Assert.assertTrue;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 import pages.BookFlightPage;
@@ -20,7 +21,7 @@ public class TestCase2 extends BaseTest {
     private WebDriver driver;
 
     @Test
-    public void chechTotalPriceSelectedFlights() {
+    public void checkTotalPriceSelectedFlights() {
         String url = "https://www.transavia.com/en-EU/home/";
         String titleMain = "Where do you want to go?";
         String titleBook = "Book a flight";
@@ -45,7 +46,7 @@ public class TestCase2 extends BaseTest {
     }
 
 
-    @AfterTest
+    @AfterClass
     public void terrDown() {
         driver.close();
     }

@@ -1,13 +1,13 @@
 package test;
 
-import static org.testng.Assert.assertEquals;
-
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterTest;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 import pages.BookingPage;
 import pages.LoginPage;
 import pages.MainPage;
+
+import static org.testng.Assert.assertEquals;
 
 public class TestCase3 extends BaseTest {
 
@@ -37,7 +37,7 @@ public class TestCase3 extends BaseTest {
     }
 
 
-    @AfterTest
+    @AfterClass
     public void terrDown() {
         driver.close();
     }

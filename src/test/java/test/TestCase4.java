@@ -1,15 +1,15 @@
 package test;
 
-import static helper.Helpers.getPriceFromString;
-import static org.testng.Assert.assertEquals;
-
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterTest;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 import pages.BookingPage;
 import pages.DetailsPage;
 import pages.LoginPage;
 import pages.MainPage;
+
+import static helper.Helpers.getPriceFromString;
+import static org.testng.Assert.assertEquals;
 
 public class TestCase4 extends BaseTest {
     private MainPage main;
@@ -40,7 +40,7 @@ public class TestCase4 extends BaseTest {
         assertEquals(totalSum, paymentAmount);
     }
 
-    @AfterTest
+    @AfterClass
     public void terrDown() {
         driver.close();
     }

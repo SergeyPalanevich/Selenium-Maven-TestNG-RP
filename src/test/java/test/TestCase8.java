@@ -3,6 +3,7 @@ package test;
 import static org.testng.Assert.assertEquals;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 import pages.ErrorPage;
@@ -30,7 +31,7 @@ public class TestCase8 extends BaseTest {
         assertEquals(errorPage.getError(), error);
     }
 
-    @AfterTest
+    @AfterClass
     public void terrDown() {
         driver.close();
     }

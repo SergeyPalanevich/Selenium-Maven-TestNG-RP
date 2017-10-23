@@ -4,6 +4,7 @@ import static helper.Helpers.getCurrentDayPlusSomeDaysWithDateTimeFormat;
 import static org.testng.Assert.assertTrue;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 import pages.MainPage;
@@ -39,7 +40,7 @@ public class TestCase9 extends BaseTest {
         assertTrue(multipleFlight.getTotalAmount() != 0);
     }
 
-    @AfterTest
+    @AfterClass
     public void terrDown() {
         driver.close();
     }

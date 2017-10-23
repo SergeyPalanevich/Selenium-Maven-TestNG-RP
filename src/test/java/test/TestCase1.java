@@ -1,17 +1,18 @@
 package test;
 
-import static helper.Helpers.getCurrentDayPlusSomeDaysWithDateTimeFormat;
-import static org.testng.Assert.assertTrue;
-
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterTest;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 import pages.MainPage;
+
+import static helper.Helpers.getCurrentDayPlusSomeDaysWithDateTimeFormat;
+import static org.testng.Assert.assertTrue;
 
 public class TestCase1 extends BaseTest {
 
     private MainPage main;
     private WebDriver driver;
+
 
     @Test
     public void checkSingleFlight() {
@@ -39,7 +40,7 @@ public class TestCase1 extends BaseTest {
         assertTrue(main.isPriceEnabled());
     }
 
-    @AfterTest
+    @AfterClass
     public void terrDown() {
         driver.close();
     }
