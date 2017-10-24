@@ -27,35 +27,23 @@ public class Helpers {
         return dateFormat;
     }
 
-    public static int getPriceFromString(String argStr) {
-
+    public static float getPriceFromString(String argStr) {
+        System.out.println("argStr is " + argStr);
         String subString = "";
-        float myFloat;
-        int price;
+        float price;
 
-        Pattern p1 = Pattern.compile("€.\\d*");
+        Pattern p1 = Pattern.compile("[€|Ç].\\d*.\\d*");
         Matcher m = p1.matcher(argStr);
         while (m.find()) {
-            subString = argStr.substring(m.start() + 1);
+            subString = argStr.substring(m.start(0));
         }
 
-        String[] resultAfterFirstRegex;
-        String afterFirstRegex = "";
-        resultAfterFirstRegex = subString.split("^€\\s|.[a-zA-Z]+");
-        for (String s : resultAfterFirstRegex) {
-            afterFirstRegex = s;
-        }
+        System.out.println("subString is " + subString);
+        String numberPart = subString.replaceAll("[^0-9.]", "");
+        System.out.println("NumberPart is " + numberPart);
 
-        String[] resultAfterSecondRegex;
-        String afterSecondRegex = "";
-        resultAfterSecondRegex = afterFirstRegex.split("\\s");
-        for (String s : resultAfterSecondRegex) {
-            afterSecondRegex = s;
-        }
-
-        myFloat = Float.valueOf(afterSecondRegex);
-        price = (int) myFloat;
-
+        price = Float.valueOf(numberPart);
+        System.out.println("Price is " + price);
         return price;
     }
 }

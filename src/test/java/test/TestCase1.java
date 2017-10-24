@@ -1,14 +1,15 @@
 package test;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import pages.MainPage;
 
+import static driver.MyDriver.getChromeDriver;
 import static helper.Helpers.getCurrentDayPlusSomeDaysWithDateTimeFormat;
 import static org.testng.Assert.assertTrue;
 
-public class TestCase1 extends BaseTest {
+public class TestCase1 {
 
     private MainPage main;
     private WebDriver driver;
@@ -40,7 +41,7 @@ public class TestCase1 extends BaseTest {
         assertTrue(main.isPriceEnabled());
     }
 
-    @AfterClass
+    @AfterMethod
     public void terrDown() {
         driver.close();
     }

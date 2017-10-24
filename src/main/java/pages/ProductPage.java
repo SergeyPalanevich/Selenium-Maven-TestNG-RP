@@ -2,6 +2,7 @@ package pages;
 
 import static helper.Helpers.getPriceFromString;
 import static helper.Waiters.doSleep;
+import static helper.Waiters.waitElementToBeClickable;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -25,16 +26,24 @@ public class ProductPage extends PageObject {
         product.click();
     }
 
-    public int getPriceWithPlusPackage() {
-        doSleep(3000); // need refactoring
+    public float getPriceWithPlusPackage() {
+        waitElementToBeClickable(driver, totalPrice, 20);
+        for(int i = 0; i < 10;){
+            if(totalPrice.getText().isEmpty()){
+                doSleep(1000);
+                i++;
+            }else {
+                break;
+            }
+        }
         return getPriceFromString(totalPrice.getText());
     }
 
-    public Boolean isTotalPriceCorrect(int priceOutboundAfterRegex, int priceInboundAfterRegex, int totalPrice) {
-        int outPrice = (priceOutboundAfterRegex * 3);
-        int inPrice = (priceInboundAfterRegex * 3);
-        int baggage = 42;
-        int count = outPrice + inPrice + (baggage * 3);
+    public Boolean isTotalPriceCorrect(float priceOutboundAfterRegex, float priceInboundAfterRegex, float totalPrice) {
+        float outPrice = (priceOutboundAfterRegex * 3);
+        float inPrice = (priceInboundAfterRegex * 3);
+        float baggage = 42;
+        float count = outPrice + inPrice + (baggage * 3);
         return count == totalPrice;
     }
 }

@@ -1,6 +1,7 @@
 package pages;
 
 import static helper.Helpers.getPriceFromString;
+import static helper.Waiters.doSleep;
 import static helper.Waiters.waitDocumentIsReady;
 import static helper.Waiters.waitElementToBeClickable;
 
@@ -17,7 +18,7 @@ public class MultipleFlightPage extends PageObject {
         super(driver);
     }
 
-    @FindBy(xpath = "//section[@class='flight outbound']//div[@class='day day-with-availability']")
+    @FindBy(xpath = "//section[@class='flight outbound']//div[@class='day day-with-availability']//h5")
     public List<WebElement> flightOutboundDaysWithAvailability;
 
     @FindBy(xpath = "//section[@class='flight inbound']//div[@class='day day-with-availability']")
@@ -36,17 +37,22 @@ public class MultipleFlightPage extends PageObject {
     public WebElement totalPrice;
 
     public void selectOutboundFlight() {
+        doSleep(1500);
         if (priceOutboundDaysWithAvailability.size() > 0) {
             waitElementToBeClickable(driver, priceOutboundDaysWithAvailability.get(0), 10);
             priceOutboundDaysWithAvailability.get(0).click(); //click on first price
         } else {
+            waitElementToBeClickable(driver, flightOutboundDaysWithAvailability.get(0), 10);
             flightOutboundDaysWithAvailability.get(0).click(); // select first Out flight
+            waitDocumentIsReady(driver);
             waitElementToBeClickable(driver, priceOutboundDaysWithAvailability.get(0), 10);
             priceOutboundDaysWithAvailability.get(0).click(); //click on first price
+            waitDocumentIsReady(driver);
         }
     }
 
     public void selectInboundFlight() {
+        doSleep(1500);
         if (priceInboundDaysWithAvailability.size() > 0) {
             new Actions(driver).moveToElement(inboundSection).perform();
             waitElementToBeClickable(driver, priceInboundDaysWithAvailability.get(0), 10);
@@ -54,13 +60,15 @@ public class MultipleFlightPage extends PageObject {
         } else {
             new Actions(driver).moveToElement(inboundSection).perform();
             flightInboundDaysWithAvailability.get(0).click(); // select first Out flight
+            waitDocumentIsReady(driver);
             waitElementToBeClickable(driver, priceInboundDaysWithAvailability.get(0), 10);
             priceInboundDaysWithAvailability.get(0).click(); //click on first price
         }
     }
 
-    public int getTotalAmount() {
+    public float getTotalAmount() {
         waitDocumentIsReady(driver);
+        waitElementToBeClickable(driver, totalPrice, 10);
         return getPriceFromString(totalPrice.getText());
     }
 }

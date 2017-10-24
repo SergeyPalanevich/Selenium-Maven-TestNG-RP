@@ -1,17 +1,18 @@
 package test;
 
-import static helper.Helpers.getCurrentDayPlusSomeDaysWithDateTimeFormat;
-import static org.testng.Assert.assertTrue;
-
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterTest;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import pages.MainPage;
 import pages.MultipleFlightPage;
 import pages.MultipleFormPage;
 
-public class TestCase9 extends BaseTest {
+import static driver.MyDriver.getChromeDriver;
+import static helper.Helpers.getCurrentDayPlusSomeDaysWithDateTimeFormat;
+import static org.testng.Assert.assertTrue;
+
+public class TestCase9 {
 
     private MainPage main;
     private MultipleFlightPage multipleFlight;
@@ -40,8 +41,8 @@ public class TestCase9 extends BaseTest {
         assertTrue(multipleFlight.getTotalAmount() != 0);
     }
 
-    @AfterClass
+    @AfterMethod
     public void terrDown() {
-        driver.close();
+       driver.close();
     }
 }

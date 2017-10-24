@@ -1,4 +1,4 @@
-package test;
+package driver;
 
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -6,8 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class BaseTest {
-
+public class MyDriver {
     public static WebDriver getChromeDriver() {
         ChromeDriverManager.getInstance().setup();
         WebDriver driver = new ChromeDriver();

@@ -1,6 +1,9 @@
 package pages;
 
+import static helper.Helpers.getPriceFromString;
 import static helper.Helpers.moveToMyElement;
+import static helper.Waiters.doSleep;
+import static helper.Waiters.waitDocumentIsReady;
 import static helper.Waiters.waitElementToBeClickable;
 
 import org.openqa.selenium.WebDriver;
@@ -28,15 +31,19 @@ public class DetailsPage extends PageObject {
     public WebElement paymentAmount;
 
 
-    public String getTotalSum() {
+    public float getTotalSum() {
+        waitElementToBeClickable(driver, divBookingPriceBreakdown, 20);
         moveToMyElement(driver, divBookingPriceBreakdown);
         waitElementToBeClickable(driver, totalSum, 20);
-        return totalSum.getText();
+        waitDocumentIsReady(driver);
+        return getPriceFromString(totalSum.getText());
     }
 
-    public String getPaymentAmount() {
+    public float getPaymentAmount() {
+        waitElementToBeClickable(driver, totalGreenPanel, 20);
         moveToMyElement(driver, totalGreenPanel);
         waitElementToBeClickable(driver, paymentAmount, 20);
-        return paymentAmount.getText();
+        waitDocumentIsReady(driver);
+        return getPriceFromString(paymentAmount.getText());
     }
 }

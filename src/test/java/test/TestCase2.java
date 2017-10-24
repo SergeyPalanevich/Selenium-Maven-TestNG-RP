@@ -1,20 +1,20 @@
 package test;
 
-import static org.testng.Assert.assertTrue;
-
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterTest;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import pages.BookFlightPage;
 import pages.MainPage;
 import pages.ProductPage;
 
-public class TestCase2 extends BaseTest {
+import static driver.MyDriver.getChromeDriver;
+import static org.testng.Assert.assertTrue;
 
-    private int priceOutboundAfterRegex;
-    private int priceInboundAfterRegex;
-    private int totalPrice;
+public class TestCase2 {
+
+    private float priceOutboundAfterRegex;
+    private float priceInboundAfterRegex;
+    private float totalPrice;
     private MainPage main;
     private BookFlightPage book;
     private ProductPage product;
@@ -46,7 +46,7 @@ public class TestCase2 extends BaseTest {
     }
 
 
-    @AfterClass
+    @AfterMethod
     public void terrDown() {
         driver.close();
     }

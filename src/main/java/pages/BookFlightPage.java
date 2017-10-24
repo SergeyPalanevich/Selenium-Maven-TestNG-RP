@@ -2,6 +2,7 @@ package pages;
 
 import static helper.Helpers.getPriceFromString;
 import static helper.Waiters.doSleep;
+import static helper.Waiters.waitElementToBeClickable;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -41,11 +42,13 @@ public class BookFlightPage extends PageObject {
         return titleH1.getText().equals(titleBook);
     }
 
-    public int getPriceOutFlight() {
+    public float getPriceOutFlight() {
+        waitElementToBeClickable(driver, priceOutboundDaysWithAvailability.get(0), 20);
         return getPriceFromString(priceOutboundDaysWithAvailability.get(0).getText());
     }
 
-    public int getPriceInFlight() {
+    public float getPriceInFlight() {
+        waitElementToBeClickable(driver, priceInboundDaysWithAvailability.get(0), 20);
         return getPriceFromString(priceInboundDaysWithAvailability.get(0).getText());
     }
 

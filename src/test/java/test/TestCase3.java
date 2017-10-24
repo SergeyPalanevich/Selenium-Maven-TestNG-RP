@@ -1,15 +1,16 @@
 package test;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import pages.BookingPage;
 import pages.LoginPage;
 import pages.MainPage;
 
+import static driver.MyDriver.getChromeDriver;
 import static org.testng.Assert.assertEquals;
 
-public class TestCase3 extends BaseTest {
+public class TestCase3 {
 
     private MainPage main;
     private LoginPage loginPage;
@@ -37,7 +38,7 @@ public class TestCase3 extends BaseTest {
     }
 
 
-    @AfterClass
+    @AfterMethod
     public void terrDown() {
         driver.close();
     }
