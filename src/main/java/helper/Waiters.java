@@ -25,8 +25,7 @@ public class Waiters {
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
 
-        //You can replace your value with 25 If you wants to Increase or decrease wait time.
-        for (int i = 0; i < 25; i++) {
+           for (int i = 0; i < 25; i++) {
             if (js.executeScript("return document.readyState").toString().equals("complete") && js
                     .executeScript("return jQuery.active").toString().equals("0")) {
                 break;

@@ -28,14 +28,6 @@ public class ProductPage extends PageObject {
 
     public float getPriceWithPlusPackage() {
         waitElementToBeClickable(driver, totalPrice, 20);
-        for(int i = 0; i < 10;){
-            if(totalPrice.getText().isEmpty()){
-                doSleep(1000);
-                i++;
-            }else {
-                break;
-            }
-        }
         return getPriceFromString(totalPrice.getText());
     }
 
