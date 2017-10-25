@@ -2,7 +2,6 @@ package pages;
 
 import static helper.Helpers.getPriceFromString;
 import static helper.Helpers.moveToMyElement;
-import static helper.Waiters.doSleep;
 import static helper.Waiters.waitDocumentIsReady;
 import static helper.Waiters.waitElementToBeClickable;
 

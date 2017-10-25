@@ -1,21 +1,16 @@
 package test;
 
-import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import pages.MainPage;
 
-import static driver.MyDriver.getChromeDriver;
 import static helper.Helpers.getCurrentDayPlusSomeDaysWithDateTimeFormat;
 import static org.testng.Assert.assertTrue;
 
-public class TestCase1 {
+public class TestCase1 extends BaseTest {
 
     private MainPage main;
-    private WebDriver driver;
 
-
-    @Test
+    @Test(description = "This TC check price for single flight")
     public void checkSingleFlight() {
         String url = "https://www.transavia.com/en-EU/home/";
         String airportNameFrom = "Palma de Mallorca, Spain";
@@ -23,7 +18,6 @@ public class TestCase1 {
         String countPassengers = "1 Adult";
         String title = "Where do you want to go?";
 
-        driver = getChromeDriver();
         driver.get(url);
         main = new MainPage(driver);
         assertTrue(main.isTitleCorrect(title));
@@ -39,10 +33,5 @@ public class TestCase1 {
         assertTrue(main.isCountOfPassengersDisplayed(countPassengers));
         main.runSearch();
         assertTrue(main.isPriceEnabled());
-    }
-
-    @AfterMethod
-    public void terrDown() {
-        driver.close();
     }
 }

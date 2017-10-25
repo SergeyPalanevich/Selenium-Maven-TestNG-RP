@@ -18,7 +18,7 @@ public class TestCase3 {
     private WebDriver driver;
 
     @Test
-    public void LoginToAccAndCheckTimeArrive() {
+    public void loginToAccAndCheckTimeArrive() {
         String url = "https://www.transavia.com/en-EU/home/";
         String flightNumber = "MF8C9R";
         String lastname = "kukharau";
