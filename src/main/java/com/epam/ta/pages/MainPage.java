@@ -1,7 +1,7 @@
-package pages;
+package com.epam.ta.pages;
 
-import static helper.Waiters.doSleep;
-import static helper.Waiters.waitElementToBeClickable;
+import static com.epam.ta.helpers.Waiters.doSleep;
+import static com.epam.ta.helpers.Waiters.waitElementToBeClickable;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -83,7 +83,7 @@ public class MainPage extends PageObject {
     public WebElement linkAddMultipleDestinations;
 
     public LoginPage goToLoginPage() {
-        doSleep(2000); /* After document complete - page reloads for this reason need waits */
+        doSleep(2000); /* After document complete - pages reloads for this reason need waits */
         waitElementToBeClickable(driver, manageYourBookinglink, 20);
         manageYourBookinglink.click();
         waitElementToBeClickable(driver, viewYourBookinglink, 20);
@@ -92,7 +92,7 @@ public class MainPage extends PageObject {
     }
 
     public void fillFromField(String from) {
-        doSleep(2000); /* After document complete - page reloads for this reason need waits */
+        doSleep(2000); /* After document complete - pages reloads for this reason need waits */
         waitElementToBeClickable(driver, fieldFrom, 20);
         fieldFrom.sendKeys(from);
         waitElementToBeClickable(driver, firstValueFromListFrom, 20);
@@ -113,7 +113,7 @@ public class MainPage extends PageObject {
     }
 
     public MultipleFormPage addMultipleDestinations() {
-        doSleep(3000); /* After document complete - page reloads for this reason need waits */
+        doSleep(3000); /* After document complete - pages reloads for this reason need waits */
         waitElementToBeClickable(driver, linkAddMultipleDestinations, 20);
         linkAddMultipleDestinations.click();
         return new MultipleFormPage(driver);

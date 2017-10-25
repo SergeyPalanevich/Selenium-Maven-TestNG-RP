@@ -1,13 +1,13 @@
-package test;
+package com.epam.ta.tests;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
-import static driver.MyDriver.getChromeDriver;
+import static com.epam.ta.drivers.MyDriver.getChromeDriver;
 
 public class BaseTest {
-    WebDriver driver;
+    public static WebDriver driver;
 
     @BeforeClass
     public void setUp(){

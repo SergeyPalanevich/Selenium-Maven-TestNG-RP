@@ -1,12 +1,12 @@
-package pages;
+package com.epam.ta.pages;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import static helper.Waiters.waitDocumentIsReady;
-import static helper.Waiters.waitElementToBeClickable;
+import static com.epam.ta.helpers.Waiters.waitDocumentIsReady;
+import static com.epam.ta.helpers.Waiters.waitElementToBeClickable;
 
 public class LoginPage extends PageObject {
 

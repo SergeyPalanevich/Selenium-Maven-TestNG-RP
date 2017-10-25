@@ -1,6 +1,6 @@
-package pages;
+package com.epam.ta.pages;
 
-import static helper.Waiters.waitElementToBeClickable;
+import static com.epam.ta.helpers.Waiters.waitElementToBeClickable;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

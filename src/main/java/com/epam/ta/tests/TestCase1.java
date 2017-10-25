@@ -1,22 +1,22 @@
-package test;
+package com.epam.ta.tests;
 
+import com.epam.ta.pages.MainPage;
 import org.testng.annotations.Test;
-import pages.MainPage;
 
-import static helper.Helpers.getCurrentDayPlusSomeDaysWithDateTimeFormat;
+import static com.epam.ta.helpers.Helpers.getCurrentDayPlusSomeDaysWithDateTimeFormat;
 import static org.testng.Assert.assertTrue;
 
 public class TestCase1 extends BaseTest {
-
+    private String url = "https://www.transavia.com/en-EU/home/";
+    private String airportNameFrom = "Palma de Mallorca, Spain";
+    private String airportNameTo = "Munich, Germany";
+    private String countPassengers = "1 Adult";
+    private String title = "Where do you want to go?";
     private MainPage main;
 
     @Test(description = "This TC check price for single flight")
     public void checkSingleFlight() {
-        String url = "https://www.transavia.com/en-EU/home/";
-        String airportNameFrom = "Palma de Mallorca, Spain";
-        String airportNameTo = "Munich, Germany";
-        String countPassengers = "1 Adult";
-        String title = "Where do you want to go?";
+
 
         driver.get(url);
         main = new MainPage(driver);

@@ -1,13 +1,13 @@
-package test;
+package com.epam.ta.tests;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
-import pages.BookFlightPage;
-import pages.MainPage;
-import pages.ProductPage;
+import com.epam.ta.pages.BookFlightPage;
+import com.epam.ta.pages.MainPage;
+import com.epam.ta.pages.ProductPage;
 
-import static driver.MyDriver.getChromeDriver;
+import static com.epam.ta.drivers.MyDriver.getChromeDriver;
 import static org.testng.Assert.assertTrue;
 
 public class TestCase2 {

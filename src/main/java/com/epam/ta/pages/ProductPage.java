@@ -1,8 +1,7 @@
-package pages;
+package com.epam.ta.pages;
 
-import static helper.Helpers.getPriceFromString;
-import static helper.Waiters.doSleep;
-import static helper.Waiters.waitElementToBeClickable;
+import static com.epam.ta.helpers.Helpers.getPriceFromString;
+import static com.epam.ta.helpers.Waiters.waitElementToBeClickable;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

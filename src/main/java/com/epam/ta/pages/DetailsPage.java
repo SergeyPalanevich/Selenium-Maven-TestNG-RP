@@ -1,9 +1,9 @@
-package pages;
+package com.epam.ta.pages;
 
-import static helper.Helpers.getPriceFromString;
-import static helper.Helpers.moveToMyElement;
-import static helper.Waiters.waitDocumentIsReady;
-import static helper.Waiters.waitElementToBeClickable;
+import static com.epam.ta.helpers.Helpers.getPriceFromString;
+import static com.epam.ta.helpers.Helpers.moveToMyElement;
+import static com.epam.ta.helpers.Waiters.waitDocumentIsReady;
+import static com.epam.ta.helpers.Waiters.waitElementToBeClickable;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

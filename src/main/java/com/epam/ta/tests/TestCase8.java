@@ -1,12 +1,12 @@
-package test;
+package com.epam.ta.tests;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
-import pages.ErrorPage;
-import pages.MainPage;
+import com.epam.ta.pages.ErrorPage;
+import com.epam.ta.pages.MainPage;
 
-import static driver.MyDriver.getChromeDriver;
+import static com.epam.ta.drivers.MyDriver.getChromeDriver;
 import static org.testng.Assert.assertEquals;
 
 public class TestCase8 {

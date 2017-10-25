@@ -1,42 +1,38 @@
-package test;
+package com.epam.ta.tests;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
-import pages.BookingPage;
-import pages.LoginPage;
-import pages.MainPage;
+import com.epam.ta.pages.BookingPage;
+import com.epam.ta.pages.DetailsPage;
+import com.epam.ta.pages.LoginPage;
+import com.epam.ta.pages.MainPage;
 
-import static driver.MyDriver.getChromeDriver;
+import static com.epam.ta.drivers.MyDriver.getChromeDriver;
 import static org.testng.Assert.assertEquals;
 
-public class TestCase3 {
-
+public class TestCase4 {
     private MainPage main;
     private LoginPage loginPage;
     private BookingPage booking;
+    private DetailsPage details;
     private WebDriver driver;
 
     @Test
-    public void loginToAccAndCheckTimeArrive() {
+    public void comparePriceQquality() {
         String url = "https://www.transavia.com/en-EU/home/";
         String flightNumber = "MF8C9R";
-        String lastname = "kukharau";
+        String lastName = "kukharau";
         String flightDate = "9 June 2016";
-        String arrivalTime = "2016-06-09 23:35";
-        String depatureAirport = "Pisa";
-        String arrivalAirport = "Amsterdam (Schiphol)";
         driver = getChromeDriver();
         driver.get(url);
         main = new MainPage(driver);
         loginPage = main.goToLoginPage();
-        loginPage.setCredentials(flightNumber, lastname, flightDate);
+        loginPage.setCredentials(flightNumber, lastName, flightDate);
         booking = loginPage.viewBooking();
-        assertEquals(booking.getTimeArrival(), arrivalTime);
-        assertEquals(booking.getDepatureAirport(), depatureAirport);
-        assertEquals(booking.getArrivalAirport(), arrivalAirport);
+        details = booking.goToBookingDetails();
+        assertEquals(details.getTotalSum(),  details.getPaymentAmount());
     }
-
 
     @AfterMethod
     public void terrDown() {

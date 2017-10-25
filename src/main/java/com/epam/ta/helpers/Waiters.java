@@ -1,4 +1,4 @@
-package helper;
+package com.epam.ta.helpers;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;

@@ -1,7 +1,7 @@
-package pages;
+package com.epam.ta.pages;
 
-import static helper.Waiters.doSleep;
-import static helper.Waiters.waitElementToBeClickable;
+import static com.epam.ta.helpers.Waiters.doSleep;
+import static com.epam.ta.helpers.Waiters.waitElementToBeClickable;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -50,7 +50,7 @@ public class MultipleFormPage extends PageObject {
     public WebElement buttonSearch;
 
     public void setOutboundFlight(String fromOutboundFlight, String toOutboundFlight, String dateOutboundFlight) {
-        doSleep(5000); /* After document complete - page reloads for this reason need waits */
+        doSleep(5000); /* After document complete - pages reloads for this reason need waits */
         waitElementToBeClickable(driver, fieldFromOutboundFlight, 10);
         fieldFromOutboundFlight.sendKeys(fromOutboundFlight);
         firstValueFromOutboundFlight.click();

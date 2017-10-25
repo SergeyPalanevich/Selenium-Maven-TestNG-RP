@@ -1,15 +1,14 @@
-package test;
+package com.epam.ta.tests;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
-import pages.MainPage;
-import pages.MultipleFlightPage;
-import pages.MultipleFormPage;
+import com.epam.ta.pages.MainPage;
+import com.epam.ta.pages.MultipleFlightPage;
+import com.epam.ta.pages.MultipleFormPage;
 
-import static driver.MyDriver.getChromeDriver;
-import static helper.Helpers.getCurrentDayPlusSomeDaysWithDateTimeFormat;
+import static com.epam.ta.drivers.MyDriver.getChromeDriver;
+import static com.epam.ta.helpers.Helpers.getCurrentDayPlusSomeDaysWithDateTimeFormat;
 import static org.testng.Assert.assertTrue;
 
 public class TestCase9 {

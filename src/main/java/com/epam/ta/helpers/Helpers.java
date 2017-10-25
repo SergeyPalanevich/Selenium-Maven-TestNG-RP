@@ -1,4 +1,4 @@
-package helper;
+package com.epam.ta.helpers;
 
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
@@ -28,22 +28,15 @@ public class Helpers {
     }
 
     public static float getPriceFromString(String argStr) {
-        System.out.println("argStr is " + argStr);
         String subString = "";
         float price;
-
         Pattern p1 = Pattern.compile("[€|Ç].\\d*.\\d*");
         Matcher m = p1.matcher(argStr);
         while (m.find()) {
             subString = argStr.substring(m.start(0));
         }
-
-        System.out.println("subString is " + subString);
         String numberPart = subString.replaceAll("[^0-9.]", "");
-        System.out.println("NumberPart is " + numberPart);
-
         price = Float.valueOf(numberPart);
-        System.out.println("Price is " + price);
         return price;
     }
 }
