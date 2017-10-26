@@ -100,7 +100,7 @@ public class HomePage extends AbstractPage {
     }
 
     public MultipleFormPage addMultipleDestinations() {
-        doSleep(3000); /* After document complete - pages reloads for this reason need waits */
+        waitForJSLoadComplete();
         waitElementToBeClickable(driver, linkAddMultipleDestinations, 20);
         linkAddMultipleDestinations.click();
         return new MultipleFormPage(driver);
