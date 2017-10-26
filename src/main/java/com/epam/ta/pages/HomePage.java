@@ -1,31 +1,21 @@
 package com.epam.ta.pages;
 
-import static com.epam.ta.helpers.Waiters.doSleep;
-import static com.epam.ta.helpers.Waiters.waitElementToBeClickable;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import static com.epam.ta.helpers.Waiters.doSleep;
 
-public class MainPage extends PageObject {
 
-    public MainPage(WebDriver driver) {
+public class HomePage extends AbstractPage {
+
+    public HomePage(WebDriver driver) {
         super(driver);
     }
 
-    @FindBy(xpath = "//h1")
-    public WebElement titleH1;
-
-    @FindBy(xpath = "//ol[@class='results']")
-    public WebElement result;
-
     @FindBy(id = "ui-datepicker-div")
     public WebElement datepicker;
-
-    @FindBy(xpath = "//div[@class='passengers']")
-    public WebElement passengersClass;
 
     @FindBy(xpath = "//div[@class='price']")
     public WebElement priceClass;
@@ -53,9 +43,6 @@ public class MainPage extends PageObject {
 
     @FindBy(id = "booking-passengers-input")
     public WebElement fieldBookingPassengers;
-
-    @FindBy(id = "dateSelection_IsReturnFlight-datepicker")
-    public WebElement fieldIsReturnDate;
 
     @FindBy(xpath = "//button[@class='button button-secondary close']")
     public WebElement buttonSavePassengers;
@@ -125,6 +112,8 @@ public class MainPage extends PageObject {
     }
 
     public void setAirportFrom(String airportName) {
+        waitForJSLoadComplete();
+        waitElementToBeClickable(driver, fieldFrom, 20);
         fieldFrom.sendKeys(airportName);
         firstValueFromListFrom.click();
     }
@@ -169,11 +158,6 @@ public class MainPage extends PageObject {
     public boolean isPriceEnabled() {
         waitElementToBeClickable(driver, priceClass, 20);
         return priceClass.isEnabled();
-    }
-
-    public boolean isTitleCorrect(String title) {
-        return titleH1.getText().equals(title);
-
     }
 
     public BookFlightPage setWhoWillBeTravelling() {

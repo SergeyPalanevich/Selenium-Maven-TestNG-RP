@@ -1,9 +1,5 @@
 package com.epam.ta.pages;
 
-import static com.epam.ta.helpers.Helpers.getPriceFromString;
-import static com.epam.ta.helpers.Waiters.doSleep;
-import static com.epam.ta.helpers.Waiters.waitElementToBeClickable;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -11,14 +7,13 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class BookFlightPage extends PageObject {
+import static com.epam.ta.helpers.Waiters.doSleep;
+
+public class BookFlightPage extends AbstractPage {
 
     public BookFlightPage(WebDriver driver) {
         super(driver);
     }
-
-    @FindBy(xpath = "//h1")
-    public WebElement titleH1;
 
     @FindBy(xpath = "//section[@class=\"flight outbound\"]//div[@class='day day-with-availability']")
     public List<WebElement> flightOutboundDaysWithAvailability;
@@ -38,9 +33,6 @@ public class BookFlightPage extends PageObject {
     @FindBy(xpath = "//button[@name='next_button']")
     public WebElement nextButton;
 
-    public boolean isTitleCorrect(String titleBook) {
-        return titleH1.getText().equals(titleBook);
-    }
 
     public float getPriceOutFlight() {
         waitElementToBeClickable(driver, priceOutboundDaysWithAvailability.get(0), 20);

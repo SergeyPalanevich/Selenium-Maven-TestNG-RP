@@ -8,7 +8,7 @@ import org.testng.xml.XmlSuite;
 import java.io.IOException;
 import java.util.List;
 
-public class Runner {
+public class RunnerTestNG {
     public static void main(String[] args) {
 
         TestNG testNG = new TestNG();

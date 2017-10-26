@@ -1,23 +1,21 @@
 package com.epam.ta.helpers;
 
+import org.apache.commons.io.FileUtils;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+import org.openqa.selenium.Cookie;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 
+import java.io.*;
 import java.util.Date;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Set;
 
 public class Helpers {
 
-    public static void moveToMyElement(WebDriver driver, WebElement element) {
-        new Actions(driver).moveToElement(element).perform();
-    }
-
-    // format "dd MMM yyyy"
+    // dd MMM yyyy
     public static String getCurrentDayPlusSomeDaysWithDateTimeFormat(int countOfDays) {
         DateTime dateTime = new DateTime(new Date());
         dateTime = dateTime.plusDays(countOfDays);
@@ -27,16 +25,42 @@ public class Helpers {
         return dateFormat;
     }
 
-    public static float getPriceFromString(String argStr) {
-        String subString = "";
-        float price;
-        Pattern p1 = Pattern.compile("[€|Ç].\\d*.\\d*");
-        Matcher m = p1.matcher(argStr);
-        while (m.find()) {
-            subString = argStr.substring(m.start(0));
+    public static WebDriver setCookie(WebDriver wDriver){
+        WebDriver driver = wDriver;
+        FileInputStream fis = null;
+        try {
+            fis = new FileInputStream("src/main/resources/cookies.out");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
-        String numberPart = subString.replaceAll("[^0-9.]", "");
-        price = Float.valueOf(numberPart);
-        return price;
+        ObjectInputStream oin = null;
+        try {
+            oin = new ObjectInputStream(fis);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Set<Cookie> cookies = null;
+        try {
+            cookies = (Set<Cookie>) oin.readObject();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        for (Cookie cookie : cookies) {
+            driver.manage().addCookie(cookie);
+        }
+        return driver;
+    }
+
+    public static void makeScreenshot(WebDriver driver) {
+
+        File screen = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        try {
+            FileUtils.copyFile(screen, new File("screenshots/" + getCurrentDayPlusSomeDaysWithDateTimeFormat(0) + ".png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }

@@ -12,16 +12,14 @@ import java.util.logging.Level;
 
 public class MyDriver {
     public static WebDriver getChromeDriver() {
-      //  ChromeDriverManager.getInstance().setup();
-        String pathToChromeDriver = "D:\\drivers\\chromedriver.exe";
-        System.setProperty("webdriver.chrome.driver", pathToChromeDriver);
+        //  ChromeDriverManager.getInstance().setup();
+        System.setProperty("webdriver.chrome.driver", "D:\\drivers\\chromedriver.exe");
+
         LoggingPreferences logs = new LoggingPreferences();
-        logs.enable(LogType.DRIVER, Level.OFF);
+        logs.enable(LogType.DRIVER, Level.WARNING);
         DesiredCapabilities desiredCapabilities = DesiredCapabilities.chrome();
         desiredCapabilities.setCapability(CapabilityType.LOGGING_PREFS, logs);
-
         WebDriver driver = new ChromeDriver(desiredCapabilities);
-
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
         driver.manage().timeouts().setScriptTimeout(20, TimeUnit.SECONDS);

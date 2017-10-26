@@ -5,10 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import static com.epam.ta.helpers.Waiters.waitDocumentIsReady;
-import static com.epam.ta.helpers.Waiters.waitElementToBeClickable;
-
-public class LoginPage extends PageObject {
+public class LoginPage extends AbstractPage {
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -24,7 +21,7 @@ public class LoginPage extends PageObject {
     public WebElement flightDateField;
 
     public void setCredentials(String flightNumber, String lastName, String flightDate) {
-        waitDocumentIsReady(driver);
+        waitForJSLoadComplete();
         waitElementToBeClickable(driver, flightNumberField, 20);
         flightNumberField.sendKeys(flightNumber);
         lastNameField.sendKeys(lastName);
@@ -32,7 +29,7 @@ public class LoginPage extends PageObject {
     }
 
     public BookingPage viewBooking() {
-        waitDocumentIsReady(driver);
+        waitForJSLoadComplete();
         flightDateField.sendKeys(Keys.ENTER);
         return new BookingPage(driver);
     }

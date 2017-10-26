@@ -1,10 +1,5 @@
 package com.epam.ta.pages;
 
-import static com.epam.ta.helpers.Helpers.getPriceFromString;
-import static com.epam.ta.helpers.Waiters.doSleep;
-import static com.epam.ta.helpers.Waiters.waitDocumentIsReady;
-import static com.epam.ta.helpers.Waiters.waitElementToBeClickable;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -12,7 +7,9 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class MultipleFlightPage extends PageObject {
+import static com.epam.ta.helpers.Waiters.doSleep;
+
+public class MultipleFlightPage extends AbstractPage {
 
     public MultipleFlightPage(WebDriver driver) {
         super(driver);
@@ -44,10 +41,10 @@ public class MultipleFlightPage extends PageObject {
         } else {
             waitElementToBeClickable(driver, flightOutboundDaysWithAvailability.get(0), 10);
             flightOutboundDaysWithAvailability.get(0).click(); // select first Out flight
-            waitDocumentIsReady(driver);
+            waitForJSLoadComplete();
             waitElementToBeClickable(driver, priceOutboundDaysWithAvailability.get(0), 10);
             priceOutboundDaysWithAvailability.get(0).click(); //click on first price
-            waitDocumentIsReady(driver);
+            waitForJSLoadComplete();
         }
     }
 
@@ -60,14 +57,14 @@ public class MultipleFlightPage extends PageObject {
         } else {
             new Actions(driver).moveToElement(inboundSection).perform();
             flightInboundDaysWithAvailability.get(0).click(); // select first Out flight
-            waitDocumentIsReady(driver);
+            waitForJSLoadComplete();
             waitElementToBeClickable(driver, priceInboundDaysWithAvailability.get(0), 10);
             priceInboundDaysWithAvailability.get(0).click(); //click on first price
         }
     }
 
     public float getTotalAmount() {
-        waitDocumentIsReady(driver);
+        waitForJSLoadComplete();
         waitElementToBeClickable(driver, totalPrice, 10);
         return getPriceFromString(totalPrice.getText());
     }

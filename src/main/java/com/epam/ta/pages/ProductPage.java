@@ -1,14 +1,11 @@
 package com.epam.ta.pages;
 
-import static com.epam.ta.helpers.Helpers.getPriceFromString;
-import static com.epam.ta.helpers.Waiters.waitElementToBeClickable;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 
-public class ProductPage extends PageObject {
+public class ProductPage extends AbstractPage {
 
     public ProductPage(WebDriver driver) {
         super(driver);

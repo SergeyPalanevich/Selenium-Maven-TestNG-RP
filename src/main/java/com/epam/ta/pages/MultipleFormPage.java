@@ -1,20 +1,16 @@
 package com.epam.ta.pages;
 
-import static com.epam.ta.helpers.Waiters.doSleep;
-import static com.epam.ta.helpers.Waiters.waitElementToBeClickable;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class MultipleFormPage extends PageObject {
+import static com.epam.ta.helpers.Waiters.doSleep;
+
+public class MultipleFormPage extends AbstractPage {
 
     protected MultipleFormPage(WebDriver driver) {
         super(driver);
     }
-
-    @FindBy(xpath = "//h1")
-    public WebElement h1;
 
     @FindBy(id = "openJawRouteSelection_DepartureStationOutbound-input")
     public WebElement fieldFromOutboundFlight;

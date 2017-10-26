@@ -1,21 +1,13 @@
 package com.epam.ta.pages;
 
-import static com.epam.ta.helpers.Helpers.getPriceFromString;
-import static com.epam.ta.helpers.Helpers.moveToMyElement;
-import static com.epam.ta.helpers.Waiters.waitDocumentIsReady;
-import static com.epam.ta.helpers.Waiters.waitElementToBeClickable;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class DetailsPage extends PageObject {
+public class DetailsPage extends AbstractPage {
     public DetailsPage(WebDriver driver) {
         super(driver);
     }
-
-    @FindBy(xpath = "//h1")
-    public WebElement h1;
 
     @FindBy(xpath = "//div[@class='booking-price-breakdown']")
     public WebElement divBookingPriceBreakdown;
@@ -34,7 +26,7 @@ public class DetailsPage extends PageObject {
         waitElementToBeClickable(driver, divBookingPriceBreakdown, 20);
         moveToMyElement(driver, divBookingPriceBreakdown);
         waitElementToBeClickable(driver, totalSum, 20);
-        waitDocumentIsReady(driver);
+        waitForJSLoadComplete();
         return getPriceFromString(totalSum.getText());
     }
 
@@ -42,7 +34,7 @@ public class DetailsPage extends PageObject {
         waitElementToBeClickable(driver, totalGreenPanel, 20);
         moveToMyElement(driver, totalGreenPanel);
         waitElementToBeClickable(driver, paymentAmount, 20);
-        waitDocumentIsReady(driver);
+        waitForJSLoadComplete();
         return getPriceFromString(paymentAmount.getText());
     }
 }
