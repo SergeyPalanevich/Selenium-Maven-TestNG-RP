@@ -27,6 +27,13 @@ public class MultipleFlightPage extends AbstractPage {
     @FindBy(xpath = "//section[@class='flight inbound']//button[@class='flight-result-button']")
     public List<WebElement> priceInboundDaysWithAvailability;
 
+    @FindBy(xpath = "//section[@class='flight inbound']//div[@class='day day-with-availability is-selected']")
+    public WebElement dayInboundIsSelected;
+
+    @FindBy(xpath = "//section[@class='flight outbound']//div[@class='day day-with-availability is-selected']")
+    public WebElement dayOutboundIsSelected;
+
+
     @FindBy(xpath = "//div[@class='HV-gs-type-c--bp0']")
     public WebElement inboundSection;
 
@@ -34,10 +41,11 @@ public class MultipleFlightPage extends AbstractPage {
     public WebElement totalPrice;
 
     public void selectOutboundFlight() {
-        doSleep(1500);
-        if (priceOutboundDaysWithAvailability.size() > 0) {
+        waitForJSLoadComplete();
+        if (dayOutboundIsSelected.isDisplayed()) {
             waitElementToBeClickable(driver, priceOutboundDaysWithAvailability.get(0), 10);
             priceOutboundDaysWithAvailability.get(0).click(); //click on first price
+            waitForJSLoadComplete();
         } else {
             waitElementToBeClickable(driver, flightOutboundDaysWithAvailability.get(0), 10);
             flightOutboundDaysWithAvailability.get(0).click(); // select first Out flight
@@ -49,17 +57,19 @@ public class MultipleFlightPage extends AbstractPage {
     }
 
     public void selectInboundFlight() {
-        doSleep(1500);
-        if (priceInboundDaysWithAvailability.size() > 0) {
-            new Actions(driver).moveToElement(inboundSection).perform();
+        new Actions(driver).moveToElement(inboundSection).perform();
+        waitForJSLoadComplete();
+        if (dayInboundIsSelected.isDisplayed()) {
             waitElementToBeClickable(driver, priceInboundDaysWithAvailability.get(0), 10);
             priceInboundDaysWithAvailability.get(0).click(); //click on first price
+            waitForJSLoadComplete();
         } else {
-            new Actions(driver).moveToElement(inboundSection).perform();
+            waitElementToBeClickable(driver, flightInboundDaysWithAvailability.get(0), 10);
             flightInboundDaysWithAvailability.get(0).click(); // select first Out flight
             waitForJSLoadComplete();
             waitElementToBeClickable(driver, priceInboundDaysWithAvailability.get(0), 10);
             priceInboundDaysWithAvailability.get(0).click(); //click on first price
+            waitForJSLoadComplete();
         }
     }
 

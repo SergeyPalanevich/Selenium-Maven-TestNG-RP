@@ -46,7 +46,6 @@ public class MultipleFormPage extends AbstractPage {
     public WebElement buttonSearch;
 
     public void setOutboundFlight(String fromOutboundFlight, String toOutboundFlight, String dateOutboundFlight) {
-        doSleep(5000); /* After document complete - pages reloads for this reason need waits */
         waitElementToBeClickable(driver, fieldFromOutboundFlight, 10);
         fieldFromOutboundFlight.sendKeys(fromOutboundFlight);
         firstValueFromOutboundFlight.click();
