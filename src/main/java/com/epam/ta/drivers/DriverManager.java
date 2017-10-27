@@ -6,21 +6,12 @@ public enum DriverManager {
     ChromeDriver,
     FirefoxDriver;
 
-    private static WebDriver chrome;
-    private static WebDriver firefox;
-
     public WebDriver getDriver() {
         switch (this) {
             case ChromeDriver:
-                if (chrome == null) {
-                    chrome = new ChromeDriverCreator().createDriver();
-                }
-                return chrome;
+                return new ChromeDriverCreator().createDriver();
             case FirefoxDriver:
-                if (firefox == null) {
-                    firefox = new FireFoxDriverCreator().createDriver();
-                }
-                return firefox;
+                return new FireFoxDriverCreator().createDriver();
             default:
                 throw new AssertionError("Unknown WebDriver !!!");
         }
