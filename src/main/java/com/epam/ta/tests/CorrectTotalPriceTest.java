@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertTrue;
 
-public class Test2ProductPage extends BaseTest {
+public class CorrectTotalPriceTest extends BaseTest {
     private static final String DEPATURE_AIRPORT = "Madrid";
     private static final String ARRIVAL_AIRPORT = "Paris";
     private float priceOutboundAfterRegex;

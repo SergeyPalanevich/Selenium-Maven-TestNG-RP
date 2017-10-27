@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
-public class Test4DetailsPage extends BaseTest {
+public class CorrectTotalSumTest extends BaseTest {
     private static final String URL = "https://www.transavia.com/en-EU/home/";
     private static final String FLIGHT_NUMBER = "MF8C9R";
     private static final String LAST_NAME = "kukharau";

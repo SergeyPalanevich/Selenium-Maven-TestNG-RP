@@ -2,25 +2,27 @@ package com.epam.ta.drivers;
 
 import org.openqa.selenium.WebDriver;
 
-import static com.epam.ta.drivers.ChromeDriverCreator.closeChromeDriver;
-import static com.epam.ta.drivers.ChromeDriverCreator.setupChromeDriver;
-import static com.epam.ta.drivers.FireFoxDriverCreator.closeFireFoxDriver;
-import static com.epam.ta.drivers.FireFoxDriverCreator.setupFireFoxDriver;
+public enum DriverManager {
+    ChromeDriver,
+    FirefoxDriver;
 
-public class DriverManager {
-    public static WebDriver getChrome(){
-       return setupChromeDriver();
-    }
+    private static WebDriver chrome;
+    private static WebDriver firefox;
 
-    public static void closeChrome(){
-        closeChromeDriver();
-    }
-
-    public static WebDriver getFireFox(){
-        return setupFireFoxDriver();
-    }
-
-    public static void closeFireFox(){
-        closeFireFoxDriver();
+    public WebDriver getDriver() {
+        switch (this) {
+            case ChromeDriver:
+                if (chrome == null) {
+                    chrome = new ChromeDriverCreator().createDriver();
+                }
+                return chrome;
+            case FirefoxDriver:
+                if (firefox == null) {
+                    firefox = new FireFoxDriverCreator().createDriver();
+                }
+                return firefox;
+            default:
+                throw new AssertionError("Unknown WebDriver !!!");
+        }
     }
 }

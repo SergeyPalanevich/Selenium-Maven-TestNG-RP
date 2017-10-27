@@ -14,22 +14,25 @@ import java.util.Date;
 import java.util.Set;
 
 public class Helpers {
+    private static final String PATH_TO_COOKIES = "src/main/resources/cookies.out";
+    private static final String DATE_FORMAT = "dd-MMM-yyyy";
 
-    // dd MMM yyyy
+
     public static String getCurrentDayPlusSomeDaysWithDateTimeFormat(int countOfDays) {
         DateTime dateTime = new DateTime(new Date());
         dateTime = dateTime.plusDays(countOfDays);
-        DateTimeFormatter fmt = DateTimeFormat.forPattern("dd-MMM-yyyy");
+        DateTimeFormatter fmt = DateTimeFormat.forPattern(DATE_FORMAT);
         String dateFormat = dateTime.toString(fmt);
         dateFormat = dateFormat.replace('-', ' ');
-        return dateFormat;
+        return dateFormat; // dd MMM yyyy
     }
 
     public static WebDriver setCookie(WebDriver wDriver){
         WebDriver driver = wDriver;
+
         FileInputStream fis = null;
         try {
-            fis = new FileInputStream("src/main/resources/cookies.out");
+            fis = new FileInputStream(PATH_TO_COOKIES);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

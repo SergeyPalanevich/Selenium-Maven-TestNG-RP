@@ -8,7 +8,7 @@ import java.io.IOException;
 import static com.epam.ta.helpers.Helpers.getCurrentDayPlusSomeDaysWithDateTimeFormat;
 import static org.testng.Assert.assertTrue;
 
-public class Test1HomePage extends BaseTest {
+public class MainFormAndSearchTest extends BaseTest {
 
     private static final String DEPATURE_AIRPORT = "Palma de Mallorca, Spain";
     private static final String ARRIVAL_AIRPORT = "Munich, Germany";

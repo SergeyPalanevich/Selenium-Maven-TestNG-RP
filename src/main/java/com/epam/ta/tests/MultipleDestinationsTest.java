@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import static com.epam.ta.helpers.Helpers.getCurrentDayPlusSomeDaysWithDateTimeFormat;
 import static org.testng.Assert.assertTrue;
 
-public class Test9MultipleFlightPage extends BaseTest {
+public class MultipleDestinationsTest extends BaseTest {
     private static final String DEPATURE_AIRPORT_FIRST = "Bologna, Italy";
     private static final String ARRIVAL_AIRPORT_FIRST = "Eindhoven, Netherlands";
     private static final String DEPATURE_AIRPORT_SECOND = "Amsterdam (Schiphol), Netherlands";
@@ -19,7 +19,7 @@ public class Test9MultipleFlightPage extends BaseTest {
     private MultipleFlightPage multipleFlight;
     private MultipleFormPage multipleForm;
 
-    @Test(description = "This TC check mulItiple destinations")
+    @Test(description = "This TC check multiple destinations")
     public void checkMultipleDestinations() {
 
         main = new HomePage(driver);

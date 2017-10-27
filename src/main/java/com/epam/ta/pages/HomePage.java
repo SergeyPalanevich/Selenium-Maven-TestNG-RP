@@ -65,7 +65,6 @@ public class HomePage extends AbstractPage {
     @FindBy(xpath = "//*[@id='horizontal-sub-navigation-manageyourbooking']/div/div[2]/div/div[1]/div/ul/li[2]/a/div/span[2]")
     public WebElement viewYourBookinglink;
 
-
     @FindBy(xpath = "//a[@href='/en-EU/book-a-flight/flights/Deeplink/?m=combi&s=false&v=false']")
     public WebElement linkAddMultipleDestinations;
 

@@ -7,23 +7,13 @@ import org.openqa.selenium.firefox.FirefoxProfile;
 
 import java.io.File;
 
-public class FireFoxDriverCreator {
-    private static WebDriver driver;
+public class FireFoxDriverCreator extends WebDriverCreator{
+    private static final String LOCAL_PATH_TO_FIREFOX = "C:\\Program Files\\Mozilla Firefox46\\firefox.exe";
 
-    private FireFoxDriverCreator() {
-    }
-
-    static WebDriver setupFireFoxDriver() {
-        if(driver == null){
-            FirefoxBinary binary = new FirefoxBinary(new File("C:\\Program Files\\Mozilla Firefox46\\firefox.exe"));
-            FirefoxProfile profile = new FirefoxProfile();
-            driver = new FirefoxDriver(binary, profile);
-        }
-        return driver;
-    }
-
-    static void closeFireFoxDriver() {
-        driver.quit();
-        driver = null;
+    @Override
+    public WebDriver createDriver() {
+        FirefoxBinary binary = new FirefoxBinary(new File(LOCAL_PATH_TO_FIREFOX));
+        FirefoxProfile profile = new FirefoxProfile();
+        return  new FirefoxDriver(binary, profile);
     }
 }

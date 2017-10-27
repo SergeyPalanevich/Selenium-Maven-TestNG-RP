@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
-public class Test8ErrorPage extends BaseTest {
+public class CorrectErrorMessageTest extends BaseTest {
     private static final String DEPATURE_AIRPORT = "Dubai";
     private static final String ARRIVAL_AIRPORT = "Agadir, Morocco";
     private static final String ERROR_MESSAGE = "Unfortunately we do not fly from Dubai, United Arab Emirates to Agadir, Morocco."

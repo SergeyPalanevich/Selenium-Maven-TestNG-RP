@@ -70,6 +70,10 @@ public class AbstractPage {
                 .until(ExpectedConditions.elementToBeClickable(element));
     }
 
+    protected void moveToMyElement(WebDriver driver, WebElement element) {
+        new Actions(driver).moveToElement(element).perform();
+    }
+
     protected long getDriverTimeout() {
         return 20;
     }
@@ -78,10 +82,4 @@ public class AbstractPage {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         return js;
     }
-
-    protected void moveToMyElement(WebDriver driver, WebElement element) {
-        new Actions(driver).moveToElement(element).perform();
-    }
-
-
 }
