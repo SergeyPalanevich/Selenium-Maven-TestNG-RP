@@ -94,6 +94,7 @@ public class HomePage extends AbstractPage {
     }
 
     public WebDriver runSearch() {
+        waitForJSLoadComplete();
         waitElementToBeClickable(driver, searchButton, 20);
         searchButton.click();
         return driver;

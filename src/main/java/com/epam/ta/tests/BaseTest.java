@@ -4,7 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
-import static com.epam.ta.drivers.MyDriver.getChromeDriver;
+import static com.epam.ta.drivers.DriverManager.closeChrome;
+import static com.epam.ta.drivers.DriverManager.getChrome;
 import static com.epam.ta.helpers.Helpers.setCookie;
 
 public class BaseTest {
@@ -13,7 +14,7 @@ public class BaseTest {
 
     @BeforeClass
     public void setUp() {
-        driver = getChromeDriver();
+        driver = getChrome();
         driver.get(URL);
         driver = setCookie(driver);
         driver.navigate().refresh();
@@ -21,6 +22,6 @@ public class BaseTest {
 
     @AfterClass
     public void terrDown() {
-        driver.quit();
+        closeChrome();
     }
 }
