@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Test Plan">
+    <listeners>
+        <listener class-name="com.epam.reportportal.testng.ReportPortalTestNGListener"/>
+    </listeners>
+    <test name="Tests">
+        <classes>
+            <class name="com.epam.ta.tests.MainFormAndSearchTest" />
+            <class name="com.epam.ta.tests.CorrectTotalPriceTest" />
+            <class name="com.epam.ta.tests.TimeArrivalTest" />
+            <class name="com.epam.ta.tests.CorrectTotalSumTest" />
+            <class name="com.epam.ta.tests.CorrectErrorMessageTest" />
+            <class name="com.epam.ta.tests.MultipleDestinationsTest" />
+        </classes>
+    </test>
+</suite>

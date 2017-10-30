@@ -1,9 +1,7 @@
 package com.epam.ta.listeners;
 
 import org.apache.log4j.Logger;
-import org.testng.ITestContext;
-import org.testng.ITestListener;
-import org.testng.ITestResult;
+import org.testng.*;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
