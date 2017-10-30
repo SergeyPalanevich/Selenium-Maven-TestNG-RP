@@ -1,19 +1,26 @@
 package com.epam.ta.drivers;
 
+import com.epam.ta.helpers.NoSuchWebDriverExeption;
 import org.openqa.selenium.WebDriver;
 
-public enum DriverManager {
-    ChromeDriver,
-    FirefoxDriver;
+public class DriverManager {
 
-    public WebDriver getDriver() {
-        switch (this) {
+    private static WebDriver chrome;
+    private static WebDriver firefox;
+
+    private DriverManager() {
+    }
+
+    public static WebDriver getDriver(ChromeAndFireFox chromeAndFirefox) throws NoSuchWebDriverExeption {
+        switch (chromeAndFirefox) {
             case ChromeDriver:
-                return new ChromeDriverCreator().createDriver();
+                chrome = new ChromeDriverCreator().createDriver();
+                return chrome;
             case FirefoxDriver:
-                return new FireFoxDriverCreator().createDriver();
+                firefox = new FireFoxDriverCreator().createDriver();
+                return firefox;
             default:
-                throw new AssertionError("Unknown WebDriver !!!");
+                throw new NoSuchWebDriverExeption("Invalid name for WebDriver...");
         }
     }
 }

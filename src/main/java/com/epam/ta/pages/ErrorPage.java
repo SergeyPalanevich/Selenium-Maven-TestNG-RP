@@ -14,8 +14,7 @@ public class ErrorPage extends AbstractPage {
     public WebElement notificationMessage;
 
     public String getError() {
-        waitForJSLoadComplete();
-        waitElementToBeClickable(driver, notificationMessage, 20);
+        waitElementToBeClickable(driver, notificationMessage);
         return notificationMessage.getText();
     }
 }

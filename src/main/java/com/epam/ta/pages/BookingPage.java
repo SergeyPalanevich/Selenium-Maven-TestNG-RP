@@ -21,7 +21,7 @@ public class BookingPage extends AbstractPage {
     }
 
     public DetailsPage goToBookingDetails() {
-        waitElementToBeClickable(driver, detailsLink, 20);
+        waitElementToBeClickable(driver, detailsLink);
         detailsLink.click();
         return new DetailsPage(driver);
     }

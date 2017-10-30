@@ -44,7 +44,7 @@ public class MultipleFormPage extends AbstractPage {
     public WebElement buttonSearch;
 
     public void setOutboundFlight(String fromOutboundFlight, String toOutboundFlight, String dateOutboundFlight) {
-        waitElementToBeClickable(driver, fieldFromOutboundFlight, 10);
+        waitElementToBeClickable(driver, fieldFromOutboundFlight);
         fieldFromOutboundFlight.sendKeys(fromOutboundFlight);
         firstValueFromOutboundFlight.click();
         fieldToOutboundFlight.sendKeys(toOutboundFlight);
@@ -54,7 +54,7 @@ public class MultipleFormPage extends AbstractPage {
     }
 
     public void setInboundFlight(String fromInboundFlight, String toInboundFlight, String dateInboundFlight) {
-        waitElementToBeClickable(driver, fieldFromInboundFlight, 10);
+        waitElementToBeClickable(driver, fieldFromInboundFlight);
         fieldFromInboundFlight.sendKeys(fromInboundFlight);
         firstValueFromInboundFlight.click();
         fieldToInboundFlight.sendKeys(toInboundFlight);
@@ -65,7 +65,7 @@ public class MultipleFormPage extends AbstractPage {
     }
 
     public MultipleFlightPage runSearch() {
-        waitElementToBeClickable(driver, buttonSearch, 20);
+        waitElementToBeClickable(driver, buttonSearch);
         buttonSearch.click();
         return new MultipleFlightPage(driver);
     }

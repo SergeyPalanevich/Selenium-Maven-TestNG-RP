@@ -2,7 +2,6 @@ package com.epam.ta.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
@@ -13,7 +12,7 @@ public class MultipleFlightPage extends AbstractPage {
         super(driver);
     }
 
-    @FindBy(xpath = "//section[@class='flight outbound']//div[@class='day day-with-availability']//h5")
+    @FindBy(xpath = "//section[@class='flight outbound']//div[@class='day day-with-availability']")
     public List<WebElement> flightOutboundDaysWithAvailability;
 
     @FindBy(xpath = "//section[@class='flight inbound']//div[@class='day day-with-availability']")
@@ -39,41 +38,47 @@ public class MultipleFlightPage extends AbstractPage {
     public WebElement totalPrice;
 
     public void selectOutboundFlight() {
-        waitForJSLoadComplete();
-        if (dayOutboundIsSelected.isDisplayed()) {
-            waitElementToBeClickable(driver, priceOutboundDaysWithAvailability.get(0), 10);
-            priceOutboundDaysWithAvailability.get(0).click(); //click on first price
-            waitForJSLoadComplete();
+
+    boolean success = false;
+
+        try {
+            success = dayOutboundIsSelected.isDisplayed();
+        } catch (Exception e) {
+        }
+
+        if (success){
+            waitElementToBeClickable(driver, priceOutboundDaysWithAvailability.get(0));
+            priceOutboundDaysWithAvailability.get(0).click();
         } else {
-            waitElementToBeClickable(driver, flightOutboundDaysWithAvailability.get(0), 10);
-            flightOutboundDaysWithAvailability.get(0).click(); // select first Out flight
-            waitForJSLoadComplete();
-            waitElementToBeClickable(driver, priceOutboundDaysWithAvailability.get(0), 10);
-            priceOutboundDaysWithAvailability.get(0).click(); //click on first price
+            waitElementToBeClickable(driver, flightOutboundDaysWithAvailability.get(0));
+            flightOutboundDaysWithAvailability.get(0).click();
+            waitElementToBeClickable(driver, priceOutboundDaysWithAvailability.get(0));
+            priceOutboundDaysWithAvailability.get(0).click();
         }
     }
 
     public void selectInboundFlight() {
-        waitForJSLoadComplete();
-        new Actions(driver).moveToElement(inboundSection).perform();
-        waitForJSLoadComplete();
-        if (dayInboundIsSelected.isDisplayed()) {
-            waitElementToBeClickable(driver, priceInboundDaysWithAvailability.get(0), 10);
-            priceInboundDaysWithAvailability.get(0).click(); //click on first price
-            waitForJSLoadComplete();
+        moveToMyElement(driver, inboundSection);
+        boolean success = false;
+
+        try {
+            success = dayInboundIsSelected.isDisplayed();
+        } catch (Exception e) {
+        }
+
+        if (success) {
+            waitElementToBeClickable(driver, priceInboundDaysWithAvailability.get(0));
+            priceInboundDaysWithAvailability.get(0).click();
         } else {
-            waitElementToBeClickable(driver, flightInboundDaysWithAvailability.get(0), 10);
-            flightInboundDaysWithAvailability.get(0).click(); // select first Out flight
-            waitForJSLoadComplete();
-            waitElementToBeClickable(driver, priceInboundDaysWithAvailability.get(0), 10);
-            priceInboundDaysWithAvailability.get(0).click(); //click on first price
-            waitForJSLoadComplete();
+            waitElementToBeClickable(driver, flightInboundDaysWithAvailability.get(0));
+            flightInboundDaysWithAvailability.get(0).click();
+            waitElementToBeClickable(driver, priceInboundDaysWithAvailability.get(0));
+            priceInboundDaysWithAvailability.get(0).click();
         }
     }
 
     public float getTotalAmount() {
-        waitForJSLoadComplete();
-        waitElementToBeClickable(driver, totalPrice, 10);
+        waitElementToBeClickable(driver, totalPrice);
         return getPriceFromString(totalPrice.getText());
     }
 }

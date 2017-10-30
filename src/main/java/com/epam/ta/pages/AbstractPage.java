@@ -18,6 +18,8 @@ public class AbstractPage {
 
     protected WebDriver driver;
 
+    public static final long DRIVER_TIMEOUT = 25;
+
     protected AbstractPage(WebDriver driver) {
         this.driver = driver;
         waitForJSLoadComplete();
@@ -66,26 +68,42 @@ public class AbstractPage {
         return price;
     }
 
-    protected void waitElementToBeClickable(WebDriver driver, WebElement element, int time) {
-        (new WebDriverWait(driver, time))
+    protected void waitElementToBeClickable(WebDriver driver, WebElement element) {
+        waitForJSLoadComplete();
+        (new WebDriverWait(driver, getDriverTimeout()))
                 .until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    protected void waitElementIsPresenceOfLocated(WebDriver driver, String path, int time) {
+    protected void waitElementIsPresenceOfLocated(WebDriver driver, String path) {
+        waitForJSLoadComplete();
+        (new WebDriverWait(driver, getDriverTimeout()))
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(path)));
+    }
+
+    protected void waitElementIsPresenceOfLocatedWithCustomTimeout(WebDriver driver, String path, long time) {
+        waitForJSLoadComplete();
         (new WebDriverWait(driver, time))
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath(path)));
     }
 
-    protected void moveToMyElement(WebDriver driver, WebElement element) {
-        new Actions(driver).moveToElement(element).perform();
+    protected void waitElementToBeClickableWithCustomTimeout(WebDriver driver, WebElement element, long time) {
+        waitForJSLoadComplete();
+        (new WebDriverWait(driver, time))
+                .until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    protected long getDriverTimeout() {
-        return 20;
+
+    protected void moveToMyElement(WebDriver driver, WebElement element) {
+        waitForJSLoadComplete();
+        new Actions(driver).moveToElement(element).perform();
     }
 
     protected JavascriptExecutor getJSExecutor(WebDriver driver) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         return js;
+    }
+
+    protected long getDriverTimeout() {
+        return DRIVER_TIMEOUT;
     }
 }

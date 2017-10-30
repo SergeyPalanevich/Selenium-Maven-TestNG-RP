@@ -21,15 +21,14 @@ public class LoginPage extends AbstractPage {
     public WebElement flightDateField;
 
     public void setCredentials(String flightNumber, String lastName, String flightDate) {
-        waitForJSLoadComplete();
-        waitElementToBeClickable(driver, flightNumberField, 20);
+        waitElementToBeClickable(driver, flightNumberField);
         flightNumberField.sendKeys(flightNumber);
         lastNameField.sendKeys(lastName);
         flightDateField.sendKeys(flightDate);
     }
 
     public BookingPage viewBooking() {
-        waitForJSLoadComplete();
+        waitElementToBeClickable(driver, flightDateField);
         flightDateField.sendKeys(Keys.ENTER);
         return new BookingPage(driver);
     }

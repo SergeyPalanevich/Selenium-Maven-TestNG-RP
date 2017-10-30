@@ -23,17 +23,17 @@ public class DetailsPage extends AbstractPage {
 
 
     public float getTotalSum() {
-        waitElementToBeClickable(driver, divBookingPriceBreakdown, 20);
+        waitElementToBeClickable(driver, divBookingPriceBreakdown);
         moveToMyElement(driver, divBookingPriceBreakdown);
-        waitElementToBeClickable(driver, totalSum, 20);
+        waitElementToBeClickable(driver, totalSum);
         waitForJSLoadComplete();
         return getPriceFromString(totalSum.getText());
     }
 
     public float getPaymentAmount() {
-        waitElementToBeClickable(driver, totalGreenPanel, 20);
+        waitElementToBeClickable(driver, totalGreenPanel);
         moveToMyElement(driver, totalGreenPanel);
-        waitElementToBeClickable(driver, paymentAmount, 20);
+        waitElementToBeClickable(driver, paymentAmount);
         waitForJSLoadComplete();
         return getPriceFromString(paymentAmount.getText());
     }

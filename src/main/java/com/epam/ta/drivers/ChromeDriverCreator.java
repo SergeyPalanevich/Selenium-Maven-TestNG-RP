@@ -15,7 +15,8 @@ import java.util.logging.Level;
 
 public class ChromeDriverCreator extends WebDriverCreator{
 
-    private static final String PATH_TO_DRIVER = "D:\\drivers\\chromedriver.exe";
+    private static final String PATH_TO_DRIVER = "src/main/resources/chromedriver.exe";
+    public static final long MANAGE_TIMEOUT = 25;
 
     @Override
     public WebDriver createDriver() {
@@ -30,9 +31,9 @@ public class ChromeDriverCreator extends WebDriverCreator{
             e.printStackTrace();
         }
         WebDriver driver = new ChromeDriver(service, desiredCapabilities);
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
-        driver.manage().timeouts().setScriptTimeout(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(MANAGE_TIMEOUT, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(MANAGE_TIMEOUT, TimeUnit.SECONDS);
+        driver.manage().timeouts().setScriptTimeout(MANAGE_TIMEOUT, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         return driver;
     }

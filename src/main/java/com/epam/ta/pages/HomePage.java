@@ -67,43 +67,35 @@ public class HomePage extends AbstractPage {
     public WebElement linkAddMultipleDestinations;
 
     public LoginPage goToLoginPage() {
-        waitElementToBeClickable(driver, manageYourBookinglink, 20);
+        waitElementToBeClickable(driver, manageYourBookinglink);
         manageYourBookinglink.click();
-        waitElementToBeClickable(driver, viewYourBookinglink, 20);
+        waitElementToBeClickable(driver, viewYourBookinglink);
         viewYourBookinglink.click();
         return new LoginPage(driver);
     }
 
     public void fillFromField(String from) {
-        waitForJSLoadComplete();
-        waitElementToBeClickable(driver, fieldFrom, 20);
+        waitElementToBeClickable(driver, fieldFrom);
         fieldFrom.sendKeys(from);
-        waitForJSLoadComplete();
-        waitElementToBeClickable(driver, firstValueFromListFrom, 20);
+        waitElementToBeClickable(driver, firstValueFromListFrom);
         firstValueFromListFrom.click();
-        waitForJSLoadComplete();
     }
 
     public void fillToField(String to) {
-        waitForJSLoadComplete();
-        waitElementToBeClickable(driver, fieldTo, 20);
+        waitElementToBeClickable(driver, fieldTo);
         fieldTo.sendKeys(to);
-        waitForJSLoadComplete();
-        waitElementToBeClickable(driver, firstValueFromListTo, 20);
+        waitElementToBeClickable(driver, firstValueFromListTo);
         firstValueFromListTo.click();
-        waitForJSLoadComplete();
     }
 
     public WebDriver runSearch() {
-        waitForJSLoadComplete();
-        waitElementToBeClickable(driver, searchButton, 20);
+        waitElementToBeClickable(driver, searchButton);
         searchButton.click();
         return driver;
     }
 
     public MultipleFormPage addMultipleDestinations() {
-        waitForJSLoadComplete();
-        waitElementToBeClickable(driver, linkAddMultipleDestinations, 20);
+        waitElementToBeClickable(driver, linkAddMultipleDestinations);
         linkAddMultipleDestinations.click();
         return new MultipleFormPage(driver);
     }
@@ -114,8 +106,7 @@ public class HomePage extends AbstractPage {
     }
 
     public void setAirportFrom(String airportName) {
-        waitForJSLoadComplete();
-        waitElementToBeClickable(driver, fieldFrom, 20);
+        waitElementToBeClickable(driver, fieldFrom);
         fieldFrom.sendKeys(airportName);
         firstValueFromListFrom.click();
     }
@@ -158,19 +149,20 @@ public class HomePage extends AbstractPage {
     }
 
     public boolean isPriceEnabled() {
-        waitElementToBeClickable(driver, priceClass, 20);
-        return priceClass.isEnabled();
+       waitForJSLoadComplete();
+       return priceClass.isEnabled();
     }
 
     public BookFlightPage setWhoWillBeTravelling() {
-        waitForJSLoadComplete();
-        waitElementToBeClickable(driver, fieldPassenger, 20);
+        waitElementToBeClickable(driver, fieldPassenger);
         fieldPassenger.click();
-        waitElementToBeClickable(driver, buttonPlusAdults, 20);
+        waitElementToBeClickable(driver, buttonPlusAdults);
         buttonPlusAdults.click();
-        waitElementToBeClickable(driver, buttonPlusChildren, 20);
+        waitElementToBeClickable(driver, buttonPlusChildren);
         buttonPlusChildren.click();
+        waitElementToBeClickable(driver, buttonSavePassengers);
         buttonSavePassengers.click();
+        waitElementToBeClickable(driver, searchButton);
         searchButton.click();
         return new BookFlightPage(driver);
     }
