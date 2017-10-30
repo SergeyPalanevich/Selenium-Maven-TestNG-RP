@@ -5,8 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import static com.epam.ta.helpers.Waiters.doSleep;
-
 
 public class HomePage extends AbstractPage {
 
@@ -69,7 +67,6 @@ public class HomePage extends AbstractPage {
     public WebElement linkAddMultipleDestinations;
 
     public LoginPage goToLoginPage() {
-        doSleep(2000); /* After document complete - pages reloads for this reason need waits */
         waitElementToBeClickable(driver, manageYourBookinglink, 20);
         manageYourBookinglink.click();
         waitElementToBeClickable(driver, viewYourBookinglink, 20);
@@ -78,18 +75,23 @@ public class HomePage extends AbstractPage {
     }
 
     public void fillFromField(String from) {
-        doSleep(2000); /* After document complete - pages reloads for this reason need waits */
+        waitForJSLoadComplete();
         waitElementToBeClickable(driver, fieldFrom, 20);
         fieldFrom.sendKeys(from);
+        waitForJSLoadComplete();
         waitElementToBeClickable(driver, firstValueFromListFrom, 20);
         firstValueFromListFrom.click();
+        waitForJSLoadComplete();
     }
 
     public void fillToField(String to) {
+        waitForJSLoadComplete();
         waitElementToBeClickable(driver, fieldTo, 20);
         fieldTo.sendKeys(to);
+        waitForJSLoadComplete();
         waitElementToBeClickable(driver, firstValueFromListTo, 20);
         firstValueFromListTo.click();
+        waitForJSLoadComplete();
     }
 
     public WebDriver runSearch() {
@@ -107,8 +109,8 @@ public class HomePage extends AbstractPage {
     }
 
     public boolean isAirportDisplayedInFromField(String airportName) {
-        return driver.findElement(By.xpath("//div[@class='container']/span[text() = '" + airportName + "']"))
-                .isEnabled();
+        String xpath = "//div[@class='container']/span[text() = '" + airportName + "']";
+        return driver.findElement(By.xpath(xpath)).isEnabled();
     }
 
     public void setAirportFrom(String airportName) {
@@ -124,8 +126,8 @@ public class HomePage extends AbstractPage {
     }
 
     public boolean isAirportDisplayedInToField(String airportName) {
-        return driver.findElement(By.xpath("//div[@class='container']/span[text() = '" + airportName + "']"))
-                .isEnabled();
+        String xpath = "//div[@class='container']/span[text() = '" + airportName + "']";
+        return driver.findElement(By.xpath(xpath)).isEnabled();
     }
 
     public void selectDatepickerDepart() {
@@ -151,8 +153,8 @@ public class HomePage extends AbstractPage {
     }
 
     public boolean isCountOfPassengersDisplayed(String countPassengers) {
-        return driver.findElement(
-                By.xpath("//div[@class='passengers-input-container']/div[text()='" + countPassengers + "']")).isEnabled();
+        String xpath = "//div[@class='passengers-input-container']/div[text()='" + countPassengers + "']";
+        return driver.findElement(By.xpath(xpath)).isEnabled();
     }
 
     public boolean isPriceEnabled() {
@@ -161,7 +163,8 @@ public class HomePage extends AbstractPage {
     }
 
     public BookFlightPage setWhoWillBeTravelling() {
-        doSleep(2000);
+        waitForJSLoadComplete();
+        waitElementToBeClickable(driver, fieldPassenger, 20);
         fieldPassenger.click();
         waitElementToBeClickable(driver, buttonPlusAdults, 20);
         buttonPlusAdults.click();

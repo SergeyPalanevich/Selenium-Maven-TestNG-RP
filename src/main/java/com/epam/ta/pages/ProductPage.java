@@ -19,11 +19,14 @@ public class ProductPage extends AbstractPage {
 
 
     public void selectPlusPackage() {
+        waitForJSLoadComplete();
+        waitElementToBeClickable(driver, product,20);
         product.click();
     }
 
     public float getPriceWithPlusPackage() {
-        waitElementToBeClickable(driver, totalPrice, 20);
+        waitForJSLoadComplete();
+        waitElementIsPresenceOfLocated(driver, "//div[@class='grand-total__price-container']//div[@class='back']", 20);
         return getPriceFromString(totalPrice.getText());
     }
 

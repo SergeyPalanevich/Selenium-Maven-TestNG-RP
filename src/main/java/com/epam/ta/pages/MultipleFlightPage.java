@@ -7,8 +7,6 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-import static com.epam.ta.helpers.Waiters.doSleep;
-
 public class MultipleFlightPage extends AbstractPage {
 
     public MultipleFlightPage(WebDriver driver) {
@@ -52,11 +50,11 @@ public class MultipleFlightPage extends AbstractPage {
             waitForJSLoadComplete();
             waitElementToBeClickable(driver, priceOutboundDaysWithAvailability.get(0), 10);
             priceOutboundDaysWithAvailability.get(0).click(); //click on first price
-            waitForJSLoadComplete();
         }
     }
 
     public void selectInboundFlight() {
+        waitForJSLoadComplete();
         new Actions(driver).moveToElement(inboundSection).perform();
         waitForJSLoadComplete();
         if (dayInboundIsSelected.isDisplayed()) {

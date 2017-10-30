@@ -4,8 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import static com.epam.ta.helpers.Waiters.doSleep;
-
 public class MultipleFormPage extends AbstractPage {
 
     protected MultipleFormPage(WebDriver driver) {

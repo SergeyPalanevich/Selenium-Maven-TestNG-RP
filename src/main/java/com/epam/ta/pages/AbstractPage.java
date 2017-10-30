@@ -1,5 +1,6 @@
 package com.epam.ta.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -68,6 +69,11 @@ public class AbstractPage {
     protected void waitElementToBeClickable(WebDriver driver, WebElement element, int time) {
         (new WebDriverWait(driver, time))
                 .until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    protected void waitElementIsPresenceOfLocated(WebDriver driver, String path, int time) {
+        (new WebDriverWait(driver, time))
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(path)));
     }
 
     protected void moveToMyElement(WebDriver driver, WebElement element) {

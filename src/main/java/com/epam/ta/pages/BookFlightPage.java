@@ -7,8 +7,6 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-import static com.epam.ta.helpers.Waiters.doSleep;
-
 public class BookFlightPage extends AbstractPage {
 
     public BookFlightPage(WebDriver driver) {
@@ -33,43 +31,63 @@ public class BookFlightPage extends AbstractPage {
     @FindBy(xpath = "//button[@name='next_button']")
     public WebElement nextButton;
 
+    @FindBy(xpath = "//section[@class='flight outbound']//div[@class='day day-with-availability is-selected']")
+    public WebElement dayOutboundIsSelected;
+
+    @FindBy(xpath = "//section[@class='flight inbound']//div[@class='day day-with-availability is-selected']")
+    public WebElement dayInboundIsSelected;
+
 
     public float getPriceOutFlight() {
-        waitElementToBeClickable(driver, priceOutboundDaysWithAvailability.get(0), 20);
+        waitForJSLoadComplete();
+        waitElementIsPresenceOfLocated(driver, "//section[@class=\"flight outbound\"]//button[@class=\"flight-result-button\"]", 20);
         return getPriceFromString(priceOutboundDaysWithAvailability.get(0).getText());
     }
 
     public float getPriceInFlight() {
-        waitElementToBeClickable(driver, priceInboundDaysWithAvailability.get(0), 20);
+        waitForJSLoadComplete();
+        waitElementIsPresenceOfLocated(driver, "//section[@class=\"flight inbound\"]//button[@class=\"flight-result-button\"]", 20);
         return getPriceFromString(priceInboundDaysWithAvailability.get(0).getText());
     }
 
     public void selectOutboundFligh() {
-        doSleep(2000); // need refactoring
-        if (priceOutboundDaysWithAvailability.size() > 0) {
-            priceOutboundDaysWithAvailability.get(0).click(); //click on first price
+        waitForJSLoadComplete();
+        if (dayOutboundIsSelected.isDisplayed()) {
+            waitElementToBeClickable(driver, priceOutboundDaysWithAvailability.get(0), 20);
+            priceOutboundDaysWithAvailability.get(0).click();
+            waitForJSLoadComplete();
         } else {
-            doSleep(2000); // need refactoring
-            flightOutboundDaysWithAvailability.get(0).click(); // select first Out flight
-            priceOutboundDaysWithAvailability.get(0).click(); //click on first price
+            waitElementToBeClickable(driver, flightOutboundDaysWithAvailability.get(0), 20);
+            flightOutboundDaysWithAvailability.get(0).click();
+            waitForJSLoadComplete();
+            waitElementToBeClickable(driver, priceOutboundDaysWithAvailability.get(0), 20);
+            priceOutboundDaysWithAvailability.get(0).click();
+            waitForJSLoadComplete();
         }
     }
 
     public void selectInboundFlight() {
-        if (priceInboundDaysWithAvailability.size() > 0) {
+        waitForJSLoadComplete();
+        if (dayInboundIsSelected.isDisplayed()) {
             new Actions(driver).moveToElement(inboundSection).perform();
-            doSleep(3000); // need refactoring //waitElementToBeClickable
-            priceInboundDaysWithAvailability.get(0).click(); //click on first price
+            waitForJSLoadComplete();
+            waitElementToBeClickable(driver, priceInboundDaysWithAvailability.get(0), 20);
+            priceInboundDaysWithAvailability.get(0).click();
+            waitForJSLoadComplete();
         } else {
             new Actions(driver).moveToElement(inboundSection).perform();
-            doSleep(3000); // need refactoring
-            flightInboundDaysWithAvailability.get(0).click(); // select first Out flight
-            priceInboundDaysWithAvailability.get(0).click(); //click on first price
+            waitForJSLoadComplete();
+            waitElementToBeClickable(driver, flightInboundDaysWithAvailability.get(0), 20);
+            flightInboundDaysWithAvailability.get(0).click();
+            waitForJSLoadComplete();
+            waitElementToBeClickable(driver, priceInboundDaysWithAvailability.get(0), 20);
+            priceInboundDaysWithAvailability.get(0).click();
         }
     }
 
     public ProductPage goToNext() {
-        doSleep(3000); // need refactoring
+        waitForJSLoadComplete();
+        waitElementToBeClickable(driver, nextButton, 20);
         nextButton.click();
         return new ProductPage(driver);
     }
