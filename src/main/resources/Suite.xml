@@ -5,7 +5,7 @@
     <listeners>
         <listener class-name="com.epam.reportportal.testng.ReportPortalTestNGListener"/>
     </listeners>
-    <test name="Tests">
+    <test name="Smoke Tests">
         <classes>
             <class name="com.epam.ta.tests.MainFormAndSearchTest" />
             <class name="com.epam.ta.tests.CorrectTotalPriceTest" />
