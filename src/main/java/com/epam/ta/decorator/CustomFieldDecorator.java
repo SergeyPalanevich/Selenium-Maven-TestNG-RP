@@ -16,27 +16,20 @@ public class CustomFieldDecorator extends DefaultFieldDecorator {
     @Override
     public Object decorate(ClassLoader loader, Field field) {
         Class<?> decoratableClass = decoratableClass(field);
-        // если класс поля декорируемый
         if (decoratableClass != null) {
             ElementLocator locator = factory.createLocator(field);
             if (locator == null) {
                 return null;
             }
-            // элемент
             return createElement(loader, locator, decoratableClass);
         }
         return super.decorate(loader, field);
     }
 
-    /**
-     * Возвращает декорируемый класс поля,
-     * либо null если класс не подходит для декоратора
-     */
     private Class<?> decoratableClass(Field field) {
 
         Class<?> clazz = field.getType();
 
-        // у элемента должен быть конструктор, принимающий WebElement
         try {
             clazz.getConstructor(WebElement.class);
         } catch (Exception e) {
@@ -46,20 +39,12 @@ public class CustomFieldDecorator extends DefaultFieldDecorator {
         return clazz;
     }
 
-    /**
-     * Создание элемента.
-     * Находит WebElement и передает его в кастомный класс
-     */
     protected <T> T createElement(ClassLoader loader,
                                   ElementLocator locator, Class<T> clazz) {
         WebElement proxy = proxyForLocator(loader, locator);
         return createInstance(clazz, proxy);
     }
 
-    /**
-     * Создает экземпляр класса,
-     * вызывая конструктор с аргументом WebElement
-     */
     private <T> T createInstance(Class<T> clazz, WebElement element) {
         try {
             return (T) clazz.getConstructor(WebElement.class)
