@@ -15,7 +15,7 @@ import java.util.logging.Level;
 
 public class ChromeDriverCreator extends WebDriverCreator{
 
-    private static final String PATH_TO_DRIVER = "src/main/resources/chromedriver.exe";
+    private static final String PATH_TO_DRIVER = "src/main/resources/binaries/chromedriver.exe";
     public static final long MANAGE_TIMEOUT = 25;
 
     @Override
