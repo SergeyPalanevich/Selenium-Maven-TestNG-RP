@@ -13,6 +13,8 @@ import java.io.*;
 import java.util.Date;
 import java.util.Set;
 
+import static com.epam.ta.listeners.TAListener.FORMATTER;
+
 public class Helpers {
     private static final String PATH_TO_COOKIES = "src/main/resources/cookies.out";
     private static final String DATE_FORMAT = "dd-MMM-yyyy";
@@ -59,8 +61,9 @@ public class Helpers {
     public static void makeScreenshot(WebDriver driver) {
 
         File screen = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+
         try {
-            FileUtils.copyFile(screen, new File("screenshots/" + getCurrentDayPlusSomeDaysWithDateTimeFormat(0) + ".png"));
+            FileUtils.copyFile(screen, new File("screenshots/" + FORMATTER.format(new Date()) + ".png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

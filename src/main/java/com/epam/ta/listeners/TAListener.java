@@ -12,15 +12,15 @@ import static com.epam.ta.helpers.Helpers.makeScreenshot;
 import static com.epam.ta.tests.BaseTest.driver;
 
 public class TAListener implements ITestListener {
-    private final String START = "Test suite has been started!";
-    private final String RUNNING = " is running";
-    private final String SUCCESS = " is SUCCESS";
-    private final String FAILED = "is FAILED";
-    private final String SKIPPED = "has been skipped";
-    private final String TEST = "Test: ";
-    private final String FINISH = "Test suite finished!";
-    private static final Logger LOGGER = Logger.getLogger(TAListener.class);
-    private final DateFormat FORMATTER = new SimpleDateFormat("mm-dd-yyyy HH:mm:ss:SSS");
+    private static final String START = "Test suite has been started!";
+    private static final String RUNNING = " is running";
+    private static final String SUCCESS = " is SUCCESS";
+    private static final String FAILED = "is FAILED";
+    private static final String SKIPPED = "has been skipped";
+    private static final String TEST = "Test: ";
+    private static final String FINISH = "Test suite finished!";
+    private static  final Logger LOGGER = Logger.getLogger(TAListener.class);
+    public static final DateFormat FORMATTER = new SimpleDateFormat("mm-dd-yyyy HH:mm:ss:SSS");
 
     public void onTestStart(ITestResult result) {
         LOGGER.info(TEST + result.getMethod().getMethodName() + RUNNING + " at: " + FORMATTER.format(result.getStartMillis()));

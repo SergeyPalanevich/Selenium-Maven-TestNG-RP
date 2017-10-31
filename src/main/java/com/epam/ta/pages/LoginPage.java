@@ -1,5 +1,6 @@
 package com.epam.ta.pages;
 
+import com.epam.ta.decorator.CustomWebElement;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,10 +13,10 @@ public class LoginPage extends AbstractPage {
     }
 
     @FindBy(xpath = "//input[@id='retrieveBookingByLastname_RecordLocator']")
-    public WebElement flightNumberField;
+    public CustomWebElement flightNumberField;
 
     @FindBy(xpath = "//input[@id='retrieveBookingByLastname_LastName']")
-    public WebElement lastNameField;
+    public CustomWebElement lastNameField;
 
     @FindBy(xpath = "//input[@id='retrieveBookingByLastname_FlightDate-datepicker']")
     public WebElement flightDateField;
@@ -24,6 +25,7 @@ public class LoginPage extends AbstractPage {
         waitElementToBeClickable(driver, flightNumberField);
         flightNumberField.sendKeys(flightNumber);
         lastNameField.sendKeys(lastName);
+        flightDateField.clear();
         flightDateField.sendKeys(flightDate);
     }
 

@@ -1,5 +1,6 @@
 package com.epam.ta.pages;
 
+import com.epam.ta.decorator.CustomWebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,34 +12,34 @@ public class MultipleFormPage extends AbstractPage {
     }
 
     @FindBy(id = "openJawRouteSelection_DepartureStationOutbound-input")
-    public WebElement fieldFromOutboundFlight;
+    public CustomWebElement fieldFromOutboundFlight;
 
     @FindBy(xpath = "//ol/li[1]")
     public WebElement firstValueFromOutboundFlight;
 
     @FindBy(id = "openJawRouteSelection_ArrivalStationOutbound-input")
-    public WebElement fieldToOutboundFlight;
+    public CustomWebElement fieldToOutboundFlight;
 
     @FindBy(xpath = "//ol/li/ol/li[1]")
     public WebElement firstValueToOutboundFlight;
 
     @FindBy(id = "dateSelection_OutboundDate-datepicker")
-    public WebElement fieldDateOutboundFlight;
+    public CustomWebElement fieldDateOutboundFlight;
 
     @FindBy(id = "openJawRouteSelection_DepartureStationInbound-input")
-    public WebElement fieldFromInboundFlight;
+    public CustomWebElement fieldFromInboundFlight;
 
     @FindBy(xpath = "//ol/li[1]")
     public WebElement firstValueFromInboundFlight;
 
     @FindBy(id = "openJawRouteSelection_ArrivalStationInbound-input")
-    public WebElement fieldToInboundFlight;
+    public CustomWebElement fieldToInboundFlight;
 
     @FindBy(xpath = "//ol/li/ol/li[1]")
     public WebElement firstValueToInboundFlight;
 
     @FindBy(id = "dateSelection_InboundDate-datepicker")
-    public WebElement fieldDateInboundFlight;
+    public CustomWebElement fieldDateInboundFlight;
 
     @FindBy(xpath = "//*[@id=\"flights\"]/div/section/div[3]/div/button[2]")
     public WebElement buttonSearch;
@@ -49,7 +50,6 @@ public class MultipleFormPage extends AbstractPage {
         firstValueFromOutboundFlight.click();
         fieldToOutboundFlight.sendKeys(toOutboundFlight);
         firstValueToOutboundFlight.click();
-        fieldDateOutboundFlight.clear();
         fieldDateOutboundFlight.sendKeys(dateOutboundFlight);
     }
 
@@ -59,7 +59,6 @@ public class MultipleFormPage extends AbstractPage {
         firstValueFromInboundFlight.click();
         fieldToInboundFlight.sendKeys(toInboundFlight);
         firstValueToInboundFlight.click();
-        fieldDateInboundFlight.clear();
         fieldDateInboundFlight.sendKeys(dateInboundFlight);
         h1.click(); //quit from datapicker field
     }

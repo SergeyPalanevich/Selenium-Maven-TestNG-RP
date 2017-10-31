@@ -1,5 +1,6 @@
 package com.epam.ta.pages;
 
+import com.epam.ta.decorator.CustomWebElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,13 +20,13 @@ public class HomePage extends AbstractPage {
     public WebElement priceClass;
 
     @FindBy(id = "routeSelection_DepartureStation-input")
-    public WebElement fieldFrom;
+    public CustomWebElement fieldFrom;
 
     @FindBy(xpath = "//ol/li[1]")
     public WebElement firstValueFromListFrom;
 
     @FindBy(id = "routeSelection_ArrivalStation-input")
-    public WebElement fieldTo;
+    public CustomWebElement fieldTo;
 
     @FindBy(xpath = "//ol/li/ol/li[1]")
     public WebElement firstValueFromListTo;
@@ -34,13 +35,13 @@ public class HomePage extends AbstractPage {
     public WebElement datepickerDepart;
 
     @FindBy(id = "dateSelection_OutboundDate-datepicker")
-    public WebElement fieldOtboundDate;
+    public CustomWebElement fieldOtboundDate;
 
     @FindBy(xpath = "//label[@for='dateSelection_IsReturnFlight']")
     public WebElement labelReturnOn;
 
     @FindBy(id = "booking-passengers-input")
-    public WebElement fieldBookingPassengers;
+    public CustomWebElement fieldBookingPassengers;
 
     @FindBy(xpath = "//button[@class='button button-secondary close']")
     public WebElement buttonSavePassengers;
@@ -55,7 +56,7 @@ public class HomePage extends AbstractPage {
     public WebElement buttonPlusChildren;
 
     @FindBy(xpath = "//div[@class='c-passengers-form-component']")
-    public WebElement fieldPassenger;
+    public CustomWebElement fieldPassenger;
 
     @FindBy(xpath = "//a[@href='/en-EU/my-transavia/booking/booking-overview/']")
     public WebElement manageYourBookinglink;
@@ -130,7 +131,6 @@ public class HomePage extends AbstractPage {
     }
 
     public void setOutboundDate(String currentDayPlusSomeDaysWithDateTimeFormat) {
-        fieldOtboundDate.clear();
         fieldOtboundDate.sendKeys(currentDayPlusSomeDaysWithDateTimeFormat);
     }
 

@@ -1,5 +1,7 @@
 package com.epam.ta.pages;
 
+import com.epam.ta.decorator.CustomFieldDecorator;
+import com.epam.ta.decorator.CustomWebElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -22,12 +24,13 @@ public class AbstractPage {
 
     protected AbstractPage(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(new CustomFieldDecorator(driver),this);
         waitForJSLoadComplete();
-        PageFactory.initElements(driver, this);
+//        PageFactory.initElements(driver, this);
     }
 
     @FindBy(xpath = "//h1")
-    protected WebElement h1;
+    protected CustomWebElement h1;
 
     protected boolean waitForJSLoadComplete() {
         WebDriverWait wait = new WebDriverWait(driver, getDriverTimeout());
