@@ -22,7 +22,7 @@ public class ChromeDriverCreator extends WebDriverCreator{
     public WebDriver createDriver() {
         ChromeDriverService service = new ChromeDriverService.Builder().usingDriverExecutable(new File(PATH_TO_DRIVER)).build();
         LoggingPreferences logs = new LoggingPreferences();
-        logs.enable(LogType.DRIVER, Level.WARNING);
+        logs.enable(LogType.DRIVER, Level.INFO);
         DesiredCapabilities desiredCapabilities = DesiredCapabilities.chrome();
         desiredCapabilities.setCapability(CapabilityType.LOGGING_PREFS, logs);
         try {

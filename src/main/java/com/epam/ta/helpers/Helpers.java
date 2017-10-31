@@ -1,19 +1,17 @@
 package com.epam.ta.helpers;
 
-import org.apache.commons.io.FileUtils;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.openqa.selenium.Cookie;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.Date;
 import java.util.Set;
-
-import static com.epam.ta.listeners.TAListener.FORMATTER;
 
 public class Helpers {
     private static final String PATH_TO_COOKIES = "src/main/resources/cookies.out";
@@ -56,17 +54,5 @@ public class Helpers {
             driver.manage().addCookie(cookie);
         }
         return driver;
-    }
-
-    public static void makeScreenshot(WebDriver driver) {
-
-        File screen = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-
-        try {
-            FileUtils.copyFile(screen, new File("screenshots/" + FORMATTER.format(new Date()) + ".png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
     }
 }

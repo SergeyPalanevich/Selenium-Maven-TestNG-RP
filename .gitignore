@@ -1,8 +1,7 @@
 /.idea
-/patterns
 /logs
 /target
 *.iml
 /test-output
-/screenshots
 /src/test
+/patterns
