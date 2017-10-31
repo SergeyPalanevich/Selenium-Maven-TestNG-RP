@@ -1,6 +1,5 @@
 package com.epam.ta.listeners;
 
-import com.epam.ta.helpers.NoSuchWebDriverExeption;
 import org.apache.log4j.Logger;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
@@ -9,8 +8,6 @@ import org.testng.ITestResult;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
-import static com.epam.ta.drivers.ChromeAndFireFox.ChromeDriver;
-import static com.epam.ta.drivers.DriverManager.getDriver;
 import static com.epam.ta.helpers.Helpers.makeScreenshot;
 import static com.epam.ta.tests.BaseTest.driver;
 

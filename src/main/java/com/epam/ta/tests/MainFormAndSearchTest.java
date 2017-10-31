@@ -10,8 +10,8 @@ import static org.testng.Assert.assertTrue;
 
 public class MainFormAndSearchTest extends BaseTest {
 
-    private static final String DEPATURE_AIRPORT = "Munich, Germany";
-    private static final String ARRIVAL_AIRPORT = "Palma de Mallorca, Spain";
+    private static final String DEPATURE_AIRPORT = "Palma de Mallorca, Spain";
+    private static final String ARRIVAL_AIRPORT = "Munich, Germany";
     private static final String COUNT_PASSENGERS = "1 Adult";
     private HomePage home;
 
