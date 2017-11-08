@@ -7,12 +7,12 @@
     </listeners>
     <test name="Smoke Tests">
         <classes>
-            <class name="www.transavia.com.tests.MainFormAndSearchTest" />
-            <class name="www.transavia.com.tests.CorrectTotalPriceTest" />
-            <class name="www.transavia.com.tests.TimeArrivalTest" />
-            <class name="www.transavia.com.tests.CorrectTotalSumTest" />
-            <class name="www.transavia.com.tests.CorrectErrorMessageTest" />
-            <class name="www.transavia.com.tests.MultipleDestinationsTest" />
+            <class name="com.epam.framework.features.transavia.tests.MainFormAndSearchTest" />
+            <class name="com.epam.framework.features.transavia.tests.CorrectTotalPriceTest" />
+            <class name="com.epam.framework.features.transavia.tests.TimeArrivalTest" />
+            <class name="com.epam.framework.features.transavia.tests.CorrectTotalSumTest" />
+            <class name="com.epam.framework.features.transavia.tests.CorrectErrorMessageTest" />
+            <class name="com.epam.framework.features.transavia.tests.MultipleDestinationsTest" />
         </classes>
     </test>
 </suite>
