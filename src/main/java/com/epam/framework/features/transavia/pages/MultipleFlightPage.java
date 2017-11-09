@@ -1,7 +1,7 @@
 package com.epam.framework.features.transavia.pages;
 
+import com.epam.framework.core.ui.Element;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
@@ -13,22 +13,22 @@ public class MultipleFlightPage extends BasePage {
     }
 
     @FindBy(xpath = "//section[@class='flight outbound']//div[@class='day day-with-availability']")
-    public List<WebElement> flightOutboundDaysWithAvailability;
+    public List<Element> flightOutboundDaysWithAvailability;
 
     @FindBy(xpath = "//section[@class='flight inbound']//div[@class='day day-with-availability']")
-    public List<WebElement> flightInboundDaysWithAvailability;
+    public List<Element> flightInboundDaysWithAvailability;
 
     @FindBy(xpath = "//section[@class='flight outbound']//button[@class='flight-result-button']")
-    public List<WebElement> priceOutboundDaysWithAvailability;
+    public List<Element> priceOutboundDaysWithAvailability;
 
     @FindBy(xpath = "//section[@class='flight inbound']//button[@class='flight-result-button']")
-    public List<WebElement> priceInboundDaysWithAvailability;
+    public List<Element> priceInboundDaysWithAvailability;
 
     @FindBy(xpath = "//div[@class='HV-gs-type-c--bp0']")
-    public WebElement inboundSection;
+    public Element inboundSection;
 
     @FindBy(xpath = "//div[@class='grand-total__price-container']//div[@class='back']")
-    public WebElement totalPrice;
+    public Element totalPrice;
 
     public void selectOutboundFlight() {
 

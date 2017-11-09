@@ -1,9 +1,8 @@
 package com.epam.framework.features.transavia.pages;
 
-import com.epam.framework.core.decorator.CustomWebElement;
+import com.epam.framework.core.ui.Element;
 import com.epam.framework.features.transavia.business_objects.MultiTrip;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class MultipleFormPage extends BasePage {
@@ -13,37 +12,37 @@ public class MultipleFormPage extends BasePage {
     }
 
     @FindBy(id = "openJawRouteSelection_DepartureStationOutbound-input")
-    public CustomWebElement fieldFromOutboundFlight;
+    public Element fieldFromOutboundFlight;
 
     @FindBy(xpath = "//ol/li[1]")
-    public WebElement firstValueFromOutboundFlight;
+    public Element firstValueFromOutboundFlight;
 
     @FindBy(id = "openJawRouteSelection_ArrivalStationOutbound-input")
-    public CustomWebElement fieldToOutboundFlight;
+    public Element fieldToOutboundFlight;
 
     @FindBy(xpath = "//ol/li/ol/li[1]")
-    public WebElement firstValueToOutboundFlight;
+    public Element firstValueToOutboundFlight;
 
     @FindBy(id = "dateSelection_OutboundDate-datepicker")
-    public CustomWebElement fieldDateOutboundFlight;
+    public Element fieldDateOutboundFlight;
 
     @FindBy(id = "openJawRouteSelection_DepartureStationInbound-input")
-    public CustomWebElement fieldFromInboundFlight;
+    public Element fieldFromInboundFlight;
 
     @FindBy(xpath = "//ol/li[1]")
-    public WebElement firstValueFromInboundFlight;
+    public Element firstValueFromInboundFlight;
 
     @FindBy(id = "openJawRouteSelection_ArrivalStationInbound-input")
-    public CustomWebElement fieldToInboundFlight;
+    public Element fieldToInboundFlight;
 
     @FindBy(xpath = "//ol/li/ol/li[1]")
-    public WebElement firstValueToInboundFlight;
+    public Element firstValueToInboundFlight;
 
     @FindBy(id = "dateSelection_InboundDate-datepicker")
-    public CustomWebElement fieldDateInboundFlight;
+    public Element fieldDateInboundFlight;
 
     @FindBy(xpath = "//*[@id='flights']//button[@class='button button-primary' and @type='submit']")
-    public WebElement buttonSearch;
+    public Element buttonSearch;
 
     public void setOutboundFlight(MultiTrip multiTrip) {
         waitElementToBeClickable(driver, fieldFromOutboundFlight);

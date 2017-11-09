@@ -1,6 +1,6 @@
 package com.epam.framework.features.transavia.pages;
 
-import com.epam.framework.core.decorator.CustomWebElement;
+import com.epam.framework.core.ui.Element;
 import com.epam.framework.features.transavia.business_objects.Booking;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -14,25 +14,25 @@ public class LoginPage extends BasePage {
     }
 
     @FindBy(xpath = "//input[@id='retrieveBookingByLastname_RecordLocator']")
-    public CustomWebElement flightNumberField;
+    public Element flightNumberField;
 
     @FindBy(xpath = "//input[@id='retrieveBookingByLastname_LastName']")
-    public CustomWebElement lastNameField;
+    public Element lastNameField;
 
     @FindBy(xpath = "//input[@id='retrieveBookingByLastname_FlightDate-datepicker']")
-    public WebElement flightDateField;
+    public WebElement flightDateField; // in this case we use sendKeys(Keys.ENTER) for this reason we need use basic WebElement without clear()
 
     public void setCredentials(Booking booking) {
         waitElementToBeClickable(driver, flightNumberField);
         flightNumberField.sendKeys(booking.getFlightNumber());
         lastNameField.sendKeys(booking.getLastName());
-        flightDateField.clear();
+        waitElementToBeClickable(driver, flightDateField);
         flightDateField.sendKeys(booking.getFlightDate());
     }
 
     public BookingPage viewBooking() {
         waitElementToBeClickable(driver, flightDateField);
-        flightDateField.sendKeys(Keys.ENTER);
+        flightDateField.sendKeys(Keys.ENTER); // in this case we use sendKeys(Keys.ENTER) for this reason we need use basic WebElement without clear()
         return new BookingPage(driver);
     }
 }

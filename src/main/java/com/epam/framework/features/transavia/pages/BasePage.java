@@ -1,7 +1,7 @@
 package com.epam.framework.features.transavia.pages;
 
-import com.epam.framework.core.decorator.CustomFieldDecorator;
-import com.epam.framework.core.decorator.CustomWebElement;
+import com.epam.framework.core.ui.CustomFieldDecorator;
+import com.epam.framework.core.ui.Element;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -29,7 +29,7 @@ public class BasePage {
     }
 
     @FindBy(xpath = "//h1")
-    protected CustomWebElement h1;
+    protected Element h1;
 
     protected boolean waitForJSLoadComplete() {
         WebDriverWait wait = new WebDriverWait(driver, getDriverTimeout());
@@ -83,7 +83,7 @@ public class BasePage {
     }
 
 
-    protected void moveToMyElement(WebDriver driver, WebElement element) {
+    protected void moveToMyElement(WebDriver driver, Element element) {
         waitForJSLoadComplete();
         new Actions(driver).moveToElement(element).perform();
     }

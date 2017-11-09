@@ -1,7 +1,7 @@
 package com.epam.framework.features.transavia.pages;
 
+import com.epam.framework.core.ui.Element;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class BookingPage extends BasePage {
@@ -11,10 +11,10 @@ public class BookingPage extends BasePage {
     }
 
     @FindBy(xpath = "//h5[contains(text(), 'Arrival')]/following-sibling::p/em/time")
-    public WebElement arrival;
+    public Element arrival;
 
     @FindBy(xpath = "//a[@href='/en-EU/my-transavia/booking/booking-details/']")
-    public WebElement detailsLink;
+    public Element detailsLink;
 
     public String getTimeArrival() {
         return arrival.getAttribute("datetime");

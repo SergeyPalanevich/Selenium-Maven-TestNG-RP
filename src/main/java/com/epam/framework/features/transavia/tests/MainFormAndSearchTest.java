@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-import static com.epam.framework.features.transavia.business_objects.factory.StaticMethods.createTrip;
+import static com.epam.framework.features.transavia.business_objects.factory.StaticMethodsFactory.createTrip;
 import static org.testng.Assert.assertTrue;
 
 public class MainFormAndSearchTest extends BaseTest {

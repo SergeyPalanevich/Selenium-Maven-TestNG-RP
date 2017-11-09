@@ -6,8 +6,8 @@ import com.epam.framework.features.transavia.pages.HomePage;
 import com.epam.framework.features.transavia.pages.LoginPage;
 import org.openqa.selenium.WebDriver;
 
-public class Account {
-    public static BookingPage loginToAccount(WebDriver driver, Booking booking){
+public class AccountService {
+    public static BookingPage loginToAccount(WebDriver driver, Booking booking){ //no static
         HomePage home = new HomePage(driver);
         LoginPage loginPage = home.goToLoginPage();
         loginPage.setCredentials(booking);

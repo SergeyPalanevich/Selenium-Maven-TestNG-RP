@@ -1,4 +1,4 @@
-package com.epam.framework.core.decorator;
+package com.epam.framework.core.ui;
 
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebElement;

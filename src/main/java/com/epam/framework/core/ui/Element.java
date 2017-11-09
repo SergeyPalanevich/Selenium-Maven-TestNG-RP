@@ -1,13 +1,13 @@
-package com.epam.framework.core.decorator;
+package com.epam.framework.core.ui;
 
 import org.openqa.selenium.*;
 
 import java.util.List;
 
-public class CustomWebElement implements WebElement{
+public class Element implements WebElement{
     protected WebElement webElement;
 
-    public CustomWebElement(WebElement webElement) {
+    public Element(WebElement webElement) {
         this.webElement = webElement;
     }
 

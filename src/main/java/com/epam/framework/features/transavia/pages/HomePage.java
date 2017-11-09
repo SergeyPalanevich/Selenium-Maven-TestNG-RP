@@ -1,10 +1,9 @@
 package com.epam.framework.features.transavia.pages;
 
-import com.epam.framework.core.decorator.CustomWebElement;
+import com.epam.framework.core.ui.Element;
 import com.epam.framework.features.transavia.business_objects.Trip;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 
@@ -15,58 +14,58 @@ public class HomePage extends BasePage {
     }
 
     @FindBy(id = "ui-datepicker-div")
-    public WebElement datepicker;
+    public Element datepicker;
 
     @FindBy(xpath = "//div[@class='price']")
-    public WebElement priceClass;
+    public Element priceClass;
 
     @FindBy(id = "routeSelection_DepartureStation-input")
-    public CustomWebElement fieldFrom;
+    public Element fieldFrom;
 
     @FindBy(xpath = "//ol/li[1]")
-    public WebElement firstValueFromListFrom;
+    public Element firstValueFromListFrom;
 
     @FindBy(id = "routeSelection_ArrivalStation-input")
-    public CustomWebElement fieldTo;
+    public Element fieldTo;
 
     @FindBy(xpath = "//ol/li/ol/li[1]")
-    public WebElement firstValueFromListTo;
+    public Element firstValueFromListTo;
 
     @FindBy(xpath = "//div[@data-date-picker='outbound']/div/span[@class='datepicker-trigger icon-font icon-calendar']")
-    public WebElement datepickerDepart;
+    public Element datepickerDepart;
 
     @FindBy(id = "dateSelection_OutboundDate-datepicker")
-    public CustomWebElement fieldOtboundDate;
+    public Element fieldOtboundDate;
 
     @FindBy(xpath = "//label[@for='dateSelection_IsReturnFlight']")
-    public WebElement labelReturnOn;
+    public Element labelReturnOn;
 
     @FindBy(id = "booking-passengers-input")
-    public CustomWebElement fieldBookingPassengers;
+    public Element fieldBookingPassengers;
 
     @FindBy(xpath = "//button[@class='button button-secondary close']")
-    public WebElement buttonSavePassengers;
+    public Element buttonSavePassengers;
 
     @FindBy(xpath = "//div[@class='HV-gc']//section[@data-package='search']//div[@class='panel_section panel_section--button']//div//button")
-    public WebElement searchButton;
+    public Element searchButton;
 
     @FindBy(xpath = "//div[@class='togglepanel']//div[@class='passengers']//div[@class='selectfield adults']//button[@class='button button-secondary increase']")
-    public WebElement buttonPlusAdults;
+    public Element buttonPlusAdults;
 
     @FindBy(xpath = "//div[@class='togglepanel']//div[@class='passengers']//div[@class='selectfield children']//button[@class='button button-secondary increase']")
-    public WebElement buttonPlusChildren;
+    public Element buttonPlusChildren;
 
     @FindBy(xpath = "//div[@class='c-passengers-form-component']")
-    public CustomWebElement fieldPassenger;
+    public Element fieldPassenger;
 
     @FindBy(xpath = "//a[@href='/en-EU/my-transavia/booking/booking-overview/']")
-    public WebElement manageYourBookinglink;
+    public Element manageYourBookinglink;
 
     @FindBy(xpath = "//*[@id='horizontal-sub-navigation-manageyourbooking']//span[contains(text(), 'View your booking')]")
-    public WebElement viewYourBookinglink;
+    public Element viewYourBookinglink;
 
     @FindBy(xpath = "//a[@href='/en-EU/book-a-flight/flights/Deeplink/?m=combi&s=false&v=false']")
-    public WebElement linkAddMultipleDestinations;
+    public Element linkAddMultipleDestinations;
 
     public LoginPage goToLoginPage() {
         waitElementToBeClickable(driver, manageYourBookinglink);

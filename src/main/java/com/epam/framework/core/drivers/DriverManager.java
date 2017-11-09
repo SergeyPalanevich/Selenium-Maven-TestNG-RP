@@ -4,17 +4,16 @@ import com.epam.framework.core.exeptions.NoSuchWebDriverExeption;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+
+import static com.epam.framework.core.utils.FIleUtils.getResourcePath;
 
 public class DriverManager {
 
     public static final long MANAGE_TIMEOUT = 25;
-    private static final String PATH_TO_COOKIES = "src/main/resources/cookies.out";
+    private static final String PATH_TO_COOKIES = getResourcePath("cookies.out");
     private static WebDriver driver;
 
     private DriverManager() {
@@ -51,7 +50,7 @@ public class DriverManager {
 
         FileInputStream fis = null;
         try {
-            fis = new FileInputStream(PATH_TO_COOKIES);
+            fis = new FileInputStream(new File(PATH_TO_COOKIES));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

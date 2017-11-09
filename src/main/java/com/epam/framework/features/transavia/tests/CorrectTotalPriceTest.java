@@ -7,7 +7,7 @@ import com.epam.framework.features.transavia.pages.ProductPage;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static com.epam.framework.features.transavia.business_objects.factory.StaticMethods.createTrip;
+import static com.epam.framework.features.transavia.business_objects.factory.StaticMethodsFactory.createTrip;
 import static org.testng.Assert.assertTrue;
 
 public class CorrectTotalPriceTest extends BaseTest {

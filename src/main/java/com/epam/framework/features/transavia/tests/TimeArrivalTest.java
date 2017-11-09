@@ -5,8 +5,8 @@ import com.epam.framework.features.transavia.pages.BookingPage;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static com.epam.framework.features.transavia.business_objects.factory.StaticMethods.createBooking;
-import static com.epam.framework.features.transavia.services.Account.loginToAccount;
+import static com.epam.framework.features.transavia.business_objects.factory.StaticMethodsFactory.createBooking;
+import static com.epam.framework.features.transavia.services.AccountService.loginToAccount;
 import static org.testng.Assert.assertEquals;
 
 public class TimeArrivalTest extends BaseTest {

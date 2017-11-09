@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import java.util.ArrayList;
 
 import static com.epam.framework.core.utils.DateTimeUtils.getCurrentDayPlusSomeDaysWithDateTimeFormat;
-import static com.epam.framework.features.transavia.business_objects.factory.StaticMethods.createMultiTrip;
+import static com.epam.framework.features.transavia.business_objects.factory.StaticMethodsFactory.createMultiTrip;
 import static org.testng.Assert.assertTrue;
 
 public class MultipleDestinationsTest extends BaseTest {
@@ -25,6 +25,7 @@ public class MultipleDestinationsTest extends BaseTest {
     private MultipleFlightPage multipleFlight;
     private MultipleFormPage multipleForm;
     private MultiTrip multiTrip;
+
 
     @BeforeMethod
     public void preConditionSetup(){
