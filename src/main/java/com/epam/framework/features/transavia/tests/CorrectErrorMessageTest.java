@@ -6,6 +6,7 @@ import com.epam.framework.features.transavia.pages.HomePage;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static com.epam.framework.features.transavia.business_objects.factory.StaticMethods.createTrip;
 import static org.testng.Assert.assertEquals;
 
 public class CorrectErrorMessageTest extends BaseTest {
@@ -20,9 +21,7 @@ public class CorrectErrorMessageTest extends BaseTest {
 
     @BeforeMethod
     public void preConditionSetup(){
-        trip = new Trip();
-        trip.setArrivalAirport(ARRIVAL_AIRPORT);
-        trip.setDepatureAirport(DEPATURE_AIRPORT);
+        trip = createTrip(DEPATURE_AIRPORT, ARRIVAL_AIRPORT);
     }
 
     @Test(description = "This TC check the error message")

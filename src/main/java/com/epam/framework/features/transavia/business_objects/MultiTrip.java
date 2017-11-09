@@ -5,7 +5,6 @@ public class MultiTrip {
     private String arrivalAirportFirst;
     private String depatureAirportSecond;
     private String arrivalAirportSecond;
-
     private String dateFlightFirst;
     private String dateFlightSecond;
 

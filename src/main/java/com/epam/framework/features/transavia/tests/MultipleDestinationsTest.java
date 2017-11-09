@@ -7,7 +7,10 @@ import com.epam.framework.features.transavia.pages.MultipleFormPage;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
+
 import static com.epam.framework.core.utils.DateTimeUtils.getCurrentDayPlusSomeDaysWithDateTimeFormat;
+import static com.epam.framework.features.transavia.business_objects.factory.StaticMethods.createMultiTrip;
 import static org.testng.Assert.assertTrue;
 
 public class MultipleDestinationsTest extends BaseTest {
@@ -21,23 +24,22 @@ public class MultipleDestinationsTest extends BaseTest {
     private HomePage main;
     private MultipleFlightPage multipleFlight;
     private MultipleFormPage multipleForm;
-
     private MultiTrip multiTrip;
 
     @BeforeMethod
     public void preConditionSetup(){
-        multiTrip = new MultiTrip();
-        multiTrip.setDepatureAirportFirst(DEPATURE_AIRPORT_FIRST);
-        multiTrip.setArrivalAirportFirst(ARRIVAL_AIRPORT_FIRST);
-        multiTrip.setDepatureAirportSecond(DEPATURE_AIRPORT_SECOND);
-        multiTrip.setArrivalAirportSecond(ARRIVAL_AIRPORT_SECOND);
-        multiTrip.setDateFlightFirst(DATE_FLIGHT_FIRST);
-        multiTrip.setDateFlightSecond(DATE_FLIGHT_SECOND);
+        ArrayList<String> array = new ArrayList();
+        array.add(0, DEPATURE_AIRPORT_FIRST);
+        array.add(1, ARRIVAL_AIRPORT_FIRST);
+        array.add(2, DATE_FLIGHT_FIRST);
+        array.add(3, DEPATURE_AIRPORT_SECOND);
+        array.add(4, ARRIVAL_AIRPORT_SECOND);
+        array.add(5, DATE_FLIGHT_SECOND);
+        multiTrip = createMultiTrip(array);
     }
 
     @Test(description = "This TC check multiple destinations")
     public void checkMultipleDestinations() {
-
         main = new HomePage(driver);
         multipleForm = main.addMultipleDestinations();
         multipleForm.setOutboundFlight(multiTrip);

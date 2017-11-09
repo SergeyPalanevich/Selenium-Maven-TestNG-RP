@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
+import static com.epam.framework.features.transavia.business_objects.factory.StaticMethods.createTrip;
 import static org.testng.Assert.assertTrue;
 
 public class MainFormAndSearchTest extends BaseTest {
@@ -20,9 +21,7 @@ public class MainFormAndSearchTest extends BaseTest {
 
     @BeforeMethod
     public void preConditionSetup(){
-        trip = new Trip();
-        trip.setArrivalAirport(ARRIVAL_AIRPORT);
-        trip.setDepatureAirport(DEPATURE_AIRPORT);
+        trip = createTrip(DEPATURE_AIRPORT, ARRIVAL_AIRPORT);
     }
 
     @Test(description = "This TC check that departure airport is displayed in From field", priority = 1)

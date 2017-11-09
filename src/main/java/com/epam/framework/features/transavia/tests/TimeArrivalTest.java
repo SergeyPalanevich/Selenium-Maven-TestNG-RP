@@ -5,6 +5,7 @@ import com.epam.framework.features.transavia.pages.BookingPage;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static com.epam.framework.features.transavia.business_objects.factory.StaticMethods.createBooking;
 import static com.epam.framework.features.transavia.services.Account.loginToAccount;
 import static org.testng.Assert.assertEquals;
 
@@ -19,10 +20,7 @@ public class TimeArrivalTest extends BaseTest {
 
     @BeforeMethod
     public void preConditionSetup(){
-        booking = new Booking();
-        booking.setFlightNumber(FLIGHT_NUMBER);
-        booking.setLastName(LAST_NAME);
-        booking.setFlightDate(FLIGHT_DATE);
+        booking = createBooking(FLIGHT_NUMBER, LAST_NAME, FLIGHT_DATE);
     }
 
     @Test(description = "This TC check arrival time ")

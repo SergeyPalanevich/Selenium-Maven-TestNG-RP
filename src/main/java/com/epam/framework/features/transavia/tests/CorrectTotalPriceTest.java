@@ -7,6 +7,7 @@ import com.epam.framework.features.transavia.pages.ProductPage;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static com.epam.framework.features.transavia.business_objects.factory.StaticMethods.createTrip;
 import static org.testng.Assert.assertTrue;
 
 public class CorrectTotalPriceTest extends BaseTest {
@@ -23,9 +24,7 @@ public class CorrectTotalPriceTest extends BaseTest {
 
     @BeforeMethod
     public void preConditionSetup(){
-        trip = new Trip();
-        trip.setArrivalAirport(ARRIVAL_AIRPORT);
-        trip.setDepatureAirport(DEPATURE_AIRPORT);
+        trip = createTrip(DEPATURE_AIRPORT, ARRIVAL_AIRPORT);
     }
 
     @Test(description = "This TC check total price for selected flights")
