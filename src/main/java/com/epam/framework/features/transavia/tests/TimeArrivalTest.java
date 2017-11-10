@@ -1,13 +1,12 @@
 package com.epam.framework.features.transavia.tests;
 
 import com.epam.framework.features.transavia.business_objects.Booking;
-import com.epam.framework.features.transavia.pages.BookingPage;
+import com.epam.framework.features.transavia.services.AccountService;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static com.epam.framework.features.transavia.business_objects.factory.StaticMethodsFactory.createBooking;
-import static com.epam.framework.features.transavia.services.AccountService.loginToAccount;
-import static org.testng.Assert.assertEquals;
+import static org.testng.AssertJUnit.assertEquals;
 
 public class TimeArrivalTest extends BaseTest {
 
@@ -15,8 +14,8 @@ public class TimeArrivalTest extends BaseTest {
     private static final String LAST_NAME = "kukharau";
     private static final String FLIGHT_DATE = "9 June 2016";
     private static final String ARRIVAL_TIME = "2016-06-09 23:35";
-    private BookingPage bookingPage;
     private Booking booking;
+    private AccountService accountService;
 
     @BeforeMethod
     public void preConditionSetup(){
@@ -25,7 +24,7 @@ public class TimeArrivalTest extends BaseTest {
 
     @Test(description = "This TC check arrival time ")
     public void loginToAccAndCheckTimeArrive() {
-        bookingPage = loginToAccount(driver, booking);
-        assertEquals(bookingPage.getTimeArrival(), ARRIVAL_TIME);
+        accountService = new AccountService();
+        assertEquals(accountService.getTimeArrival(booking), ARRIVAL_TIME);
     }
 }

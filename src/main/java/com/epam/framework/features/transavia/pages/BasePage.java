@@ -83,7 +83,7 @@ public class BasePage {
     }
 
 
-    protected void moveToMyElement(WebDriver driver, Element element) {
+    protected void moveToMyElement(WebDriver driver, WebElement element) {
         waitForJSLoadComplete();
         new Actions(driver).moveToElement(element).perform();
     }
