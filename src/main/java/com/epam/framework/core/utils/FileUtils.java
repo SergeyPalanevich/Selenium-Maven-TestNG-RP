@@ -2,7 +2,7 @@ package com.epam.framework.core.utils;
 
 import java.io.File;
 
-public class FIleUtils {
+public class FileUtils {
     private File getFile(String resourceName) {
         ClassLoader classLoader = getClass().getClassLoader();
         File file = new File(classLoader.getResource(resourceName).getFile());
@@ -10,7 +10,7 @@ public class FIleUtils {
     }
 
     public static String getResourcePath(String resourceName){
-        FIleUtils fIleUtils = new FIleUtils();
+        FileUtils fIleUtils = new FileUtils();
         return fIleUtils.getFile(resourceName).getAbsolutePath();
     }
 }

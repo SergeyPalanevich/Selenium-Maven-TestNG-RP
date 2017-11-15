@@ -1,10 +1,7 @@
 package com.epam.framework.core.listeners;
 
-import com.epam.framework.features.transavia.tests.BaseTest;
 import com.epam.reportportal.message.ReportPortalMessage;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -13,6 +10,8 @@ import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+
+import static com.epam.framework.core.drivers.DriverManager.takeScreenshot;
 
 public class TAListener implements ITestListener {
     private static final String START = "Test suite has been started!";
@@ -31,7 +30,7 @@ public class TAListener implements ITestListener {
 
     public void onTestSuccess(ITestResult result) {
         LOGGER.info(TEST + result.getMethod().getMethodName() + SUCCESS);
-        File screen = ((TakesScreenshot) BaseTest.driver).getScreenshotAs(OutputType.FILE);
+        File screen = takeScreenshot();
         try {
             ReportPortalMessage message = new ReportPortalMessage(screen, FORMATTER.format(result.getStartMillis()));
             LOGGER.info(message);
@@ -43,7 +42,7 @@ public class TAListener implements ITestListener {
 
     public void onTestFailure(ITestResult result) {
         LOGGER.info(TEST + result.getMethod().getMethodName() + FAILED);
-        File screen = ((TakesScreenshot) BaseTest.driver).getScreenshotAs(OutputType.FILE);
+        File screen = takeScreenshot();
         try {
             ReportPortalMessage message = new ReportPortalMessage(screen, FORMATTER.format(result.getStartMillis()));
             LOGGER.info(message);

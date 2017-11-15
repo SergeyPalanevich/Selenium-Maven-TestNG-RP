@@ -8,7 +8,7 @@ import org.testng.xml.XmlSuite;
 import java.io.IOException;
 import java.util.List;
 
-import static com.epam.framework.core.utils.FIleUtils.getResourcePath;
+import static com.epam.framework.core.utils.FileUtils.getResourcePath;
 
 public class RunnerTestNG {
     public static final String PATH_TO_SUITE = getResourcePath("Suite.xml");

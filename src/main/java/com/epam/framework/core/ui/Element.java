@@ -4,6 +4,9 @@ import org.openqa.selenium.*;
 
 import java.util.List;
 
+import static com.epam.framework.core.listeners.TALogger.logger;
+
+
 public class Element implements WebElement{
     protected WebElement webElement;
 
@@ -54,7 +57,9 @@ public class Element implements WebElement{
 
     @Override
     public String getText() {
-        return webElement.getText();
+        String text = webElement.getText();
+        logger.info("Text is : " + text);
+        return text;
     }
 
     @Override

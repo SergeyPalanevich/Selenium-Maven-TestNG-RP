@@ -12,12 +12,11 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 
-import static com.epam.framework.core.utils.FIleUtils.getResourcePath;
+import static com.epam.framework.core.utils.FileUtils.getResourcePath;
 
 public class ChromeDriverCreator extends WebDriverCreator{
 
     private static final String PATH_TO_DRIVER = getResourcePath("chromedriver.exe");
-
 
     @Override
     public WebDriver createDriver() {

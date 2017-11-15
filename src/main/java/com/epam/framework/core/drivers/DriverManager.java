@@ -2,13 +2,15 @@ package com.epam.framework.core.drivers;
 
 import com.epam.framework.core.exeptions.NoSuchWebDriverExeption;
 import org.openqa.selenium.Cookie;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 import java.io.*;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import static com.epam.framework.core.utils.FIleUtils.getResourcePath;
+import static com.epam.framework.core.utils.FileUtils.getResourcePath;
 
 public class DriverManager {
 
@@ -78,5 +80,9 @@ public class DriverManager {
         driver.manage().deleteAllCookies();
         driver.quit();
         driver = null;
+    }
+
+    public static File takeScreenshot() {
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
     }
 }
