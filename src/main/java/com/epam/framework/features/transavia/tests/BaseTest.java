@@ -7,6 +7,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 import static com.epam.framework.core.drivers.DriverManager.*;
+import static com.epam.framework.core.listeners.TALogger.logger;
 
 public class BaseTest {
     private static final String URL = "https://www.transavia.com/en-EU/home/";
@@ -17,6 +18,8 @@ public class BaseTest {
         driver = getDriver(DriverTypes.CHROME);
         driver.get(URL);
         driver = setCookie(driver);
+        driver.navigate().refresh();
+        logger.info("Navigate to " + URL);
     }
 
     @AfterClass()

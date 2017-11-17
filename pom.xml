@@ -21,18 +21,9 @@
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
-                <includes>
-                    <include>log4j.properties</include>
-                    <include>reportportal.properties</include>
-                    <include>cookies.out</include>
-                    <include>Suite.xml</include>
-                </includes>
             </resource>
             <resource>
                 <directory>src/main/resources/binaries</directory>
-                <includes>
-                    <include>chromedriver.exe</include>
-                </includes>
             </resource>
         </resources>
     </build>

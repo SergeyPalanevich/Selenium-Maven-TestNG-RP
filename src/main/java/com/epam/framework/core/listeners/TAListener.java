@@ -63,7 +63,6 @@ public class TAListener implements ITestListener {
         LOGGER.info(START);
     }
 
-
     public void onFinish(ITestContext context) {
         LOGGER.info(FINISH);
     }
