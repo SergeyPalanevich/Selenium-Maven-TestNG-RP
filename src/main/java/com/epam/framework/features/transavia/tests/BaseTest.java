@@ -11,7 +11,7 @@ import static com.epam.framework.core.listeners.TALogger.logger;
 
 public class BaseTest {
     private static final String URL = "https://www.transavia.com/en-EU/home/";
-    public static WebDriver driver;
+    public WebDriver driver;
 
     @BeforeClass()
     public void setUp() throws NoSuchWebDriverExeption {
