@@ -16,7 +16,7 @@ public class Element implements WebElement{
     @Override
     public void click() {
         webElement.click();
-        logger.info("Click on the element " + String.valueOf(webElement));
+    //    logger.info("Click on the element " + String.valueOf(webElement));
     }
 
     @Override
@@ -28,7 +28,7 @@ public class Element implements WebElement{
     @Override
     public void sendKeys(CharSequence... charSequences) {
         webElement.clear();
-        logger.info("Typing the text " +  charSequences.toString());
+   //     logger.info("Typing the text " +  charSequences.toString());
         webElement.sendKeys(charSequences);
     }
 
@@ -40,32 +40,32 @@ public class Element implements WebElement{
 
     @Override
     public String getTagName() {
-        logger.info("Getting the tagName  " + webElement.getTagName());
+  //      logger.info("Getting the tagName  " + webElement.getTagName());
         return webElement.getTagName();
     }
 
     @Override
     public String getAttribute(String s) {
-        logger.info("Getting the attribute  " + s + " = " + webElement.getAttribute(s));
+    //   logger.info("Getting the attribute  " + s + " = " + webElement.getAttribute(s));
         return webElement.getAttribute(s);
     }
 
     @Override
     public boolean isSelected() {
-        logger.info("Checking element is selected");
+   //     logger.info("Checking element is selected");
         return webElement.isSelected();
     }
 
     @Override
     public boolean isEnabled() {
-        logger.info("Checking element is enabled");
+    //    logger.info("Checking element is enabled");
         return webElement.isEnabled();
     }
 
     @Override
     public String getText() {
         String text = webElement.getText();
-        logger.info("Text is : " + text);
+     //   logger.info("Text is : " + text);
         return text;
     }
 

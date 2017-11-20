@@ -45,7 +45,6 @@ public class MultipleFormPage extends BasePage {
     public Element buttonSearch;
 
     public void setOutboundFlight(MultiTrip multiTrip) {
-        waitElementToBeClickable(driver, fieldFromOutboundFlight);
         fieldFromOutboundFlight.sendKeys(multiTrip.getDepatureAirportFirst());
         firstValueFromOutboundFlight.click();
         fieldToOutboundFlight.sendKeys(multiTrip.getArrivalAirportFirst());
@@ -54,7 +53,6 @@ public class MultipleFormPage extends BasePage {
     }
 
     public void setInboundFlight(MultiTrip multiTrip) {
-        waitElementToBeClickable(driver, fieldFromInboundFlight);
         fieldFromInboundFlight.sendKeys(multiTrip.getDepatureAirportSecond());
         firstValueFromInboundFlight.click();
         fieldToInboundFlight.sendKeys(multiTrip.getArrivalAirportSecond());

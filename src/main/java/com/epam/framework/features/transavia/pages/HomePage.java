@@ -13,6 +13,10 @@ public class HomePage extends BasePage {
         super(driver);
     }
 
+
+    @FindBy(xpath = "//button[contains(text(), 'Yes, I understand')]")
+    public Element cookie;
+
     @FindBy(id = "ui-datepicker-div")
     public Element datepicker;
 
