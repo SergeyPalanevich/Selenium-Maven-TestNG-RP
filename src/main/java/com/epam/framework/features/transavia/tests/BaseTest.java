@@ -22,9 +22,8 @@ public class BaseTest {
         driver.navigate().refresh();
     }
 
-    @AfterClass()
+    @AfterClass(alwaysRun = true)
     public void cleanUp(){
         closeDriver();
     }
-
 }
