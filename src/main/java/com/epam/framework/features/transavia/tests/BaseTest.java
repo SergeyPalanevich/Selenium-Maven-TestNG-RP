@@ -5,7 +5,6 @@ import com.epam.framework.core.exeptions.NoSuchWebDriverExeption;
 import com.epam.framework.features.transavia.pages.HomePage;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 
 import static com.epam.framework.core.drivers.DriverManager.closeDriver;
@@ -19,7 +18,6 @@ public class BaseTest {
     public void setUp() throws NoSuchWebDriverExeption {
         driver = getDriver(DriverTypes.CHROME);
         driver.get(URL);
-//        driver = setCookie(driver);
         new HomePage(driver).cookie.click();
         driver.navigate().refresh();
     }
@@ -29,8 +27,4 @@ public class BaseTest {
         closeDriver();
     }
 
-    @AfterSuite()
-    public void closeApp(){
-        System.exit(0);
-    }
 }
