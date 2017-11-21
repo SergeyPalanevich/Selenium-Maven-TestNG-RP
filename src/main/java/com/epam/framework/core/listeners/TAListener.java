@@ -22,13 +22,14 @@ public class TAListener implements ITestListener {
     private static final String TEST = "Test: ";
     private static final String FINISH = "Test suite finished!";
     public static final DateFormat FORMATTER = new SimpleDateFormat("mm-dd-yyyy HH:mm:ss:SSS");
+    private static final String SUCCESS_MSG = "Test %s is ";
 
     public void onTestStart(ITestResult result) {
-        info(TEST + result.getMethod().getMethodName() + RUNNING + FORMATTER.format(result.getStartMillis()));
+        info(String.format(SUCCESS_MSG, result.getMethod().getMethodName()) + RUNNING + FORMATTER.format(result.getStartMillis()));
     }
 
     public void onTestSuccess(ITestResult result) {
-        info(TEST + result.getMethod().getMethodName() + SUCCESS);
+        info( String.format(SUCCESS_MSG, result.getMethod().getMethodName()) + SUCCESS);
         File screen = takeScreenshot();
         try {
             ReportPortalMessage message = new ReportPortalMessage(screen, FORMATTER.format(result.getStartMillis()));
@@ -39,7 +40,7 @@ public class TAListener implements ITestListener {
     }
 
     public void onTestFailure(ITestResult result) {
-        info(TEST + result.getMethod().getMethodName() + FAILED);
+        info(String.format(SUCCESS_MSG, result.getMethod().getMethodName()) + FAILED);
         File screen = takeScreenshot();
         try {
             ReportPortalMessage message = new ReportPortalMessage(screen, FORMATTER.format(result.getStartMillis()));
@@ -50,7 +51,7 @@ public class TAListener implements ITestListener {
     }
 
     public void onTestSkipped(ITestResult result) {
-        info(TEST + result.getMethod().getMethodName() + SKIPPED);
+        info(String.format(SUCCESS_MSG, result.getMethod().getMethodName()) + SKIPPED);
     }
 
     public void onTestFailedButWithinSuccessPercentage(ITestResult result) {

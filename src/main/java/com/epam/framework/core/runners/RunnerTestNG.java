@@ -17,6 +17,7 @@ public class RunnerTestNG {
 public static final InputStream RESOURCE_NAME = getResourcePathAsImputStream("Suite.xml");
 
     public static void main(String[] args) {
+
         TestNG testNG = new TestNG();
         testNG.addListener(new TAListener());
         try {
@@ -26,5 +27,6 @@ public static final InputStream RESOURCE_NAME = getResourcePathAsImputStream("Su
         } catch (IOException e) {
             e.printStackTrace();
         }
+        System.exit(0);
     }
 }
