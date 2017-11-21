@@ -16,26 +16,26 @@ public class Element implements WebElement {
     @Override
     public void click() {
         webElement.click();
-        debug("Click on the element " + String.valueOf(webElement));
+//        debug("Click on the element " + String.valueOf(webElement));
     }
 
     @Override
     public void submit() {
         webElement.submit();
-        debug("Submit");
+//        debug("Submit");
     }
 
     @Override
     public void sendKeys(CharSequence... charSequences) {
         webElement.clear();
-        debug("Typing the text " + charSequences.toString());
+//        debug("Typing the text " + charSequences.toString());
         webElement.sendKeys(charSequences);
     }
 
     @Override
     public void clear() {
         webElement.clear();
-        debug("Clear the field " + String.valueOf(webElement));
+//        debug("Clear the field " + String.valueOf(webElement));
     }
 
     @Override
@@ -46,26 +46,26 @@ public class Element implements WebElement {
 
     @Override
     public String getAttribute(String s) {
-        debug("Getting the attribute  " + s + " = " + webElement.getAttribute(s));
+//        debug("Getting the attribute  " + s + " = " + webElement.getAttribute(s));
         return webElement.getAttribute(s);
     }
 
     @Override
     public boolean isSelected() {
-        debug("Checking element is selected");
+//        debug("Checking element is selected");
         return webElement.isSelected();
     }
 
     @Override
     public boolean isEnabled() {
-        debug("Checking element is enabled");
+//        debug("Checking element is enabled");
         return webElement.isEnabled();
     }
 
     @Override
     public String getText() {
         String text = webElement.getText();
-        debug("Text is : " + text);
+//        debug("Text is : " + text);
         return text;
     }
 

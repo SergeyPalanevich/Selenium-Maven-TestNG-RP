@@ -19,7 +19,6 @@ public class TAListener implements ITestListener {
     private static final String SUCCESS = "- is SUCCESS";
     private static final String FAILED = "- is FAILED";
     private static final String SKIPPED = "has been skipped";
-    private static final String TEST = "Test: ";
     private static final String FINISH = "Test suite finished!";
     public static final DateFormat FORMATTER = new SimpleDateFormat("mm-dd-yyyy HH:mm:ss:SSS");
     private static final String SUCCESS_MSG = "Test %s is ";
