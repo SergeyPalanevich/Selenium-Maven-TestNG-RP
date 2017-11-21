@@ -10,12 +10,11 @@ import java.io.*;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import static com.epam.framework.core.utils.FileUtils.getResourcePath;
-
 public class DriverManager {
 
     public static final long MANAGE_TIMEOUT = 25;
-    private static final String PATH_TO_COOKIES = getResourcePath("cookies.out");
+    private static final String PATH_TO_COOKIES = "src/main/resources/cookies.out";
+    private static final String ERROR_MSG = "Invalid name for WebDriver...";
     private static WebDriver driver;
 
     private DriverManager() {
@@ -33,7 +32,7 @@ public class DriverManager {
                     setDriverManage();
                     return driver;
                 default:
-                    throw new NoSuchWebDriverExeption("Invalid name for WebDriver...");
+                    throw new NoSuchWebDriverExeption(ERROR_MSG);
             }
         }else {
             return driver;
@@ -46,6 +45,17 @@ public class DriverManager {
         driver.manage().timeouts().setScriptTimeout(MANAGE_TIMEOUT, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }
+
+    public static void closeDriver() {
+        driver.manage().deleteAllCookies();
+        driver.quit();
+        driver = null;
+    }
+
+    public static File takeScreenshot() {
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+    }
+
 
     public static WebDriver setCookie(WebDriver wDriver){
         WebDriver driver = wDriver;
@@ -74,15 +84,5 @@ public class DriverManager {
             driver.manage().addCookie(cookie);
         }
         return driver;
-    }
-
-    public static void closeDriver() {
-        driver.manage().deleteAllCookies();
-        driver.quit();
-        driver = null;
-    }
-
-    public static File takeScreenshot() {
-        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
     }
 }

@@ -1,5 +1,6 @@
 package com.epam.framework.core.listeners;
 
+import com.epam.reportportal.message.ReportPortalMessage;
 import org.apache.log4j.Logger;
 
 public class TALogger {
@@ -14,6 +15,10 @@ public class TALogger {
     public static void info(String string){
         logger.info(string);
     }
+    public static void info(ReportPortalMessage message){
+        logger.info(message);
+    }
+
     public static void debug(String string){
         logger.debug(string);
     }

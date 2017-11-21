@@ -9,6 +9,7 @@ import org.testng.annotations.BeforeClass;
 
 import static com.epam.framework.core.drivers.DriverManager.closeDriver;
 import static com.epam.framework.core.drivers.DriverManager.getDriver;
+import static com.epam.framework.core.listeners.TALogger.info;
 
 public class BaseTest {
     private static final String URL = "https://www.transavia.com/en-EU/home/";
@@ -18,6 +19,7 @@ public class BaseTest {
     public void setUp() throws NoSuchWebDriverExeption {
         driver = getDriver(DriverTypes.CHROME);
         driver.get(URL);
+        info(URL);
         new HomePage(driver).cookie.click();
         driver.navigate().refresh();
     }

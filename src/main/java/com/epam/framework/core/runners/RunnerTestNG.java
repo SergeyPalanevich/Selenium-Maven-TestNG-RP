@@ -6,19 +6,21 @@ import org.testng.xml.Parser;
 import org.testng.xml.XmlSuite;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
-import static com.epam.framework.core.utils.FileUtils.getResourcePath;
+import static com.epam.framework.core.utils.FileUtils.getResourcePathAsImputStream;
+
 
 public class RunnerTestNG {
-    public static final String PATH_TO_SUITE = getResourcePath("Suite.xml");
+
+public static final InputStream RESOURCE_NAME = getResourcePathAsImputStream("Suite.xml");
 
     public static void main(String[] args) {
-
         TestNG testNG = new TestNG();
         testNG.addListener(new TAListener());
         try {
-            List<XmlSuite> suite = (List<XmlSuite>) (new Parser(PATH_TO_SUITE).parse());
+            List<XmlSuite> suite = (List<XmlSuite>) (new Parser(RESOURCE_NAME)).parse();
             testNG.setXmlSuites(suite);
             testNG.run();
         } catch (IOException e) {

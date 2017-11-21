@@ -1,16 +1,20 @@
 package com.epam.framework.core.utils;
 
-import java.io.File;
+
+import java.io.InputStream;
+import java.net.URL;
 
 public class FileUtils {
-    private File getFile(String resourceName) {
-        ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource(resourceName).getFile());
-        return file;
+
+    static public String getResourcePath(String fileName) {
+        ClassLoader classLoader = (new FileUtils()).getClass().getClassLoader();
+        URL url = classLoader.getResource(fileName);
+        return url.getPath();
     }
 
-    public static String getResourcePath(String resourceName){
-        FileUtils fIleUtils = new FileUtils();
-        return fIleUtils.getFile(resourceName).getAbsolutePath();
+    static public InputStream getResourcePathAsImputStream(String fileName) {
+        ClassLoader classLoader = (new FileUtils()).getClass().getClassLoader();
+        InputStream stream = classLoader.getResourceAsStream(fileName);
+        return stream;
     }
 }
