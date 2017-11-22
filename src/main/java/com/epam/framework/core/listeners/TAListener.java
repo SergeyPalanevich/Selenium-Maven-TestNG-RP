@@ -17,9 +17,9 @@ import static org.apache.log4j.LogManager.getLogger;
 
 public class TAListener implements ITestListener {
     private static final String START = "Test suite has been started!";
-    private static final String RUNNING = " is running at: ";
-    private static final String SUCCESS = "- is SUCCESS";
-    private static final String FAILED = "- is FAILED";
+    private static final String RUNNING = " running at: ";
+    private static final String SUCCESS = "- SUCCESS";
+    private static final String FAILED = "- FAILED";
     private static final String SKIPPED = "has been skipped";
     private static final String FINISH = "Test suite finished!";
     public static final DateFormat FORMATTER = new SimpleDateFormat("mm-dd-yyyy HH:mm:ss:SSS");
