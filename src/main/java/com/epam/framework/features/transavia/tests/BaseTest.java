@@ -9,7 +9,8 @@ import org.testng.annotations.BeforeClass;
 
 import static com.epam.framework.core.drivers.DriverManager.closeDriver;
 import static com.epam.framework.core.drivers.DriverManager.getDriver;
-import static com.epam.framework.core.listeners.TALogger.info;
+import static com.epam.framework.core.utils.LoggerUtils.info;
+
 
 public class BaseTest {
     private static final String URL = "https://www.transavia.com/en-EU/home/";

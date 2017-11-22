@@ -4,8 +4,6 @@ import org.openqa.selenium.*;
 
 import java.util.List;
 
-import static com.epam.framework.core.listeners.TALogger.debug;
-
 public class Element implements WebElement {
     protected WebElement webElement;
 
@@ -40,7 +38,7 @@ public class Element implements WebElement {
 
     @Override
     public String getTagName() {
-        debug("Getting the tagName  " + webElement.getTagName());
+//        debug("Getting the tagName  " + webElement.getTagName());
         return webElement.getTagName();
     }
 
