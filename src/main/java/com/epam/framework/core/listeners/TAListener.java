@@ -12,6 +12,8 @@ import java.text.SimpleDateFormat;
 
 import static com.epam.framework.core.drivers.DriverManager.takeScreenshot;
 import static com.epam.framework.core.listeners.TALogger.info;
+import static org.apache.log4j.LogManager.getLogger;
+
 
 public class TAListener implements ITestListener {
     private static final String START = "Test suite has been started!";
@@ -22,28 +24,31 @@ public class TAListener implements ITestListener {
     private static final String FINISH = "Test suite finished!";
     public static final DateFormat FORMATTER = new SimpleDateFormat("mm-dd-yyyy HH:mm:ss:SSS");
     private static final String SUCCESS_MSG = "Test %s is ";
+    private static org.apache.log4j.Logger logger =  getLogger(TAListener.class);
 
     public void onTestStart(ITestResult result) {
         info(String.format(SUCCESS_MSG, result.getMethod().getMethodName()) + RUNNING + FORMATTER.format(result.getStartMillis()));
     }
 
     public void onTestSuccess(ITestResult result) {
-        info( String.format(SUCCESS_MSG, result.getMethod().getMethodName()) + SUCCESS);
+        logger.info(String.format(SUCCESS_MSG, result.getMethod().getMethodName()) + SUCCESS);
         File screen = takeScreenshot();
         try {
             ReportPortalMessage message = new ReportPortalMessage(screen, FORMATTER.format(result.getStartMillis()));
-            info(message);
+            logger.info(message);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public void onTestFailure(ITestResult result) {
-        info(String.format(SUCCESS_MSG, result.getMethod().getMethodName()) + FAILED);
+        logger.info(String.format(SUCCESS_MSG, result.getMethod().getMethodName()) + FAILED);
         File screen = takeScreenshot();
         try {
+
             ReportPortalMessage message = new ReportPortalMessage(screen, FORMATTER.format(result.getStartMillis()));
-            info(message);
+            logger.info(message);
+
         } catch (IOException e) {
             e.printStackTrace();
         }

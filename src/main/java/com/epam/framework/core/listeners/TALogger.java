@@ -1,12 +1,12 @@
 package com.epam.framework.core.listeners;
 
-import com.epam.reportportal.message.ReportPortalMessage;
 
-import static org.apache.log4j.Logger.getLogger;
-
+import static org.apache.log4j.LogManager.getLogger;
 
 public class TALogger {
-    public static org.apache.log4j.Logger logger = getLogger(TAListener.class);
+    private static org.apache.log4j.Logger logger =  getLogger(TALogger.class);
+
+    private TALogger(){}
 
     public static void error(String string) {
         logger.error(string);
@@ -17,11 +17,7 @@ public class TALogger {
         logger.error(string, throwable);
     }
 
-    public static void info(String string) {
-        logger.info(string);
-    }
-
-    public static void info(ReportPortalMessage message) {
+    public static void info(Object message) {
         logger.info(message);
     }
 
