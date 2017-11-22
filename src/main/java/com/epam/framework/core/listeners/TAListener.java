@@ -11,7 +11,6 @@ import java.text.SimpleDateFormat;
 
 import static com.epam.framework.core.drivers.DriverManager.takeScreenshot;
 import static com.epam.framework.core.utils.LoggerUtils.info;
-import static org.apache.log4j.LogManager.getLogger;
 
 
 public class TAListener implements ITestListener {
@@ -23,7 +22,7 @@ public class TAListener implements ITestListener {
     private static final String FINISH = "Test suite finished!";
     public static final DateFormat FORMATTER = new SimpleDateFormat("HH:mm:ss:SSS");
     private static final String TEST_MSG = "Test %s is ";
-    private static org.apache.log4j.Logger logger = getLogger(TAListener.class);
+//    private static org.apache.log4j.Logger logger = getLogger(TAListener.class);
 
     public void onTestStart(ITestResult result) {
         info(String.format(TEST_MSG, result.getMethod().getMethodName()) + RUNNING + FORMATTER.format(result.getStartMillis()));
