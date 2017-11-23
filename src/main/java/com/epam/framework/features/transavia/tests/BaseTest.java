@@ -9,7 +9,7 @@ import org.testng.annotations.BeforeClass;
 
 import static com.epam.framework.core.drivers.DriverManager.closeDriver;
 import static com.epam.framework.core.drivers.DriverManager.getDriver;
-import static com.epam.framework.core.utils.LoggerUtils.info;
+import static com.epam.framework.core.utils.LoggerUtils.log;
 
 
 public class BaseTest {
@@ -20,8 +20,8 @@ public class BaseTest {
     public void setUp() throws NoSuchWebDriverExeption {
         driver = getDriver(DriverTypes.CHROME);
         driver.get(URL);
-        info(URL);
-        new HomePage(driver).cookie.click();
+        log(URL);
+        new HomePage(driver).confirmCookies();
         driver.navigate().refresh();
     }
 

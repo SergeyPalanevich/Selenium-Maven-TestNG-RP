@@ -9,6 +9,8 @@ import org.openqa.selenium.support.pagefactory.ElementLocator;
 import java.lang.reflect.Field;
 
 public class CustomFieldDecorator extends DefaultFieldDecorator {
+    private static final String ERROR_MSG = "WebElement can't be represented as ";
+
     public CustomFieldDecorator(SearchContext searchContext) {
         super(new DefaultElementLocatorFactory(searchContext));
     }
@@ -51,7 +53,7 @@ public class CustomFieldDecorator extends DefaultFieldDecorator {
                     .newInstance(element);
         } catch (Exception e) {
             throw new AssertionError(
-                    "WebElement can't be represented as " + clazz
+                    ERROR_MSG + clazz
             );
         }
     }

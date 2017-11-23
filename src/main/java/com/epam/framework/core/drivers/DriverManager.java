@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 public class DriverManager {
 
-    public static final long MANAGE_TIMEOUT = 25;
+    public static final long MANAGE_TIMEOUT = 45;
     private static final String PATH_TO_COOKIES = "src/main/resources/cookies.out";
     private static final String ERROR_MSG = "Invalid name for WebDriver...";
     private static WebDriver driver;

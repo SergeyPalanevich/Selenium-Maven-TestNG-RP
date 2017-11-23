@@ -14,56 +14,56 @@ public class Element implements WebElement {
     @Override
     public void click() {
         webElement.click();
-//        debug("Click on the element " + String.valueOf(webElement));
+//        info("Click on the element " + String.valueOf(webElement));
     }
 
     @Override
     public void submit() {
         webElement.submit();
-//        debug("Submit");
+//        info("Submit");
     }
 
     @Override
     public void sendKeys(CharSequence... charSequences) {
         webElement.clear();
-//        debug("Typing the text " + charSequences.toString());
+//        info("Typing the text " + charSequences.toString());
         webElement.sendKeys(charSequences);
     }
 
     @Override
     public void clear() {
         webElement.clear();
-//        debug("Clear the field " + String.valueOf(webElement));
+//        info("Clear the field " + String.valueOf(webElement));
     }
 
     @Override
     public String getTagName() {
-//        debug("Getting the tagName  " + webElement.getTagName());
+//        info("Getting the tagName  " + webElement.getTagName());
         return webElement.getTagName();
     }
 
     @Override
     public String getAttribute(String s) {
-//        debug("Getting the attribute  " + s + " = " + webElement.getAttribute(s));
+//        info("Getting the attribute  " + s + " = " + webElement.getAttribute(s));
         return webElement.getAttribute(s);
     }
 
     @Override
     public boolean isSelected() {
-//        debug("Checking element is selected");
+//        info("Checking element is selected");
         return webElement.isSelected();
     }
 
     @Override
     public boolean isEnabled() {
-//        debug("Checking element is enabled");
+//        info("Checking element is enabled");
         return webElement.isEnabled();
     }
 
     @Override
     public String getText() {
         String text = webElement.getText();
-//        debug("Text is : " + text);
+//        info("Text is : " + text);
         return text;
     }
 

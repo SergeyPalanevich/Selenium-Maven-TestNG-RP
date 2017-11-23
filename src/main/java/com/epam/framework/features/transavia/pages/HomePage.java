@@ -13,7 +13,6 @@ public class HomePage extends BasePage {
         super(driver);
     }
 
-
     @FindBy(xpath = "//button[contains(text(), 'Yes, I understand')]")
     public Element cookie;
 
@@ -77,6 +76,11 @@ public class HomePage extends BasePage {
         waitElementToBeClickable(driver, viewYourBookinglink);
         viewYourBookinglink.click();
         return new LoginPage(driver);
+    }
+
+    public void confirmCookies() {
+        waitElementToBeClickable(driver, cookie);
+        cookie.click();
     }
 
     public void fillFromField(String from) {
