@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class LoggerUtils {
 
-    private static final Logger LOGGER = LogManager.getLogger("main_logger");
+    private static final Logger LOGGER = LogManager.getRootLogger();
 
     private LoggerUtils() {
     }
@@ -27,7 +27,7 @@ public class LoggerUtils {
         LOGGER.debug(string);
     }
 
-    public static void log(File file, String message){
+    public static void info(File file, String message){
         try {
             LOGGER.info(new ObjectMessage(new ReportPortalMessage(file, message)));
         } catch (IOException e) {
@@ -35,7 +35,7 @@ public class LoggerUtils {
         }
     }
 
-    public static void log(String message) {
+    public static void info(String message) {
         LOGGER.info(message);
     }
 }

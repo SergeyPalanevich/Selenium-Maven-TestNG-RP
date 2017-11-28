@@ -4,6 +4,8 @@ import org.openqa.selenium.*;
 
 import java.util.List;
 
+import static com.epam.framework.core.utils.LoggerUtils.debug;
+
 public class Element implements WebElement {
     protected WebElement webElement;
 
@@ -14,56 +16,56 @@ public class Element implements WebElement {
     @Override
     public void click() {
         webElement.click();
-//        info("Click on the element " + String.valueOf(webElement));
+        debug("Click on the element " + String.valueOf(webElement));
     }
 
     @Override
     public void submit() {
         webElement.submit();
-//        info("Submit");
+        debug("Submit");
     }
 
     @Override
     public void sendKeys(CharSequence... charSequences) {
         webElement.clear();
-//        info("Typing the text " + charSequences.toString());
+        debug("Typing the text " + charSequences.toString());
         webElement.sendKeys(charSequences);
     }
 
     @Override
     public void clear() {
         webElement.clear();
-//        info("Clear the field " + String.valueOf(webElement));
+        debug("Clear the field " + String.valueOf(webElement));
     }
 
     @Override
     public String getTagName() {
-//        info("Getting the tagName  " + webElement.getTagName());
+        debug("Getting the tagName  " + webElement.getTagName());
         return webElement.getTagName();
     }
 
     @Override
     public String getAttribute(String s) {
-//        info("Getting the attribute  " + s + " = " + webElement.getAttribute(s));
+        debug("Getting the attribute  " + s + " = " + webElement.getAttribute(s));
         return webElement.getAttribute(s);
     }
 
     @Override
     public boolean isSelected() {
-//        info("Checking element is selected");
+        debug("Checking element is selected");
         return webElement.isSelected();
     }
 
     @Override
     public boolean isEnabled() {
-//        info("Checking element is enabled");
+        debug("Checking element is enabled");
         return webElement.isEnabled();
     }
 
     @Override
     public String getText() {
         String text = webElement.getText();
-//        info("Text is : " + text);
+        debug("Text is : " + text);
         return text;
     }
 

@@ -1,5 +1,6 @@
 package com.epam.framework.core.ui;
 
+import com.epam.framework.core.exeptions.WebElementCreateInstanceExeption;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.pagefactory.DefaultElementLocatorFactory;
@@ -52,7 +53,7 @@ public class CustomFieldDecorator extends DefaultFieldDecorator {
             return (T) clazz.getConstructor(WebElement.class)
                     .newInstance(element);
         } catch (Exception e) {
-            throw new AssertionError(
+            throw new WebElementCreateInstanceExeption(
                     ERROR_MSG + clazz
             );
         }

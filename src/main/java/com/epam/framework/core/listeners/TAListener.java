@@ -1,5 +1,6 @@
 package com.epam.framework.core.listeners;
 
+import com.epam.framework.core.utils.LoggerUtils;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -9,7 +10,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 import static com.epam.framework.core.drivers.DriverManager.takeScreenshot;
-import static com.epam.framework.core.utils.LoggerUtils.log;
+import static com.epam.framework.core.utils.LoggerUtils.info;
 
 public class TAListener implements ITestListener {
     private static final String START = "Test suite has been started!";
@@ -23,36 +24,36 @@ public class TAListener implements ITestListener {
     private static final String TEST_MSG = "Test %s is ";
 
     public void onTestStart(ITestResult result) {
-        log(String.format(TEST_MSG, result.getMethod().getMethodName()) + RUNNING + FORMATTER.format(result.getStartMillis()));
+        info(String.format(TEST_MSG, result.getMethod().getMethodName()) + RUNNING + FORMATTER.format(result.getStartMillis()));
     }
 
     public void onTestSuccess(ITestResult result) {
-        log(String.format(TEST_MSG, result.getMethod().getMethodName()) + SUCCESS);
+        info(String.format(TEST_MSG, result.getMethod().getMethodName()) + SUCCESS);
         File screen = takeScreenshot();
         String message = FORMATTER.format(result.getStartMillis());
-        log(screen, message);
+        LoggerUtils.info(screen, message);
     }
 
     public void onTestFailure(ITestResult result) {
-        log(String.format(TEST_MSG, result.getMethod().getMethodName()) + FAILED);
+        info(String.format(TEST_MSG, result.getMethod().getMethodName()) + FAILED);
         File screen = takeScreenshot();
         String message = FORMATTER.format(result.getStartMillis());
-        log(screen, message);
+        LoggerUtils.info(screen, message);
     }
 
     public void onTestSkipped(ITestResult result) {
-        log(String.format(TEST_MSG, result.getMethod().getMethodName()) + SKIPPED);
+        info(String.format(TEST_MSG, result.getMethod().getMethodName()) + SKIPPED);
     }
 
     public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
-        log(SUCCESS_PERCENTAGE);
+        info(SUCCESS_PERCENTAGE);
     }
 
     public void onStart(ITestContext context) {
-        log(START);
+        info(START);
     }
 
     public void onFinish(ITestContext context) {
-        log(FINISH);
+        info(FINISH);
     }
 }

@@ -10,11 +10,14 @@ import java.io.*;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import static com.epam.framework.core.utils.LoggerUtils.info;
+
 public class DriverManager {
 
     public static final long MANAGE_TIMEOUT = 45;
     private static final String PATH_TO_COOKIES = "src/main/resources/cookies.out";
     private static final String ERROR_MSG = "Invalid name for WebDriver...";
+    private static final String INFO_MSG = "Driver type is ";
     private static WebDriver driver;
 
     private DriverManager() {
@@ -24,19 +27,18 @@ public class DriverManager {
         if(driver == null) {
             switch (driverName) {
                 case CHROME:
+                    info(INFO_MSG + "CHROME");
                     driver = new ChromeDriverCreator().createDriver();
                     setDriverManage();
-                    return driver;
                 case FIREFOX:
                     driver = new FireFoxDriverCreator().createDriver();
                     setDriverManage();
-                    return driver;
+                    info(INFO_MSG + "FIREFOX");
                 default:
                     throw new NoSuchWebDriverExeption(ERROR_MSG);
             }
-        }else {
-            return driver;
         }
+        return driver;
     }
 
     private static void setDriverManage(){
