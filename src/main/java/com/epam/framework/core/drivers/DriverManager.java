@@ -30,15 +30,18 @@ public class DriverManager {
                     info(INFO_MSG + "CHROME");
                     driver = new ChromeDriverCreator().createDriver();
                     setDriverManage();
+                    return driver;
                 case FIREFOX:
                     driver = new FireFoxDriverCreator().createDriver();
                     setDriverManage();
                     info(INFO_MSG + "FIREFOX");
+                    return driver;
                 default:
                     throw new NoSuchWebDriverExeption(ERROR_MSG);
             }
+        } else {
+            return driver;
         }
-        return driver;
     }
 
     private static void setDriverManage(){
