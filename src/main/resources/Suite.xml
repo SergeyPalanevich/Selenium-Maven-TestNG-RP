@@ -4,7 +4,15 @@
     <listeners>
         <listener class-name="com.epam.reportportal.testng.ReportPortalTestNGListener" />
     </listeners>
-    <test name="Smoke Tests">
+    <test name="API Tests">
+        <classes>
+            <class name="com.epam.framework.features.api.tests.GistApiTest" />
+            <class name="com.epam.framework.features.api.tests.RestApacheHttpClientTest" />
+            <class name="com.epam.framework.features.api.tests.RestAssuredTest" />
+            <class name="com.epam.framework.features.api.tests.RestTemplateTest" />
+        </classes>
+    </test>
+    <test name="UI Tests">
         <classes>
             <class name="com.epam.framework.features.transavia.tests.MainFormAndSearchTest" />
             <class name="com.epam.framework.features.transavia.tests.CorrectTotalPriceTest" />

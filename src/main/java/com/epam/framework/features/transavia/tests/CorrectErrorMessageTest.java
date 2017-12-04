@@ -24,6 +24,7 @@ public class CorrectErrorMessageTest extends BaseTest {
         trip = createTrip(DEPATURE_AIRPORT, ARRIVAL_AIRPORT);
     }
 
+
     @Test(description = "This TC check the error message")
     public void checkErrorMessage() {
         home = new HomePage(driver);
