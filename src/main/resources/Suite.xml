@@ -5,6 +5,9 @@
         <listener class-name="com.epam.reportportal.testng.ReportPortalTestNGListener" />
     </listeners>
     <test name="API Tests">
+        <parameter name = "statusCodeCreated" value="201"/>
+        <parameter name = "statusCodeNoContent" value="204"/>
+        <parameter name = "statusCodeOk" value="200"/>
         <classes>
             <class name="com.epam.framework.features.api.tests.GistApiTest" />
             <class name="com.epam.framework.features.api.tests.RestApacheHttpClientTest" />
@@ -12,14 +15,14 @@
             <class name="com.epam.framework.features.api.tests.RestTemplateTest" />
         </classes>
     </test>
-    <test name="UI Tests">
-        <classes>
-            <class name="com.epam.framework.features.transavia.tests.MainFormAndSearchTest" />
-            <class name="com.epam.framework.features.transavia.tests.CorrectTotalPriceTest" />
-            <class name="com.epam.framework.features.transavia.tests.TimeArrivalTest" />
-            <class name="com.epam.framework.features.transavia.tests.CorrectTotalSumTest" />
-            <class name="com.epam.framework.features.transavia.tests.CorrectErrorMessageTest" />
-            <class name="com.epam.framework.features.transavia.tests.MultipleDestinationsTest" />
-        </classes>
-    </test>
+    <!--<test name="UI Tests">-->
+        <!--<classes>-->
+            <!--<class name="com.epam.framework.features.transavia.tests.MainFormAndSearchTest" />-->
+            <!--<class name="com.epam.framework.features.transavia.tests.CorrectTotalPriceTest" />-->
+            <!--<class name="com.epam.framework.features.transavia.tests.TimeArrivalTest" />-->
+            <!--<class name="com.epam.framework.features.transavia.tests.CorrectTotalSumTest" />-->
+            <!--<class name="com.epam.framework.features.transavia.tests.CorrectErrorMessageTest" />-->
+            <!--<class name="com.epam.framework.features.transavia.tests.MultipleDestinationsTest" />-->
+        <!--</classes>-->
+    <!--</test>-->
 </suite>

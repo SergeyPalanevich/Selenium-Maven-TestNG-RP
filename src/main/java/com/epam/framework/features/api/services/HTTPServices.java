@@ -12,7 +12,7 @@ import static com.epam.framework.core.utils.FileUtils.getGsonString;
 
 public class HTTPServices {
 
-    public static CloseableHttpResponse put(String url){
+    public static String put(String url){
         CloseableHttpClient httpclient = HttpClients.createDefault();
         HttpPut put =  new HttpPut(url);
         CloseableHttpResponse response = null;
@@ -21,10 +21,11 @@ public class HTTPServices {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return response;
+        int statusCode = response.getStatusLine().getStatusCode();
+        return String.valueOf(statusCode);
     }
 
-    public static CloseableHttpResponse delete(String url){
+    public static String delete(String url){
         CloseableHttpClient httpclient = HttpClients.createDefault();
         HttpDelete delete =  new HttpDelete(url);
         CloseableHttpResponse response = null;
@@ -33,10 +34,11 @@ public class HTTPServices {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return response;
+        int statusCode = response.getStatusLine().getStatusCode();
+        return String.valueOf(statusCode);
     }
 
-    public static CloseableHttpResponse post(String url, String pathToJson){
+    public static String post(String url, String pathToJson){
         String json = getGsonString(pathToJson);
         CloseableHttpClient httpclient = HttpClients.createDefault();
         HttpPost post =  new HttpPost(url);
@@ -50,10 +52,11 @@ public class HTTPServices {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return response;
+        int statusCode = response.getStatusLine().getStatusCode();
+        return String.valueOf(statusCode);
     }
 
-    public static CloseableHttpResponse patch(String url, String pathToJson){
+    public static String patch(String url, String pathToJson){
         String json = getGsonString(pathToJson);
         CloseableHttpClient httpclient = HttpClients.createDefault();
         HttpPatch patch = new HttpPatch(url);
@@ -67,6 +70,7 @@ public class HTTPServices {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return response;
+        int statusCode = response.getStatusLine().getStatusCode();
+        return String.valueOf(statusCode);
     }
 }
