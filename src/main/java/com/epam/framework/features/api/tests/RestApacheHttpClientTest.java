@@ -48,16 +48,11 @@ public class RestApacheHttpClientTest {
         CloseableHttpClient httpclient = HttpClients.createDefault();
         HttpGet httpGet = new HttpGet(URI);
         CloseableHttpResponse response = httpclient.execute(httpGet);
-
         HttpEntity entity = response.getEntity();
         InputStream content = entity.getContent();
-
         BufferedReader reader = new BufferedReader(new InputStreamReader(content));
-
         Gson gson = new Gson();
-
         User[] obj = gson.fromJson(reader, User[].class);
-
         assertEquals(obj.length, LENGTH_ARRAY);
     }
 }
