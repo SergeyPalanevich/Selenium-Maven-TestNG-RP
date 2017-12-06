@@ -1,9 +1,9 @@
 package com.epam.framework.features.api.tests;
 
+import com.epam.framework.features.api.services.HTTPServices;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import static com.epam.framework.features.api.services.HTTPServices.*;
 import static org.testng.Assert.assertEquals;
 
 public class GistApiTest {
@@ -21,28 +21,28 @@ public class GistApiTest {
     @Parameters("statusCodeCreated")
     @Test(description = "This TC check Create a gist")
     public void checkPostRequest(String statusCodeCreated) {
-        String statusCode = post(URI_POST_REQUEST, PATH_TO_GIST_CREATE_JSON);
+        String statusCode = new HTTPServices().post(URI_POST_REQUEST, PATH_TO_GIST_CREATE_JSON);
         assertEquals(statusCode, statusCodeCreated);
     }
 
     @Parameters("statusCodeNoContent")
     @Test(description = "This TC check Star a gist")
     public void checkPutRequest(String statusCodeNoContent) {
-        String statusCode = put(URI_PUT_REQUEST);
+        String statusCode = new HTTPServices().put(URI_PUT_REQUEST);
         assertEquals(statusCode, statusCodeNoContent);
     }
 
     @Parameters("statusCodeNoContent")
     @Test(description = "This TC check Unstar a gist")
     public void checkDeleteRequest(String statusCodeNoContent) {
-        String statusCode = delete(URI_DELETE_REQUEST);
+        String statusCode = new HTTPServices().delete(URI_DELETE_REQUEST);
         assertEquals(statusCode, statusCodeNoContent);
     }
 
     @Parameters("statusCodeOk")
     @Test(description = "This TC check Edit a gist")
     public void checkEditRequest(String statusCodeOk) {
-        String statusCode = patch(URI_PATCH_REQUEST, PATH_TO_GIST_UPDATE_JSON);
+        String statusCode = new HTTPServices().patch(URI_PATCH_REQUEST, PATH_TO_GIST_UPDATE_JSON);
         assertEquals(statusCode, statusCodeOk);
     }
 }

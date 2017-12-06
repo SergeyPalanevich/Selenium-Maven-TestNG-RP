@@ -12,65 +12,116 @@ import static com.epam.framework.core.utils.FileUtils.getGsonString;
 
 public class HTTPServices {
 
-    public static String put(String url){
-        CloseableHttpClient httpclient = HttpClients.createDefault();
-        HttpPut put =  new HttpPut(url);
+    public String put(String url) {
+        CloseableHttpClient client = HttpClients.createDefault();
+        HttpPut put = new HttpPut(url);
         CloseableHttpResponse response = null;
+        int statusCode = 0;
         try {
-            response = httpclient.execute(put);
+            response = client.execute(put);
+            statusCode = response.getStatusLine().getStatusCode();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (client != null) {
+                    client.close();
+                }
+                if (response != null){
+                    response.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        int statusCode = response.getStatusLine().getStatusCode();
         return String.valueOf(statusCode);
     }
 
-    public static String delete(String url){
-        CloseableHttpClient httpclient = HttpClients.createDefault();
-        HttpDelete delete =  new HttpDelete(url);
+
+    public String delete(String url) {
+        CloseableHttpClient client = HttpClients.createDefault();
+        HttpDelete delete = new HttpDelete(url);
         CloseableHttpResponse response = null;
+        int statusCode = 0;
         try {
-            response = httpclient.execute(delete);
+            response = client.execute(delete);
+            statusCode = response.getStatusLine().getStatusCode();
+            client.close();
+            response.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (client != null) {
+                    client.close();
+                }
+                if (response != null){
+                    response.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        int statusCode = response.getStatusLine().getStatusCode();
         return String.valueOf(statusCode);
     }
 
-    public static String post(String url, String pathToJson){
+    public String post(String url, String pathToJson) {
         String json = getGsonString(pathToJson);
-        CloseableHttpClient httpclient = HttpClients.createDefault();
-        HttpPost post =  new HttpPost(url);
+        CloseableHttpClient client = HttpClients.createDefault();
+        HttpPost post = new HttpPost(url);
         StringEntity requestEntity = new StringEntity(
                 json,
                 ContentType.APPLICATION_JSON);
         post.setEntity(requestEntity);
         CloseableHttpResponse response = null;
+        int statusCode = 0;
         try {
-            response = httpclient.execute(post);
+            response = client.execute(post);
+            statusCode = response.getStatusLine().getStatusCode();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (client != null) {
+                    client.close();
+                }
+                if (response != null){
+                    response.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        int statusCode = response.getStatusLine().getStatusCode();
         return String.valueOf(statusCode);
     }
 
-    public static String patch(String url, String pathToJson){
+    public String patch (String url, String pathToJson) {
         String json = getGsonString(pathToJson);
-        CloseableHttpClient httpclient = HttpClients.createDefault();
+        CloseableHttpClient client = HttpClients.createDefault();
         HttpPatch patch = new HttpPatch(url);
         StringEntity requestEntity = new StringEntity(
                 json,
                 ContentType.APPLICATION_JSON);
         patch.setEntity(requestEntity);
         CloseableHttpResponse response = null;
+        int statusCode = 0;
         try {
-            response = httpclient.execute(patch);
+            response = client.execute(patch);
+            statusCode = response.getStatusLine().getStatusCode();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (client != null) {
+                    client.close();
+                }
+                if (response != null){
+                    response.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        int statusCode = response.getStatusLine().getStatusCode();
         return String.valueOf(statusCode);
     }
 }
