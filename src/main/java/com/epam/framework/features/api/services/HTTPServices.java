@@ -12,7 +12,7 @@ import static com.epam.framework.core.utils.FileUtils.getGsonString;
 
 public class HTTPServices {
 
-    public String put(String url) {
+    public int put(String url) {
         CloseableHttpClient client = HttpClients.createDefault();
         HttpPut put = new HttpPut(url);
         CloseableHttpResponse response = null;
@@ -27,18 +27,18 @@ public class HTTPServices {
                 if (client != null) {
                     client.close();
                 }
-                if (response != null){
+                if (response != null) {
                     response.close();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        return String.valueOf(statusCode);
+        return statusCode;
     }
 
 
-    public String delete(String url) {
+    public int delete(String url) {
         CloseableHttpClient client = HttpClients.createDefault();
         HttpDelete delete = new HttpDelete(url);
         CloseableHttpResponse response = null;
@@ -46,8 +46,6 @@ public class HTTPServices {
         try {
             response = client.execute(delete);
             statusCode = response.getStatusLine().getStatusCode();
-            client.close();
-            response.close();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -55,17 +53,17 @@ public class HTTPServices {
                 if (client != null) {
                     client.close();
                 }
-                if (response != null){
+                if (response != null) {
                     response.close();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        return String.valueOf(statusCode);
+        return statusCode;
     }
 
-    public String post(String url, String pathToJson) {
+    public int post(String url, String pathToJson) {
         String json = getGsonString(pathToJson);
         CloseableHttpClient client = HttpClients.createDefault();
         HttpPost post = new HttpPost(url);
@@ -85,17 +83,17 @@ public class HTTPServices {
                 if (client != null) {
                     client.close();
                 }
-                if (response != null){
+                if (response != null) {
                     response.close();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        return String.valueOf(statusCode);
+        return statusCode;
     }
 
-    public String patch (String url, String pathToJson) {
+    public int patch(String url, String pathToJson) {
         String json = getGsonString(pathToJson);
         CloseableHttpClient client = HttpClients.createDefault();
         HttpPatch patch = new HttpPatch(url);
@@ -115,13 +113,13 @@ public class HTTPServices {
                 if (client != null) {
                     client.close();
                 }
-                if (response != null){
+                if (response != null) {
                     response.close();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        return String.valueOf(statusCode);
+        return statusCode;
     }
 }

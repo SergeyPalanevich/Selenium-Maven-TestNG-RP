@@ -8,41 +8,38 @@ import static org.testng.Assert.assertEquals;
 
 public class GistApiTest {
 
-    private static final String URI = "https://api.github.com/";
+    private static final int STATUS_CODE_CREATED = 201;
+    private static final int STATUS_CODE_NO_CONTENT = 204;
+    private static final int STATUS_CODE_OK = 200;
     private static final String PATH_TO_GIST_CREATE_JSON = "src/main/resources/json/gist_create.json";
     private static final String PATH_TO_GIST_UPDATE_JSON = "src/main/resources/json/gist_update.json";
-    private static final String ACCESS_TOKEN = "df3b0194279fceab6df56ce74ea3c3237d0704cd";
-    private static final String GIST_ID = "05de8017b3292c8504314fb6bd19ace7";
-    private static final String URI_POST_REQUEST = URI + "gists?access_token=" + ACCESS_TOKEN;
-    private static final String URI_PATCH_REQUEST = URI + "/gists/" + GIST_ID + "?access_token=" + ACCESS_TOKEN;
-    private static final String URI_PUT_REQUEST = URI + "/gists/" + GIST_ID + "/star?access_token=" + ACCESS_TOKEN;
-    private static final String URI_DELETE_REQUEST = URI + "/gists/" + GIST_ID + "/star?access_token=" + ACCESS_TOKEN;
 
-    @Parameters("statusCodeCreated")
+
+    @Parameters({"uri", "token"})
     @Test(description = "This TC check Create a gist")
-    public void checkPostRequest(String statusCodeCreated) {
-        String statusCode = new HTTPServices().post(URI_POST_REQUEST, PATH_TO_GIST_CREATE_JSON);
-        assertEquals(statusCode, statusCodeCreated);
+    public void checkPostRequest(String uri, String token) {
+        int statusCode = new HTTPServices().post(uri + "?access_token=" + token, PATH_TO_GIST_CREATE_JSON);
+        assertEquals(statusCode, STATUS_CODE_CREATED);
     }
 
-    @Parameters("statusCodeNoContent")
+    @Parameters({"uri", "token", "gistID"})
     @Test(description = "This TC check Star a gist")
-    public void checkPutRequest(String statusCodeNoContent) {
-        String statusCode = new HTTPServices().put(URI_PUT_REQUEST);
-        assertEquals(statusCode, statusCodeNoContent);
+    public void checkPutRequest(String uri, String token, String gistID) {
+        int statusCode = new HTTPServices().put(uri + "/" + gistID + "/star?access_token=" + token);
+        assertEquals(statusCode, STATUS_CODE_NO_CONTENT);
     }
 
-    @Parameters("statusCodeNoContent")
+    @Parameters({"uri", "token", "gistID"})
     @Test(description = "This TC check Unstar a gist")
-    public void checkDeleteRequest(String statusCodeNoContent) {
-        String statusCode = new HTTPServices().delete(URI_DELETE_REQUEST);
-        assertEquals(statusCode, statusCodeNoContent);
+    public void checkDeleteRequest(String uri, String token, String gistID) {
+        int statusCode = new HTTPServices().delete(uri + "/" + gistID + "/star?access_token=" + token);
+        assertEquals(statusCode, STATUS_CODE_NO_CONTENT);
     }
 
-    @Parameters("statusCodeOk")
+    @Parameters({"uri", "token", "gistID"})
     @Test(description = "This TC check Edit a gist")
-    public void checkEditRequest(String statusCodeOk) {
-        String statusCode = new HTTPServices().patch(URI_PATCH_REQUEST, PATH_TO_GIST_UPDATE_JSON);
-        assertEquals(statusCode, statusCodeOk);
+    public void checkEditRequest(String uri, String token, String gistID) {
+        int statusCode = new HTTPServices().patch(uri + "/" + gistID + "?access_token=" + token, PATH_TO_GIST_UPDATE_JSON);
+        assertEquals(statusCode, STATUS_CODE_OK);
     }
 }

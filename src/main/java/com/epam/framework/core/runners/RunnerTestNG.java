@@ -23,6 +23,12 @@ public static final InputStream RESOURCE_NAME = getResourcePathAsImputStream("Su
             testNG.run();
         } catch (IOException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                RESOURCE_NAME.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         System.exit(0);
     }
